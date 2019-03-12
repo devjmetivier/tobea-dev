@@ -1,4 +1,5 @@
 import React from 'react';
+// TODO: Get higher resolution profile picture
 import profilePic from '../assets/profile-pic.jpg';
 import { rhythm } from '../utils/typography';
 
