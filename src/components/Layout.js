@@ -15,9 +15,9 @@ export default function Layout(props) {
       >
         <Link
           style={{
-            boxShadow: 'none',
-            textDecoration: 'none',
-            color: 'inherit',
+            boxShadow: `none`,
+            textDecoration: `none`,
+            color: `inherit`,
           }}
           to='/'
         >
@@ -29,15 +29,15 @@ export default function Layout(props) {
     header = (
       <h3
         style={{
-          fontFamily: 'Montserrat, sans-serif',
+          fontFamily: `Montserrat, sans-serif`,
           marginTop: 0,
         }}
       >
         <Link
           style={{
-            boxShadow: 'none',
-            textDecoration: 'none',
-            color: 'inherit',
+            boxShadow: `none`,
+            textDecoration: `none`,
+            color: `inherit`,
           }}
           to='/'
         >
@@ -49,15 +49,15 @@ export default function Layout(props) {
   return (
     <div
       style={{
-        marginLeft: 'auto',
-        marginRight: 'auto',
+        marginLeft: `auto`,
+        marginRight: `auto`,
       }}
     >
       <header>{header}</header>
       <main>{children}</main>
       <footer>
           © {new Date().getFullYear()}, Built with
-        {' '}
+        {` `}
         <a href='https://www.gatsbyjs.org'>Gatsby</a>
       </footer>
     </div>

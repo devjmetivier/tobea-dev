@@ -21,7 +21,7 @@ export default function BlogPostTemplate(props) {
       <h1>{post.frontmatter.title}</h1>
       <p
         style={{
-          display: 'block',
+          display: `block`,
         }}
       >
         {post.frontmatter.date}
@@ -35,10 +35,10 @@ export default function BlogPostTemplate(props) {
 
       <ul
         style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-between',
-          listStyle: 'none',
+          display: `flex`,
+          flexWrap: `wrap`,
+          justifyContent: `space-between`,
+          listStyle: `none`,
           padding: 0,
         }}
       >

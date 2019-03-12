@@ -8,6 +8,7 @@
     "url": "https://github.com/dmetivier/tobea-dev/issues"
   },
   "dependencies": {
+    "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.1.29",
     "gatsby-image": "^2.0.31",
     "gatsby-plugin-feed": "^2.0.14",
@@ -16,6 +17,7 @@
     "gatsby-plugin-offline": "^2.0.24",
     "gatsby-plugin-react-helmet": "^3.0.8",
     "gatsby-plugin-sharp": "^2.0.26",
+    "gatsby-plugin-styled-components": "^3.0.7",
     "gatsby-plugin-typography": "^2.2.8",
     "gatsby-remark-autolink-headers": "^2.0.16",
     "gatsby-remark-copy-linked-files": "^2.0.9",
@@ -31,7 +33,8 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
-    "react-typography": "^0.16.19"
+    "react-typography": "^0.16.19",
+    "styled-components": "^4.1.3"
   },
   "devDependencies": {},
   "homepage": "https://tobea.dev",

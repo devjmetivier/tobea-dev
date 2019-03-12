@@ -6,7 +6,7 @@ export default function Bio() {
   return (
     <div
       style={{
-        display: 'flex',
+        display: `flex`,
       }}
     >
       <img
@@ -14,12 +14,12 @@ export default function Bio() {
         alt='Devin Metivier'
         style={{
           marginBottom: 0,
-          borderRadius: '50%',
+          borderRadius: `50%`,
         }}
       />
       <p style={{ maxWidth: 310 }}>
-          Personal blog by{' '}
-        <a href='https://mobile.twitter.com/devjmetivier'>Devin Metivier</a>.{' '}
+          Personal blog by{` `}
+        <a href='https://mobile.twitter.com/devjmetivier'>Devin Metivier</a>.{` `}
       </p>
     </div>
   );
