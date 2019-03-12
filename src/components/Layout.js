@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
+const footLinks = [
+  `https://mobile.twitter.com/devjmetivier,Twitter`,
+  `https://github.com/dmetivier,Github`,
+  `https://github.com/dmetivier/tobea-dev,Source`,
+];
+
 export default function Layout(props) {
   const { location, title, children } = props;
   const rootPath = `${__PATH_PREFIX__}/`;
@@ -26,10 +32,18 @@ export default function Layout(props) {
       <header>{header}</header>
       <main>{children}</main>
       <footer>
-        &copy;
-        {new Date().getFullYear()}, Built with
-        {` `}
-        <a href='https://www.gatsbyjs.org'>Gatsby</a>
+        <div>
+          &copy;
+          {new Date().getFullYear()}, Built with
+          {` `}
+          <a href='https://www.gatsbyjs.org'>Gatsby</a>
+        </div>
+        <div>
+          {footLinks.map((link) => {
+            const arr = link.split(`,`);
+            return <a href={arr[0]}>{arr[1]}</a>;
+          })}
+        </div>
       </footer>
     </div>
   );
