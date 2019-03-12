@@ -1,75 +1,34 @@
-/**
- * Bio component that queries for data
- * with Gatsby's StaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/static-query/
- */
-
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import Image from 'gatsby-image';
-
+import profilePic from '../assets/profile-pic.jpg';
 import { rhythm } from '../utils/typography';
 
-function Bio() {
-  return (
-    <StaticQuery
-      query={bioQuery}
-      render={(data) => {
-        const { author, social } = data.site.siteMetadata;
-        return (
-          <div
-            style={{
-              display: 'flex',
-              marginBottom: rhythm(2.5),
-            }}
-          >
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: '100%',
-              }}
-              imgStyle={{
-                borderRadius: '50%',
-              }}
-            />
-            <p>
-              Written by <strong>{author}</strong> who lives and works in San
-              Francisco building useful things.
-              {' '}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
-              </a>
-            </p>
-          </div>
-        );
-      }}
-    />
-  );
-}
-
-const bioQuery = graphql`
-  query BioQuery {
-    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-      childImageSharp {
-        fixed(width: 50, height: 50) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        author
-        social {
-          twitter
-        }
-      }
-    }
+class Bio extends React.Component {
+  render() {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          marginBottom: rhythm(2),
+        }}
+      >
+        <img
+          src={profilePic}
+          alt='Devin Metivier'
+          style={{
+            marginRight: rhythm(1 / 2),
+            marginBottom: 0,
+            width: rhythm(2),
+            height: rhythm(2),
+            borderRadius: '50%',
+          }}
+        />
+        <p style={{ maxWidth: 310 }}>
+          Personal blog by{' '}
+          <a href='https://mobile.twitter.com/devjmetivier'>Devin Metivier</a>.{' '}
+        </p>
+      </div>
+    );
   }
-`;
+}
 
 export default Bio;
