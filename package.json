@@ -31,11 +31,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
-    "react-typography": "^0.16.19",
-    "typeface-merriweather": "0.0.72",
-    "typeface-montserrat": "0.0.54",
-    "typography": "^0.16.19",
-    "typography-theme-wordpress-2016": "^0.16.19"
+    "react-typography": "^0.16.19"
   },
   "devDependencies": {},
   "homepage": "https://tobea.dev",
