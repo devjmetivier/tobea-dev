@@ -17,3 +17,8 @@ div, p {
 small {
   font-size: 1.25rem;
 }
+
+code[class*="language-"], pre[class*="language-"] {
+  /*For the gangstas that have Dank Mono*/
+  font-family: Dank Mono, Fira Code, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
+}

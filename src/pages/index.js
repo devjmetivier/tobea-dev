@@ -15,7 +15,7 @@ export default function BlogIndex(props) {
     <Layout location={location} title={siteTitle}>
       <SEO
         title='All posts'
-        keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+        keywords={[`blog`, `javascript`, `react`]}
       />
       <Bio />
       {posts.map(({ node }) => {

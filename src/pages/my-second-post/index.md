@@ -13,7 +13,7 @@ egg yolk will be less rich."?
 
 
 ```js
-const thisShit = 'is Cool';
+const thisShit => 'is Cool';
 
 fuck(thisShit);
 ```

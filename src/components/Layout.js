@@ -28,7 +28,7 @@ export default function Layout(props) {
     );
   }
   return (
-    <div>
+    <>
       <header>{header}</header>
       <main>{children}</main>
       <footer>
@@ -45,6 +45,6 @@ export default function Layout(props) {
           })}
         </div>
       </footer>
-    </div>
+    </>
   );
 }
