@@ -1,0 +1,19 @@
+html, body {
+  font-size: 10px;
+}
+
+h1 {
+  font-size: 5.5rem;
+}
+
+h2, h3, h4, h5, h6 {
+  font-size: 3rem;
+}
+
+div, p {
+  font-size: 1.6rem;
+}
+
+small {
+  font-size: 1.25rem;
+}
