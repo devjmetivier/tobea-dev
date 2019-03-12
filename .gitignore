@@ -70,3 +70,7 @@ yarn-error.log
 
 # Webstorm BS
 .idea
+
+# Other Stuff
+content
+public
