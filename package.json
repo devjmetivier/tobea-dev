@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "tobea-dev",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "To Be A Dev",
+  "version": "1.0.0",
+  "author": "Devin Metivier <devinmetivier@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/dmetivier/tobea-dev/issues"
   },
   "dependencies": {
     "gatsby": "^2.1.29",
@@ -35,10 +35,8 @@
     "typography": "^0.16.19",
     "typography-theme-wordpress-2016": "^0.16.19"
   },
-  "devDependencies": {
-    "prettier": "^1.16.4"
-  },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "devDependencies": {},
+  "homepage": "https://tobea.dev",
   "keywords": [
     "gatsby"
   ],
@@ -51,7 +49,6 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
