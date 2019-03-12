@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 
+// bootstrap reboot: https://github.com/twbs/bootstrap/blob/v4-dev/dist/css/bootstrap-reboot.min.css
+import '../assets/css/reboot.min.css';
+
 import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
