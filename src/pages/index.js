@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import styled from 'styled-components';
 
 // bootstrap reboot: https://github.com/twbs/bootstrap/blob/v4-dev/dist/css/bootstrap-reboot.min.css
 import '../assets/css/reboot.min.css';
@@ -32,7 +33,8 @@ export default function BlogIndex(props) {
                 {title}
               </Link>
             </h3>
-            <small>{node.frontmatter.date}</small>
+            <small>{node.frontmatter.date}{node.frontmatter.updated && ` - `}</small>
+            <Updated>{node.frontmatter.updated && `Updated: ${node.frontmatter.updated}`}</Updated>
             <p
               dangerouslySetInnerHTML={{
                 __html: node.frontmatter.description || node.excerpt,
@@ -61,6 +63,7 @@ export const pageQuery = graphql`
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
+            updated(formatString: "MMMM DD, YYYY")
             title
             description
           }
@@ -68,4 +71,9 @@ export const pageQuery = graphql`
       }
     }
   }
+`;
+
+const Updated = styled.small`
+  background: #000;
+  color: #fff;
 `;
