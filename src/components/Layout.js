@@ -8,55 +8,26 @@ export default function Layout(props) {
 
   if (location.pathname === rootPath) {
     header = (
-      <h1
-        style={{
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to='/'
-        >
+      <h1>
+        <Link to='/'>
           {title}
         </Link>
       </h1>
     );
   } else {
     header = (
-      <h3
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to='/'
-        >
-          {title}
-        </Link>
+      <h3>
+        <Link to='/'>{title}</Link>
       </h3>
     );
   }
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-      }}
-    >
+    <div>
       <header>{header}</header>
       <main>{children}</main>
       <footer>
-          © {new Date().getFullYear()}, Built with
+        &copy;
+        {new Date().getFullYear()}, Built with
         {` `}
         <a href='https://www.gatsbyjs.org'>Gatsby</a>
       </footer>
