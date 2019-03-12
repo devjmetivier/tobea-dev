@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import styled from 'styled-components';
 
 const footLinks = [
   `https://mobile.twitter.com/devjmetivier,Twitter`,
@@ -28,7 +29,7 @@ export default function Layout(props) {
     );
   }
   return (
-    <>
+    <Container>
       <header>{header}</header>
       <main>{children}</main>
       <footer>
@@ -45,6 +46,12 @@ export default function Layout(props) {
           })}
         </div>
       </footer>
-    </>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  max-width: 70rem;
+`;

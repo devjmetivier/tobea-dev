@@ -32,6 +32,7 @@ export default function BlogIndex(props) {
             </h3>
             <small>{node.frontmatter.date}{node.frontmatter.updated && ` - `}</small>
             <Updated>{node.frontmatter.updated && `Updated: ${node.frontmatter.updated}`}</Updated>
+            {/*TODO: Add a 'short' description field for the top of all MD files and add it to index*/}
             <p
               dangerouslySetInnerHTML={{
                 __html: node.frontmatter.description || node.excerpt,
