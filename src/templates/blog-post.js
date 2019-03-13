@@ -27,10 +27,7 @@ export default function BlogPostTemplate(props) {
         {post.frontmatter.date}
       </p>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      <hr
-        style={{
-        }}
-      />
+      <hr />
       <Bio />
 
       <ul
@@ -44,14 +41,14 @@ export default function BlogPostTemplate(props) {
       >
         <li>
           {previous && (
-            <Link to={previous.fields.slug} rel='prev'>
-                ← {previous.frontmatter.title}
+            <Link to={previous.fields.slug} rel="prev">
+              ← {previous.frontmatter.title}
             </Link>
           )}
         </li>
         <li>
           {next && (
-            <Link to={next.fields.slug} rel='next'>
+            <Link to={next.fields.slug} rel="next">
               {next.frontmatter.title} →
             </Link>
           )}

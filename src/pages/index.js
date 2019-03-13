@@ -13,25 +13,25 @@ export default function BlogIndex(props) {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
-        title='All posts'
-        keywords={[`blog`, `javascript`, `react`]}
-      />
+      <SEO title="All posts" keywords={[`blog`, `javascript`, `react`]} />
       <Bio />
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug;
         return (
           <div key={node.fields.slug}>
-            <h3
-              style={{
-              }}
-            >
+            <h3 style={{}}>
               <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
                 {title}
               </Link>
             </h3>
-            <small>{node.frontmatter.date}{node.frontmatter.updated && ` - `}</small>
-            <Updated>{node.frontmatter.updated && `Updated: ${node.frontmatter.updated}`}</Updated>
+            <small>
+              {node.frontmatter.date}
+              {node.frontmatter.updated && ` - `}
+            </small>
+            <Updated>
+              {node.frontmatter.updated &&
+                `Updated: ${node.frontmatter.updated}`}
+            </Updated>
             {/* TODO: Add a 'short' description field for the top of all MD files and add it to index */}
             <p
               dangerouslySetInnerHTML={{

@@ -16,15 +16,13 @@ export default function Layout(props) {
   if (location.pathname === rootPath) {
     header = (
       <h1>
-        <Link to='/'>
-          {title}
-        </Link>
+        <Link to="/">{title}</Link>
       </h1>
     );
   } else {
     header = (
       <h3>
-        <Link to='/'>{title}</Link>
+        <Link to="/">{title}</Link>
       </h3>
     );
   }
@@ -37,10 +35,10 @@ export default function Layout(props) {
           &copy;
           {new Date().getFullYear()}, Built with
           {` `}
-          <a href='https://www.gatsbyjs.org'>Gatsby</a>
+          <a href="https://www.gatsbyjs.org">Gatsby</a>
         </div>
         <div>
-          {footLinks.map((link) => {
+          {footLinks.map(link => {
             const arr = link.split(`,`);
             return <a href={arr[0]}>{arr[1]}</a>;
           })}
