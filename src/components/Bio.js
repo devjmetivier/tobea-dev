@@ -10,7 +10,8 @@ export default function Bio() {
       <p>
         Personal blog by{` `}
         <a href='https://mobile.twitter.com/devjmetivier'>Devin Metivier</a>.
-        {` `}
+        <br />
+        ∠( ᐛ 」∠)＿
       </p>
     </BioStyles>
   );
@@ -18,9 +19,17 @@ export default function Bio() {
 
 const BioStyles = styled.div`
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
   img {
+    margin-right: 1rem;
     width: 5.5rem;
     height: 5.5rem;
     border-radius: 50%;
+  }
+
+  p {
+    margin: 0;
   }
 `;

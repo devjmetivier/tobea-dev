@@ -29,7 +29,7 @@ export default function Layout(props) {
   }
   return (
     <Container>
-      <header>
+      <Header>
         {header}
         <ThemeToggler>
           {({ theme, toggleTheme }) => (
@@ -43,14 +43,21 @@ export default function Layout(props) {
             </label>
           )}
         </ThemeToggler>
-      </header>
+      </Header>
       <main>{children}</main>
-      <footer>
+      <Footer>
         <div>
-          &copy;
-          {new Date().getFullYear()}, Built with
-          {` `}
-          <a href='https://www.gatsbyjs.org'>Gatsby</a>
+          <a
+            rel='license'
+            href='http://creativecommons.org/licenses/by-sa/4.0/'
+          >
+            <img
+              alt='Creative Commons License'
+              style={{ borderWidth: 0 }}
+              src='https://i.creativecommons.org/l/by-sa/4.0/80x15.png'
+            />
+          </a>{' '}
+          Built with <a href='https://www.gatsbyjs.org'>Gatsby</a>
         </div>
         <div>
           {footLinks.map(link => {
@@ -58,7 +65,7 @@ export default function Layout(props) {
             return <a href={arr[0]}>{arr[1]}</a>;
           })}
         </div>
-      </footer>
+      </Footer>
     </Container>
   );
 }
@@ -67,4 +74,25 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 0 1.5rem;
   max-width: 70rem;
+`;
+
+const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+
+  label {
+    margin-top: 1.5rem;
+  }
+`;
+
+const Footer = styled.footer`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+
+  div:last-of-type {
+    a {
+      margin-left: 10px;
+    }
+  }
 `;

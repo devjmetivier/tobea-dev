@@ -1,12 +1,38 @@
+:root {
+  /* Pallete */
+  --white: #fff;
+  --black: #000;
+
+  --off-white: #f7f8f8;
+  --light-blue: #7baec2;
+  --solid-blue: #1c98c3;
+  --sand: #7f7260;
+  --off-black: #272431;
+
+  --type-light: #222;
+  --type-dark: var(--off-white);
+}
+
+body * {
+  transition: background, background-color, color .35s ease-in-out;
+}
+
 html, body {
   font-size: 10px;
 }
 
+body {
+  min-height: 100vh;
+}
+
 h1 {
   font-size: 5.5rem;
+  margin-bottom: 1rem;
 }
 
 h2, h3, h4, h5, h6 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
   font-size: 3rem;
 }
 
@@ -32,6 +58,46 @@ pre {
   border-radius: 1rem;
 }
 
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover,
+h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active,
+h1 a:focus, h2 a:focus, h3 a:focus, h4 a:focus, h5 a:focus, h6 a:focus {
+  text-decoration: none;
+}
+
+/* Light */
+body.light {
+  --accent: var(--solid-blue);
+  --bg: var(--off-white);
+  --text: var(--type-light);
+  --link-text: var(--text);
+  --link-text-action: var(--bg);
+  background: var(--bg) !important;
+}
+
+/* Dark */
+body.dark {
+  --accent: var(--light-blue);
+  --bg: var(--off-black);
+  --text: var(--type-dark);
+  --link-text: var(--text);
+  --link-text-action: var(--bg);
+  background: var(--bg) !important;
+}
+
+body * {
+  color: var(--text);
+}
+
+a {
+  position: relative;
+  color: var(--accent);
+}
+
+a:hover, a:active, a:focus {
+  color: var(--accent);
+}
+
 /* Copy To Clipboard */
 .clip-copy-container {
   /*padding: .5rem .5rem 0 0;*/
@@ -40,19 +106,22 @@ pre {
   width: 50%;
   height: 0;
 }
+
 .clip-copy-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 35px;
-  height: 35px;
+  width: 3.5rem;
+  height: 3.5rem;
   border-top-right-radius: .8rem;
   border-bottom-left-radius: .8rem;
   background: #ccc;
 }
+
 .clip-copy-button:hover {
   background: #bfbfbf;
 }
+
 .clip-copy-icon {
   fill: #2d2d2d;
 }
