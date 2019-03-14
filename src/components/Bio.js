@@ -6,10 +6,10 @@ import profilePic from '../assets/images/profile-pic.jpg';
 export default function Bio() {
   return (
     <BioStyles>
-      <img src={profilePic} alt="Devin Metivier" />
+      <img src={profilePic} alt='Devin Metivier' />
       <p>
         Personal blog by{` `}
-        <a href="https://mobile.twitter.com/devjmetivier">Devin Metivier</a>.
+        <a href='https://mobile.twitter.com/devjmetivier'>Devin Metivier</a>.
         {` `}
       </p>
     </BioStyles>
