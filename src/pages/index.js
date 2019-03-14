@@ -13,7 +13,7 @@ export default function BlogIndex(props) {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" keywords={[`blog`, `javascript`, `react`]} />
+      <SEO title='All posts' keywords={[`blog`, `javascript`, `react`]} />
       <Bio />
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug;
