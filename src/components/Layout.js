@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import { ThemeToggler } from 'gatsby-plugin-dark-mode';
 
 const footLinks = [
   `https://mobile.twitter.com/devjmetivier,Twitter`,
@@ -28,7 +29,21 @@ export default function Layout(props) {
   }
   return (
     <Container>
-      <header>{header}</header>
+      <header>
+        {header}
+        <ThemeToggler>
+          {({ theme, toggleTheme }) => (
+            <label htmlFor='mode'>
+              <input
+                type='checkbox'
+                id='mode'
+                onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')}
+                checked={theme === 'dark'}
+              />
+            </label>
+          )}
+        </ThemeToggler>
+      </header>
       <main>{children}</main>
       <footer>
         <div>
