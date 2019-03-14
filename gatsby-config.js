@@ -22,6 +22,24 @@ module.exports = {
       options: {
         plugins: [
           {
+            // TODO: Make this better - browser future-proofing is poor
+            resolve: 'gatsby-remark-code-buttons',
+            options: {
+              // Optional button container class name.
+              className: `clip-copy-container`,
+              // Optional button class name.
+              buttonClassName: `clip-copy-button`,
+              // Optional icon class name.
+              iconClassName: `clip-copy-icon`,
+              // Optional `svg` icon. Place any svg markup in here.
+              // icon: `customIcon`,
+              // Optional button text.
+              // text: `Copy To Clipboard`,
+              // Optional tooltip text.
+              // tooltip: `customTooltip`,
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,

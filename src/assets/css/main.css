@@ -23,6 +23,36 @@ code[class*="language-"], pre[class*="language-"] {
   font-family: Dank Mono, Fira Code, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
 }
 
+pre[class*="language-"] {
+  padding: 1.6rem !important;
+  margin: .8rem 0 !important;
+}
+
 pre {
   border-radius: 1rem;
+}
+
+/* Copy To Clipboard */
+.clip-copy-container {
+  /*padding: .5rem .5rem 0 0;*/
+  margin: 0 0 0 50%;
+  top: .8rem;
+  width: 50%;
+  height: 0;
+}
+.clip-copy-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border-top-right-radius: .8rem;
+  border-bottom-left-radius: .8rem;
+  background: #ccc;
+}
+.clip-copy-button:hover {
+  background: #bfbfbf;
+}
+.clip-copy-icon {
+  fill: #2d2d2d;
 }
