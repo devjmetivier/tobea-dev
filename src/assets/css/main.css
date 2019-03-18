@@ -13,8 +13,8 @@
   --type-dark: var(--off-white);
 }
 
-body * {
-  transition: background, background-color, color .35s ease-in-out;
+body, body * {
+  transition: background .35s ease-in-out, background-color .35s ease-in-out, color .35s ease-in-out;
 }
 
 html, body {
