@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   siteMetadata: {
     title: `To Be A Dev`,
@@ -10,7 +12,12 @@ module.exports = {
   },
   pathPrefix: `/`,
   plugins: [
-    'gatsby-mdx',
+    {
+      resolve: 'gatsby-mdx',
+      options: {
+        defaultLayouts: { default: path.resolve('./src/components/Layout.js') },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
