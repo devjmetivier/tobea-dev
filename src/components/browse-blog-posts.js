@@ -1,13 +1,13 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import Layout from './layout'
+import React from 'react';
+import { Link } from 'gatsby';
+import Layout from './layout';
 
 const BrowseBlogPosts = ({ pageContext }) => {
-  const { groupedPosts, group, page } = pageContext
+  const { groupedPosts, group, page } = pageContext;
   return (
     <Layout>
       {group.map(({ node }) => {
-        const { title, author } = node.frontmatter
+        const { title, author } = node.frontmatter;
         return (
           <div key={node.id}>
             <header>
@@ -18,12 +18,12 @@ const BrowseBlogPosts = ({ pageContext }) => {
             <Link to={node.fields.slug}>View Article</Link>
             <hr />
           </div>
-        )
+        );
       })}
       <footer>
         Pages:{' '}
         {groupedPosts.map((x, index) => {
-          const currentPage = index + 1
+          const currentPage = index + 1;
           return (
             <Link
               key={index}
@@ -32,11 +32,11 @@ const BrowseBlogPosts = ({ pageContext }) => {
             >
               {index + 1}
             </Link>
-          )
+          );
         })}
       </footer>
     </Layout>
-  )
-}
+  );
+};
 
-export default BrowseBlogPosts
+export default BrowseBlogPosts;

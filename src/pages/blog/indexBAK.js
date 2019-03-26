@@ -1,14 +1,14 @@
-import React from 'react'
-import { graphql, Link } from 'gatsby'
-import Layout from '../../components/layout'
+import React from 'react';
+import { graphql, Link } from 'gatsby';
+import Layout from '../../components/layout';
 
 const BlogIndex = ({ data }) => {
-  const { edges: posts } = data.allMdx
+  const { edges: posts } = data.allMdx;
 
   return (
     <Layout>
       {posts.map(({ node }) => {
-        const { title, author } = node.frontmatter
+        const { title, author } = node.frontmatter;
         return (
           <div key={node.id}>
             <header>
@@ -19,13 +19,13 @@ const BlogIndex = ({ data }) => {
             <Link to={node.fields.slug}>View Article</Link>
             <hr />
           </div>
-        )
+        );
       })}
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogIndex
+export default BlogIndex;
 
 export const pageQuery = graphql`
   query blogIndex {
@@ -45,4 +45,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
