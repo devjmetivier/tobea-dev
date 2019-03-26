@@ -1,9 +1,9 @@
 import React from 'react';
 import { MDXProvider } from '@mdx-js/tag';
 import Helmet from 'react-helmet';
-import Layout from './layout';
+import Layout from '../components/layout';
 
-const BlogPostLayout = ({ children, pageContext }) => {
+const PostLayout = ({ children, pageContext }) => {
   const { title, author, date } = pageContext.frontmatter;
   return (
     <Layout>
@@ -18,8 +18,9 @@ const BlogPostLayout = ({ children, pageContext }) => {
         </header>
         <MDXProvider>{children}</MDXProvider>
       </article>
+      <p>{JSON.stringify(pageContext)}</p>
     </Layout>
   );
 };
 
-export default BlogPostLayout;
+export default PostLayout;

@@ -59,7 +59,7 @@ exports.createPages = ({ graphql, actions }) => {
       const page = index + 1;
       createPage({
         path: `/blog/${page}`,
-        component: path.resolve('./src/components/browse-blog-posts.js'),
+        component: path.resolve('./src/components/BrowsePosts.js'),
         context: { groupedPosts, group, page },
       });
     });

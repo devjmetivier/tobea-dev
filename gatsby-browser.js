@@ -1,7 +1,5 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+// bootstrap reboot: https://github.com/twbs/bootstrap/blob/v4-dev/dist/css/bootstrap-reboot.min.css
+require(`./src/assets/css/reboot.min.css`);
+require(`./src/assets/css/main.css`);
 
-// You can delete this file if you're not using it
+require(`prismjs/themes/prism-tomorrow.css`);

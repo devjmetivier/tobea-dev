@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import Layout from './layout';
+import { Link } from 'gatsby/index';
+import Layout from '../components/layout';
 
-const BrowseBlogPosts = ({ pageContext }) => {
+const BrowsePosts = ({ pageContext }) => {
   const { groupedPosts, group, page } = pageContext;
   return (
     <Layout>
@@ -21,14 +21,14 @@ const BrowseBlogPosts = ({ pageContext }) => {
         );
       })}
       <footer>
-        Pages:{' '}
+        Pages:{` `}
         {groupedPosts.map((x, index) => {
           const currentPage = index + 1;
           return (
             <Link
               key={index}
               to={`/blog/${currentPage}`}
-              className={currentPage === page ? 'active' : null}
+              className={currentPage === page ? `active` : null}
             >
               {index + 1}
             </Link>
@@ -39,4 +39,4 @@ const BrowseBlogPosts = ({ pageContext }) => {
   );
 };
 
-export default BrowseBlogPosts;
+export default BrowsePosts;
