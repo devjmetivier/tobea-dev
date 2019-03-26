@@ -9,7 +9,7 @@ import SEO from '../components/SEO';
 export default function BlogIndex(props) {
   const { data, location } = props;
   const siteTitle = data.site.siteMetadata.title;
-  const posts = data.allMarkdownRemark.edges;
+  const posts = data.allMdx.edges;
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -52,7 +52,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           excerpt
@@ -61,9 +61,9 @@ export const pageQuery = graphql`
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
-            updated(formatString: "MMMM DD, YYYY")
+            #            updated(formatString: "MMMM DD, YYYY")
             title
-            description
+            #            description
           }
         }
       }
