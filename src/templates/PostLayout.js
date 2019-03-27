@@ -1,7 +1,7 @@
 import React from 'react';
 import { MDXProvider } from '@mdx-js/tag';
 import Helmet from 'react-helmet';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 
 const PostLayout = ({ children, pageContext }) => {
   const { title, author, date } = pageContext.frontmatter;

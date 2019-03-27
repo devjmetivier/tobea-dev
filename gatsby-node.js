@@ -1,19 +1,19 @@
-const { createFilePath } = require('gatsby-source-filesystem');
-const path = require('path');
+const { createFilePath } = require(`gatsby-source-filesystem`);
+const path = require(`path`);
 
 // Here we're adding extra stuff to the "node" (like the slug)
 // so we can query later for all blogs and get their slug
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
-  if (node.internal.type === 'Mdx') {
+  if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode });
     createNodeField({
       // Name of the field you are adding
-      name: 'slug',
+      name: `slug`,
       // Individual MDX node
       node,
       // Generated value based on filepath with "blog" prefix
-      value: `/blog${value}`,
+      value,
     });
   }
 };
@@ -59,7 +59,7 @@ exports.createPages = ({ graphql, actions }) => {
       const page = index + 1;
       createPage({
         path: `/blog/${page}`,
-        component: path.resolve('./src/components/BrowsePosts.js'),
+        component: path.resolve(`./src/templates/BrowsePosts.js`),
         context: { groupedPosts, group, page },
       });
     });

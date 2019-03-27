@@ -1,21 +1,48 @@
 import React from 'react';
-import { Link } from 'gatsby';
-
-import Layout from '../components/layout';
-import Image from '../components/Image';
+import { graphql, Link } from 'gatsby';
 import SEO from '../components/SEO';
+import Layout from '../components/Layout';
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title='Home' keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to='/hello-world/'>Go to Hello World!</Link>
-  </Layout>
-);
+const BlogIndex = ({ data }) => {
+  const { edges: posts } = data.allMdx;
 
-export default IndexPage;
+  return (
+    <Layout>
+      {posts.map(({ node }) => {
+        const { title, author } = node.frontmatter;
+        return (
+          <div key={node.id}>
+            <header>
+              <div>{title}</div>
+              <div>Posting By {author}</div>
+            </header>
+            <p>{node.excerpt}</p>
+            <Link to={node.fields.slug}>View Article</Link>
+          </div>
+        );
+      })}
+    </Layout>
+  );
+};
+
+export default BlogIndex;
+
+export const pageQuery = graphql`
+  query {
+    allMdx {
+      edges {
+        node {
+          id
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            author
+          }
+        }
+      }
+    }
+  }
+`;

@@ -14,8 +14,8 @@ module.exports = {
       resolve: `gatsby-mdx`,
       options: {
         // Apply gatsby-mdx to both .mdx and .md files
-        extensions: ['.mdx', '.md'],
-        defaultLayout: require.resolve('./src/components/PostLayout.js'),
+        extensions: [`.mdx`, `.md`],
+        defaultLayout: require.resolve(`./src/templates/PostLayout.js`),
       },
     },
     `gatsby-transformer-sharp`,
@@ -31,7 +31,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `blog`,
-        path: `${__dirname}/src/pages/blog`,
+        path: `${__dirname}/src/pages`,
       },
     },
     {
