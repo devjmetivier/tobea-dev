@@ -6,4 +6,9 @@ author: Brad Westfall
 date: 2019-02-07
 ---
 
+import EXButton from '../../components/EXButton';
+
 ## Third
+
+<span style="border: 1px solid black">Whatever I want in here</span>
+<EXButton />
