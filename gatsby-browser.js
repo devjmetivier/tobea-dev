@@ -1,5 +1,3 @@
-// bootstrap reboot: https://github.com/twbs/bootstrap/blob/v4-dev/dist/css/bootstrap-reboot.min.css
-require(`./src/assets/css/reboot.min.css`);
-require(`./src/assets/css/main.css`);
+import { wrapRootElement as wrap } from './wrap-root-element';
 
-require(`prismjs/themes/prism-tomorrow.css`);
+export const wrapRootElement = wrap;

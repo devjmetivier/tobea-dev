@@ -1,71 +1,98 @@
-const { createFilePath } = require(`gatsby-source-filesystem`);
+const _ = require('lodash');
 
-const path = require(`path`);
+// graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
+const wrapper = promise =>
+  promise.then(result => {
+    if (result.errors) {
+      throw result.errors;
+    }
+    return result;
+  });
 
-// Here we're adding extra stuff to the "node" (like the slug)
-// so we can query later for all blogs and get their slug
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
-  if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode });
-    createNodeField({
-      // Name of the field you are adding
-      name: `slug`,
-      // Individual MDX node
-      node,
-      // Generated value based on filepath with "blog" prefix
-      value,
-    });
+
+  let slug;
+
+  if (node.internal.type === 'Mdx') {
+    if (
+      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')
+    ) {
+      slug = `/${_.kebabCase(node.frontmatter.slug)}`;
+    }
+    if (
+      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
+    ) {
+      slug = `/${_.kebabCase(node.frontmatter.title)}`;
+    }
+    createNodeField({ node, name: 'slug', value: slug });
   }
 };
 
-// Programmatically create the pages for browsing blog posts
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  return graphql(`
-    query {
-      allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
-        edges {
-          node {
-            id
-            excerpt(pruneLength: 250)
-            fields {
-              slug
-            }
-            frontmatter {
-              author
-              title
+
+  const postTemplate = require.resolve('./src/templates/post.js');
+  const categoryTemplate = require.resolve('./src/templates/category.js');
+
+  const result = await wrapper(
+    graphql(`
+      {
+        allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                categories
+              }
             }
           }
         }
       }
-    }
-  `).then((results, errors) => {
-    if (errors) return Promise.reject(errors);
-    const posts = results.data.allMdx.edges;
+    `)
+  );
 
-    // This little algo takes the array of posts and groups
-    // them based on this `size`. I used a small number just
-    // for testing since there are only three posts
-    const size = 2;
-    let start = 0;
-    let groupedPosts = Array.from(Array(Math.ceil(posts.length / size)));
+  const posts = result.data.allMdx.edges;
 
-    groupedPosts = groupedPosts.map(() => {
-      const group = posts.slice(start, start + size);
-      start += size;
-      return group;
+  posts.forEach((edge, index) => {
+    const next = index === 0 ? null : posts[index - 1].node;
+    const prev = index === posts.length - 1 ? null : posts[index + 1].node;
+
+    createPage({
+      path: edge.node.fields.slug,
+      component: postTemplate,
+      context: {
+        slug: edge.node.fields.slug,
+        prev,
+        next,
+      },
     });
+  });
 
-    groupedPosts.forEach((group, index) => {
-      const page = index + 1;
-      createPage({
-        path: `/blog/${page}`,
-        component: path.resolve(`./src/templates/BrowsePosts.js`),
-        context: { groupedPosts, group, page },
+  const categorySet = new Set();
+
+  _.each(posts, edge => {
+    if (_.get(edge, 'node.frontmatter.categories')) {
+      edge.node.frontmatter.categories.forEach(cat => {
+        categorySet.add(cat);
       });
-    });
+    }
+  });
 
-    return null;
+  const categories = Array.from(categorySet);
+
+  categories.forEach(category => {
+    createPage({
+      path: `/categories/${_.kebabCase(category)}`,
+      component: categoryTemplate,
+      context: {
+        category,
+      },
+    });
   });
 };

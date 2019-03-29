@@ -1,64 +1,75 @@
+const config = require(`./config`);
+
+const pathPrefix = config.pathPrefix === `/` ? `` : config.pathPrefix;
+
 module.exports = {
+  pathPrefix: config.pathPrefix,
   siteMetadata: {
-    title: `To Be A Dev`,
-    author: `Devin Metivier`,
-    description: `Personal Blog by Devin Metivier.`,
-    siteUrl: `https://tobea.dev`,
-    social: {
-      twitter: `@devjmetivier`,
-    },
+    siteUrl: config.siteUrl + pathPrefix,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-remark`,
-    `gatsby-transformer-sharp`,
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `post`,
+        path: `${__dirname}/blog`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        name: `blog`,
-        path: `${__dirname}/src/pages`,
+        trackingId: config.googleAnalyticsID,
       },
     },
     {
       resolve: `gatsby-mdx`,
       options: {
-        decks: [],
-        defaultLayout: require.resolve(`./src/templates/PostLayout.js`),
-        extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
           {
-            resolve: 'gatsby-remark-prismjs',
+            resolve: `gatsby-remark-external-links`,
             options: {
-              classPrefix: 'language-',
-              inlineCodeMarker: null,
-              aliases: {},
+              target: `_blank`,
+              rel: `nofollow noopener noreferrer`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 830,
+              quality: 90,
+              withWebp: true,
+              linkImagesToOriginal: false,
+            },
+          },
+          // TODO: Replace with "mdx-component-autolink-headers"
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              maintainCase: false,
             },
           },
         ],
       },
     },
+    `gatsby-plugin-catch-links`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-lodash`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        name: config.siteTitleAlt,
+        short_name: config.siteTitleManifest,
+        description: config.siteDescription,
+        start_url: config.pathPrefix,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
+        display: `standalone`,
+        icon: config.favicon,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.app/offline
-    // 'gatsby-plugin-offline',
+    `gatsby-plugin-offline`,
   ],
 };
