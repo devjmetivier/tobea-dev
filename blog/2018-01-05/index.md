@@ -44,6 +44,7 @@ function whatever(args) {
     return args;
 }
 whatever('yeet');
+});
 ```
 
 Text between those lines
