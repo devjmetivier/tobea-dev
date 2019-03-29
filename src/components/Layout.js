@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 
 import SEO from './SEO';
+import Header from './Header';
 import Footer from './Footer';
 import theme from '../../config/theme';
 import useBuildTime from '../hooks/useBuildTime';
@@ -20,6 +22,9 @@ const Layout = ({ children, customSEO }) => {
     <ThemeProvider theme={theme}>
       <Wrapper>
         {!customSEO && <SEO buildTime={buildTime} />}
+        <Header>
+          <Link to='/'>To Be A Dev</Link>
+        </Header>
         {children}
         <Footer>
           &copy; 2019 by John Doe. All rights reserved.
