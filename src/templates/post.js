@@ -7,15 +7,6 @@ import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 
 import { Layout, Wrapper, Subline, SEO, PrevNext } from '../components';
 
-const Content = styled.main`
-  .prism-code {
-    padding: 0.75rem;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-    font-size: 16px;
-  }
-`;
-
 const Title = styled.h1``;
 
 const PostContent = styled.div``;

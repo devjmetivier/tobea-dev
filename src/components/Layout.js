@@ -28,9 +28,9 @@ const Layout = ({ children, customSEO, location }) => {
               <Link to='/'>To Be A Dev</Link>
             </h1>
           ) : (
-            <h2>
+            <h3>
               <Link to='/'>To Be A Dev</Link>
-            </h2>
+            </h3>
           )}
         </Header>
         {children}

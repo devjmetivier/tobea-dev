@@ -10,11 +10,7 @@ import config from '../../config';
 
 const Content = styled.div``;
 
-const Title = styled.h3`
-  position: relative;
-  text-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  margin-bottom: 0.75rem;
-`;
+const Title = styled.h3``;
 
 const Category = ({
   data: {
@@ -25,9 +21,6 @@ const Category = ({
   <Layout location={location}>
     <Wrapper>
       <Helmet title={`Categories | ${config.siteTitle}`} />
-      <Header>
-        <Link to='/'>{config.siteTitle}</Link>
-      </Header>
       <Content>
         <SectionTitle>Categories</SectionTitle>
         {group.map(category => (
@@ -51,6 +44,7 @@ Category.propTypes = {
       group: PropTypes.array.isRequired,
     }),
   }).isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export const postQuery = graphql`
