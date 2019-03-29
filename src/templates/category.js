@@ -4,31 +4,26 @@ import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import {
-  Layout,
-  Wrapper,
-  Header,
-  Subline,
-  Article,
-  SectionTitle,
-} from '../components';
+import { Layout, Wrapper, Subline, Article, SectionTitle } from '../components';
+
 import config from '../../config';
 
 const Content = styled.div``;
 
-const Category = ({ pageContext: { category }, data: { allMdx } }) => {
+const Category = ({
+  pageContext: { category },
+  data: { allMdx },
+  location,
+}) => {
   const { edges, totalCount } = allMdx;
   const subline = `${totalCount} post${
     totalCount === 1 ? `` : `s`
   } tagged with "${category}"`;
 
   return (
-    <Layout>
+    <Layout location={location}>
       <Wrapper>
         <Helmet title={`Category: ${category} | ${config.siteTitle}`} />
-        <Header>
-          <Link to='/'>{config.siteTitle}</Link>
-        </Header>
         <Content>
           <SectionTitle>Category &ndash; {category}</SectionTitle>
           <Subline sectionTitle>
