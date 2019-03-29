@@ -16,6 +16,7 @@ const components = {
     return <pre {...preProps} />;
   },
 };
+
 export const wrapRootElement = ({ element }) => (
   <MDXProvider components={components}>{element}</MDXProvider>
 );

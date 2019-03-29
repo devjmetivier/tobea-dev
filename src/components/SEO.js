@@ -10,9 +10,9 @@ const SEO = props => {
   let title;
   let description;
 
-  const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
+  const realPrefix = config.pathPrefix === `/` ? `` : config.pathPrefix;
   const homeURL = `${config.siteUrl}${realPrefix}`;
-  const URL = `${homeURL}${postPath || ''}`;
+  const URL = `${homeURL}${postPath || ``}`;
   const image = `${homeURL}${config.siteBanner}`;
 
   if (article) {
@@ -29,8 +29,8 @@ const SEO = props => {
   // You can fill out the 'author', 'creator' with more data or another type (e.g. 'Organization')
 
   const schemaOrgWebPage = {
-    '@context': 'http://schema.org',
-    '@type': 'WebPage',
+    '@context': `http://schema.org`,
+    '@type': `WebPage`,
     url: URL,
     headline: config.siteHeadline,
     inLanguage: config.siteLanguage,
@@ -38,26 +38,26 @@ const SEO = props => {
     description: config.siteDescription,
     name: config.siteTitle,
     author: {
-      '@type': 'Person',
+      '@type': `Person`,
       name: config.author,
     },
     copyrightHolder: {
-      '@type': 'Person',
+      '@type': `Person`,
       name: config.author,
     },
-    copyrightYear: '2018',
+    copyrightYear: `2018`,
     creator: {
-      '@type': 'Person',
+      '@type': `Person`,
       name: config.author,
     },
     publisher: {
-      '@type': 'Person',
+      '@type': `Person`,
       name: config.author,
     },
-    datePublished: '2019-01-07T10:30:00+01:00',
+    datePublished: `2019-01-07T10:30:00+01:00`,
     dateModified: buildTime,
     image: {
-      '@type': 'ImageObject',
+      '@type': `ImageObject`,
       url: image,
     },
   };
@@ -66,18 +66,18 @@ const SEO = props => {
 
   const itemListElement = [
     {
-      '@type': 'ListItem',
+      '@type': `ListItem`,
       item: {
         '@id': homeURL,
-        name: 'Homepage',
+        name: `Homepage`,
       },
       position: 1,
     },
     {
-      '@type': 'ListItem',
+      '@type': `ListItem`,
       item: {
         '@id': `${homeURL}/contact`,
-        name: 'Contact',
+        name: `Contact`,
       },
       position: 2,
     },
@@ -87,26 +87,26 @@ const SEO = props => {
 
   if (article) {
     schemaArticle = {
-      '@context': 'http://schema.org',
-      '@type': 'Article',
+      '@context': `http://schema.org`,
+      '@type': `Article`,
       author: {
-        '@type': 'Person',
+        '@type': `Person`,
         name: config.author,
       },
       copyrightHolder: {
-        '@type': 'Person',
+        '@type': `Person`,
         name: config.author,
       },
       copyrightYear: postNode.parent.birthtime,
       creator: {
-        '@type': 'Person',
+        '@type': `Person`,
         name: config.author,
       },
       publisher: {
-        '@type': 'Organization',
+        '@type': `Organization`,
         name: config.author,
         logo: {
-          '@type': 'ImageObject',
+          '@type': `ImageObject`,
           url: `${homeURL}${config.siteLogo}`,
         },
       },
@@ -114,18 +114,18 @@ const SEO = props => {
       dateModified: postNode.parent.mtime,
       description,
       headline: title,
-      inLanguage: 'en',
+      inLanguage: `en`,
       url: URL,
       name: title,
       image: {
-        '@type': 'ImageObject',
+        '@type': `ImageObject`,
         url: image,
       },
       mainEntityOfPage: URL,
     };
     // Push current blogpost into breadcrumb list
     itemListElement.push({
-      '@type': 'ListItem',
+      '@type': `ListItem`,
       item: {
         '@id': URL,
         name: title,
@@ -135,10 +135,10 @@ const SEO = props => {
   }
 
   const breadcrumb = {
-    '@context': 'http://schema.org',
-    '@type': 'BreadcrumbList',
-    description: 'Breadcrumbs list',
-    name: 'Breadcrumbs',
+    '@context': `http://schema.org`,
+    '@type': `BreadcrumbList`,
+    description: `Breadcrumbs list`,
+    name: `Breadcrumbs`,
     itemListElement,
   };
 
@@ -152,10 +152,10 @@ const SEO = props => {
       <meta property='og:locale' content={config.ogLanguage} />
       <meta
         property='og:site_name'
-        content={config.ogSiteName ? config.ogSiteName : ''}
+        content={config.ogSiteName ? config.ogSiteName : ``}
       />
       <meta property='og:url' content={URL} />
-      <meta property='og:type' content={article ? 'article' : 'website'} />
+      <meta property='og:type' content={article ? `article` : `website`} />
       <meta property='og:title' content={title} />
       <meta property='og:description' content={description} />
       <meta property='og:image' content={image} />
@@ -166,7 +166,7 @@ const SEO = props => {
       <meta name='twitter:card' content='summary_large_image' />
       <meta
         name='twitter:creator'
-        content={config.userTwitter ? config.userTwitter : ''}
+        content={config.userTwitter ? config.userTwitter : ``}
       />
       <meta name='twitter:title' content={title} />
       <meta name='twitter:url' content={config.siteUrl} />

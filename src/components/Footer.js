@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.main`
+const Footer = styled.footer`
   width: ${props => props.theme.width};
   max-width: ${props => props.theme.maxWidth};
 `;
 
-export default Wrapper;
+export default Footer;
