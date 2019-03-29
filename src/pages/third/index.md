@@ -10,5 +10,14 @@ import EXButton from '../../components/EXButton';
 
 ## Third
 
-<span style="border: 1px solid black">Whatever I want in here</span>
 <EXButton />
+
+```javascript
+const whatever = 'string';
+const [blah, updateBlah] = useState(null);
+```
+
+```javascript
+let whatever = 'string';
+let yeet = 'kobe';
+```

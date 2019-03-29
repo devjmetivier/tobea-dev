@@ -1,4 +1,5 @@
 const { createFilePath } = require(`gatsby-source-filesystem`);
+
 const path = require(`path`);
 
 // Here we're adding extra stuff to the "node" (like the slug)
@@ -49,6 +50,7 @@ exports.createPages = ({ graphql, actions }) => {
     const size = 2;
     let start = 0;
     let groupedPosts = Array.from(Array(Math.ceil(posts.length / size)));
+
     groupedPosts = groupedPosts.map(() => {
       const group = posts.slice(start, start + size);
       start += size;

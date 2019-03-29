@@ -10,14 +10,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-mdx`,
-      options: {
-        // Apply gatsby-mdx to both .mdx and .md files
-        extensions: [`.mdx`, `.md`],
-        defaultLayout: require.resolve(`./src/templates/PostLayout.js`),
-      },
-    },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -32,6 +25,24 @@ module.exports = {
       options: {
         name: `blog`,
         path: `${__dirname}/src/pages`,
+      },
+    },
+    {
+      resolve: `gatsby-mdx`,
+      options: {
+        decks: [],
+        defaultLayout: require.resolve(`./src/templates/PostLayout.js`),
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
+              aliases: {},
+            },
+          },
+        ],
       },
     },
     {
