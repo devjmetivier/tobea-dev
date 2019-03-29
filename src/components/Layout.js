@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const Layout = ({ children, customSEO }) => {
+const Layout = ({ children, customSEO, location }) => {
   const buildTime = useBuildTime();
 
   return (
@@ -23,7 +23,15 @@ const Layout = ({ children, customSEO }) => {
       <Wrapper>
         {!customSEO && <SEO buildTime={buildTime} />}
         <Header>
-          <Link to='/'>To Be A Dev</Link>
+          {location.pathname === `/` ? (
+            <h1>
+              <Link to='/'>To Be A Dev</Link>
+            </h1>
+          ) : (
+            <h2>
+              <Link to='/'>To Be A Dev</Link>
+            </h2>
+          )}
         </Header>
         {children}
         <Footer>

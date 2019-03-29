@@ -1,14 +1,13 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 import kebabCase from 'lodash/kebabCase';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 
-import { Layout, Wrapper, Header, Subline, SEO, PrevNext } from '../components';
-import config from '../../config';
+import { Layout, Wrapper, Subline, SEO, PrevNext } from '../components';
 
-const Content = styled.article`
+const Content = styled.main`
   .prism-code {
     padding: 0.75rem;
     border-radius: 5px;
@@ -24,32 +23,28 @@ const PostContent = styled.div``;
 const Post = ({
   pageContext: { slug, prev, next },
   data: { mdx: postNode },
+  location,
 }) => {
   const post = postNode.frontmatter;
 
   return (
-    <Layout customSEO>
+    <Layout customSEO location={location}>
+      <SEO postPath={slug} postNode={postNode} article />
       <Wrapper>
-        <SEO postPath={slug} postNode={postNode} article />
-        <Header>
-          <Link to='/'>{config.siteTitle}</Link>
-        </Header>
-        <Content>
-          <Title>{post.title}</Title>
-          <Subline>
-            {post.date} &mdash; {postNode.timeToRead} Min Read &mdash; In{` `}
-            {post.categories.map((cat, i) => (
-              <React.Fragment key={cat}>
-                {!!i && `, `}
-                <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
-              </React.Fragment>
-            ))}
-          </Subline>
-          <PostContent>
-            <MDXRenderer>{postNode.code.body}</MDXRenderer>
-          </PostContent>
-          <PrevNext prev={prev} next={next} />
-        </Content>
+        <Title>{post.title}</Title>
+        <Subline>
+          {post.date} &mdash; {postNode.timeToRead} Min Read &mdash; In{` `}
+          {post.categories.map((cat, i) => (
+            <Fragment key={cat}>
+              {!!i && `, `}
+              <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
+            </Fragment>
+          ))}
+        </Subline>
+        <PostContent>
+          <MDXRenderer>{postNode.code.body}</MDXRenderer>
+        </PostContent>
+        <PrevNext prev={prev} next={next} />
       </Wrapper>
     </Layout>
   );

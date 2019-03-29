@@ -13,8 +13,9 @@ const IndexPage = ({
   data: {
     allMdx: { edges: postEdges },
   },
+  location,
 }) => (
-  <Layout>
+  <Layout location={location}>
     <Wrapper>
       <Hero>
         <h1>Hey!</h1>
