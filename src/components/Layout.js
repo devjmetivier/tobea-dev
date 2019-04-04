@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 
+import { socials } from '../../config';
 import SEO from './SEO';
 import Header from './Header';
 import Footer from './Footer';
@@ -65,7 +66,13 @@ const Layout = ({ children, customSEO, location }) => {
               <a href='https://creativecommons.org/licenses/by-sa/4.0/'>
                 Creative Commons
               </a>{' '}
-              &mdash;
+              &mdash;{' '}
+              {socials.map((social, i) => (
+                <Fragment>
+                  {i === 0 ? '' : ' &middot; '}
+                  <a href={social.link}>{social.name}</a>
+                </Fragment>
+              ))}
             </div>
             <div>
               <span>Last build: {buildTime}</span>
