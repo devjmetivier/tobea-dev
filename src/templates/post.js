@@ -5,9 +5,19 @@ import styled from 'styled-components';
 import kebabCase from 'lodash/kebabCase';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 
-import { Layout, Wrapper, Subline, SEO, PrevNext } from '../components';
+import { Layout, Wrapper, Tag, SEO, PrevNext } from '../components';
 
-const Title = styled.h1``;
+const Title = styled.h1`
+  text-align: center;
+`;
+
+const PostInfo = styled.div`
+  text-align: center;
+`;
+
+const PostTags = styled.div`
+  text-align: center;
+`;
 
 const PostContent = styled.div``;
 
@@ -23,18 +33,25 @@ const Post = ({
       <SEO postPath={slug} postNode={postNode} article />
       <Wrapper>
         <Title>{post.title}</Title>
-        <Subline>
-          {post.date} &mdash; {postNode.timeToRead} Min Read &mdash; In{` `}
-          {post.categories.map((cat, i) => (
+
+        <PostInfo>
+          {post.date} &mdash; {postNode.timeToRead} Min Read
+        </PostInfo>
+
+        <PostTags>
+          {post.categories.map(cat => (
             <Fragment key={cat}>
-              {!!i && `, `}
-              <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
+              <Link to={`/categories/${kebabCase(cat)}`}>
+                <Tag>{cat}</Tag>
+              </Link>
             </Fragment>
           ))}
-        </Subline>
+        </PostTags>
+
         <PostContent>
           <MDXRenderer>{postNode.code.body}</MDXRenderer>
         </PostContent>
+
         <PrevNext prev={prev} next={next} />
       </Wrapper>
     </Layout>
@@ -52,6 +69,7 @@ Post.propTypes = {
   data: PropTypes.shape({
     mdx: PropTypes.object.isRequired,
   }).isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 Post.defaultProps = {
