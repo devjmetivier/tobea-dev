@@ -10,7 +10,9 @@ const Post = styled.article``;
 
 const Title = styled.h2``;
 
-const Excerpt = styled.p``;
+const Excerpt = styled.p`
+  margin-top: 0.5rem;
+`;
 
 const Article = ({ title, date, excerpt, slug, timeToRead, categories }) => {
   return (

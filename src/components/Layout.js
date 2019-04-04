@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 
 const Float = styled.div`
   margin: 8% 0;
-  padding: 20px;
+  padding: 20px 30px;
   position: relative;
   border-radius: 10px;
   background: ${props => props.theme.light.float};

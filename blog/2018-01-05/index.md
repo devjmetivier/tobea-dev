@@ -1,6 +1,6 @@
 ---
 date: "2018-01-05"
-title: "React-Live & Code example"
+title: "React-Live & Code Example"
 categories:
   - Coding
   - Help

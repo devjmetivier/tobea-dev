@@ -16,10 +16,33 @@ const PostInfo = styled.div`
 `;
 
 const PostTags = styled.div`
+  margin: 0.5rem 0 1rem 0;
   text-align: center;
 `;
 
-const PostContent = styled.div``;
+const PostContent = styled.div`
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    position: relative;
+    &:hover [aria-label*='permalink'] {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  [aria-label*='permalink'] {
+    padding-right: 4px;
+    position: absolute;
+    top: 0;
+    right: 100%;
+    visibility: hidden;
+    opacity: 0;
+  }
+`;
 
 const Post = ({
   pageContext: { slug, prev, next },
