@@ -8,7 +8,19 @@ const colors = {
   black: `#222`,
 };
 
+const light = {
+  bg: colors.white,
+  accent: colors.black,
+};
+
+const dark = {
+  bg: colors.black,
+  accent: colors.white,
+};
+
 const theme = {
+  light,
+  dark,
   colors,
   width: `900px`,
   maxWidth: `100%`,
