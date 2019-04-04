@@ -1,0 +1,10 @@
+:root {
+  --blue: #067df7;
+  --red: #FF6B64;
+  --yellow: #FFC23C;
+  --green: #36CD4E;
+}
+
+a, a:hover {
+  color: var(--blue);
+}

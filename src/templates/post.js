@@ -35,10 +35,14 @@ const PostContent = styled.div`
   }
 
   [aria-label*='permalink'] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding-right: 4px;
     position: absolute;
     top: 0;
     right: 100%;
+    height: 100%;
     visibility: hidden;
     opacity: 0;
   }
@@ -64,9 +68,9 @@ const Post = ({
         <PostTags>
           {post.categories.map((cat, i) => (
             <Fragment key={cat}>
-              <Link to={`/categories/${kebabCase(cat)}`}>
-                <Tag style={{ marginLeft: i === 0 ? '0' : '4px' }}>{cat}</Tag>
-              </Link>
+              <Tag style={{ marginLeft: i === 0 ? '0' : '4px' }}>
+                <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
+              </Tag>
             </Fragment>
           ))}
         </PostTags>

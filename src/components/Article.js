@@ -23,9 +23,9 @@ const Article = ({ title, date, excerpt, slug, timeToRead, categories }) => {
       {date} &mdash; {timeToRead} Min Read &mdash;{' '}
       {categories.map((cat, i) => (
         <React.Fragment key={cat}>
-          <Link to={`/categories/${kebabCase(cat)}`}>
-            <Tag style={{ marginLeft: i === 0 ? '0' : '4px' }}>{cat}</Tag>
-          </Link>
+          <Tag style={{ marginLeft: i === 0 ? '0' : '4px' }}>
+            <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
+          </Tag>
         </React.Fragment>
       ))}
       <Excerpt>{excerpt}</Excerpt>

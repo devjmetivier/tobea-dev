@@ -4,6 +4,10 @@ const colors = {
   neonCarrot: `#FD9D42`,
   wildBlueYonder: `#A1B2BB`,
   charlestonGreen: `#282E30`,
+  blue: '#067df7',
+  red: '#FF6B64',
+  yellow: '#FFC23C',
+  green: '#36CD4E',
   white: `white`,
   black: `#222`,
 };
