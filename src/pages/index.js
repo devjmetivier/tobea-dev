@@ -5,9 +5,9 @@ import styled from 'styled-components';
 
 import { Layout, Article, Wrapper, Button, SectionTitle } from '../components';
 
-const Content = styled.div``;
-
 const Hero = styled.div``;
+
+const Content = styled.div``;
 
 const IndexPage = ({
   data: {

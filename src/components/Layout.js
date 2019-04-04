@@ -60,9 +60,16 @@ const Layout = ({ children, customSEO, location }) => {
           </Header>
           {children}
           <Footer>
-            &copy; 2019 by John Doe. All rights reserved.
-            <br />
-            <span>Last build: {buildTime}</span>
+            <div>
+              Licensed under{' '}
+              <a href='https://creativecommons.org/licenses/by-sa/4.0/'>
+                Creative Commons
+              </a>{' '}
+              &mdash;
+            </div>
+            <div>
+              <span>Last build: {buildTime}</span>
+            </div>
           </Footer>
         </Float>
       </Wrapper>
