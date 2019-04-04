@@ -10,6 +10,7 @@ const colors = {
 
 const light = {
   bg: colors.white,
+  float: colors.white,
   accent: colors.black,
 };
 

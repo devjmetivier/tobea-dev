@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { Layout, Wrapper, Subline, Article, SectionTitle } from '../components';
+import { Layout, Wrapper, Article, SectionTitle } from '../components';
 
 import config from '../../config';
 
@@ -26,9 +26,7 @@ const Category = ({
         <Helmet title={`Category: ${category} | ${config.siteTitle}`} />
         <Content>
           <SectionTitle>Category &ndash; {category}</SectionTitle>
-          <Subline sectionTitle>
-            {subline} (See <Link to='/categories'>all categories</Link>)
-          </Subline>
+          {subline} (See <Link to='/categories'>all categories</Link>)
           {edges.map(post => (
             <Article
               title={post.node.frontmatter.title}

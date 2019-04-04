@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 
-import Subline from './Subline';
+import Tag from './Tag';
 
 const Post = styled.article``;
 
@@ -18,15 +18,14 @@ const Article = ({ title, date, excerpt, slug, timeToRead, categories }) => {
       <Title>
         <Link to={slug}>{title}</Link>
       </Title>
-      <Subline>
-        {date} &mdash; {timeToRead} Min Read &mdash; In{` `}
-        {categories.map((cat, i) => (
-          <React.Fragment key={cat}>
-            {!!i && `, `}
-            <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
-          </React.Fragment>
-        ))}
-      </Subline>
+      {date} &mdash; {timeToRead} Min Read &mdash;{' '}
+      {categories.map((cat, i) => (
+        <React.Fragment key={cat}>
+          <Link to={`/categories/${kebabCase(cat)}`}>
+            <Tag>{cat}</Tag>
+          </Link>
+        </React.Fragment>
+      ))}
       <Excerpt>{excerpt}</Excerpt>
     </Post>
   );

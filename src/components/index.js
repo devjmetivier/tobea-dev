@@ -6,7 +6,7 @@ import Layout from './Layout';
 import PrevNext from './PrevNext';
 import SectionTitle from './SectionTitle';
 import SEO from './SEO';
-import Subline from './Subline';
+import Tag from './Tag';
 import Wrapper from './Wrapper';
 
 export {
@@ -18,6 +18,6 @@ export {
   PrevNext,
   SectionTitle,
   SEO,
-  Subline,
+  Tag,
   Wrapper,
 };
