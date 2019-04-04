@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const Tag = styled.small`
-  margin-right: 4px;
   padding: 2px 4px;
   border-radius: 2px;
   background: ${props => props.theme.light.accent};

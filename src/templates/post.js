@@ -39,10 +39,10 @@ const Post = ({
         </PostInfo>
 
         <PostTags>
-          {post.categories.map(cat => (
+          {post.categories.map((cat, i) => (
             <Fragment key={cat}>
               <Link to={`/categories/${kebabCase(cat)}`}>
-                <Tag>{cat}</Tag>
+                <Tag style={{ marginLeft: i === 0 ? '0' : '4px' }}>{cat}</Tag>
               </Link>
             </Fragment>
           ))}

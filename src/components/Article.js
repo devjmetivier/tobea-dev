@@ -22,7 +22,7 @@ const Article = ({ title, date, excerpt, slug, timeToRead, categories }) => {
       {categories.map((cat, i) => (
         <React.Fragment key={cat}>
           <Link to={`/categories/${kebabCase(cat)}`}>
-            <Tag>{cat}</Tag>
+            <Tag style={{ marginLeft: i === 0 ? '0' : '4px' }}>{cat}</Tag>
           </Link>
         </React.Fragment>
       ))}
