@@ -3,25 +3,49 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+`;
 
-const Prev = styled.div``;
+const Spacer = styled.div`
+  flex-grow: 1;
+`;
 
-const Next = styled.div``;
+const Prev = styled.div`
+  & > a {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+`;
+
+const Next = styled.div`
+  text-align: right;
+  & > a {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+`;
 
 const PrevNext = ({ next, prev }) => (
   <Wrapper>
     {prev && (
       <Prev>
-        <span>Previous</span>
-        <Link to={prev.fields.slug}>{prev.frontmatter.title}</Link>
+        <Link to={prev.fields.slug}>
+          <span>&lArr; Previous</span>
+          {prev.frontmatter.title}
+        </Link>
       </Prev>
     )}
 
+    <Spacer />
+
     {next && (
       <Next>
-        <span>Next</span>
-        <Link to={next.fields.slug}>{next.frontmatter.title}</Link>
+        <Link to={next.fields.slug}>
+          <span>Next &rArr;</span>
+          {next.frontmatter.title}
+        </Link>
       </Next>
     )}
   </Wrapper>
