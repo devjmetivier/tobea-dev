@@ -23,17 +23,22 @@ const IndexPage = ({
       </Hero>
       <Content>
         <SectionTitle>Latest Posts</SectionTitle>
-        {postEdges.map(post => (
-          <Article
-            title={post.node.frontmatter.title}
-            date={post.node.frontmatter.date}
-            excerpt={post.node.excerpt}
-            timeToRead={post.node.timeToRead}
-            slug={post.node.fields.slug}
-            categories={post.node.frontmatter.categories}
-            key={post.node.fields.slug}
-          />
-        ))}
+        {postEdges.map(post => {
+          const { frontmatter, excerpt, timeToRead, fields } = post.node;
+          const { title, date, categories } = frontmatter;
+          const { slug } = fields;
+          return (
+            <Article
+              key={slug}
+              title={title}
+              date={date}
+              excerpt={excerpt}
+              timeToRead={timeToRead}
+              categories={categories}
+              slug={slug}
+            />
+          );
+        })}
       </Content>
     </Wrapper>
   </Layout>

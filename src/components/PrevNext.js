@@ -12,19 +12,26 @@ const Spacer = styled.div`
   flex-grow: 1;
 `;
 
-const Prev = styled.div`
+const Button = styled.div`
   & > a {
+    padding: 5px 12px;
     display: flex;
     flex-flow: column nowrap;
+    align-items: center;
+    border-radius: 3px;
+    background: ${props => props.theme.uiColors.info};
+    color: ${props => props.theme.colors.white};
+    &:hover {
+      text-decoration: none;
+      color: ${props => props.theme.colors.white};
+    }
   }
 `;
 
-const Next = styled.div`
+const Prev = styled(Button)``;
+
+const Next = styled(Button)`
   text-align: right;
-  & > a {
-    display: flex;
-    flex-flow: column nowrap;
-  }
 `;
 
 const PrevNext = ({ next, prev }) => (

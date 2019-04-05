@@ -23,11 +23,6 @@ const uiColors = {
   danger: '#f44336', // Pomegranate
 };
 
-const accents = {
-  lightBgOnDarkBg: colors.porcelain,
-  darkBgOnDarkBg: '#1e2125',
-};
-
 const light = {
   bg: colors.white,
   float: colors.white,
@@ -43,7 +38,7 @@ const theme = {
   light,
   dark,
   colors,
-  accents,
+  uiColors,
   width: `900px`,
   maxWidth: `100%`,
   baseFontSize: `10px`,
