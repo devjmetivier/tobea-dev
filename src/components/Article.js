@@ -14,13 +14,21 @@ const Excerpt = styled.p`
   margin-top: 0.5rem;
 `;
 
-const Article = ({ title, date, excerpt, slug, timeToRead, categories }) => {
+const Article = ({
+  title,
+  date,
+  excerpt,
+  slug,
+  timeToRead,
+  categories,
+  emoji,
+}) => {
   return (
     <Post>
       <Title>
         <Link to={slug}>{title}</Link>
       </Title>
-      {date} &mdash; {timeToRead} Min Read &mdash;{' '}
+      {date} &mdash; {emoji.repeat(timeToRead)} &mdash;{' '}
       {categories.map((cat, i) => (
         <React.Fragment key={cat}>
           <Tag style={{ marginLeft: i === 0 ? '0' : '4px' }}>

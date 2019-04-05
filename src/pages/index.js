@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
+import { emojis } from '../../config/emojis';
 import { Layout, Article, Wrapper, Button, SectionTitle } from '../components';
 
 const Hero = styled.div``;
@@ -23,7 +24,7 @@ const IndexPage = ({
       </Hero>
       <Content>
         <SectionTitle>Latest Posts</SectionTitle>
-        {postEdges.map(post => {
+        {postEdges.map((post, i) => {
           const { frontmatter, excerpt, timeToRead, fields } = post.node;
           const { title, date, categories } = frontmatter;
           const { slug } = fields;
@@ -34,6 +35,7 @@ const IndexPage = ({
               date={date}
               excerpt={excerpt}
               timeToRead={timeToRead}
+              emoji={emojis[i]}
               categories={categories}
               slug={slug}
             />

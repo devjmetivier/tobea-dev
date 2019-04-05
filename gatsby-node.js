@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const { emojis } = require('./config/emojis');
 
 // graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
 const wrapper = promise =>
@@ -59,9 +60,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const posts = result.data.allMdx.edges;
 
-  posts.forEach((edge, index) => {
-    const next = index === 0 ? null : posts[index - 1].node;
-    const prev = index === posts.length - 1 ? null : posts[index + 1].node;
+  posts.forEach((edge, i) => {
+    const next = i === 0 ? null : posts[i - 1].node;
+    const prev = i === posts.length - 1 ? null : posts[i + 1].node;
 
     createPage({
       path: edge.node.fields.slug,
@@ -70,6 +71,7 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: edge.node.fields.slug,
         prev,
         next,
+        emoji: emojis[i],
       },
     });
   });

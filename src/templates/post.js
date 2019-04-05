@@ -49,7 +49,7 @@ const PostContent = styled.div`
 `;
 
 const Post = ({
-  pageContext: { slug, prev, next },
+  pageContext: { slug, prev, next, emoji },
   data: { mdx: postNode },
   location,
 }) => {
@@ -62,7 +62,7 @@ const Post = ({
         <Title>{post.title}</Title>
 
         <PostInfo>
-          {post.date} &mdash; {postNode.timeToRead} Min Read
+          {post.date} &mdash; {emoji.repeat(postNode.timeToRead)}
         </PostInfo>
 
         <PostTags>
