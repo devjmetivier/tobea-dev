@@ -20,7 +20,7 @@ render(<button onClick={onClick}>Alohomora!</button>);
 ### Just code
 
 ```js
-(function() {
+(() => {
 
 var cache = {};
 var form = $('form');
@@ -29,10 +29,10 @@ var minified = true;
 var dependencies = {};
 
 var treeURL = 'https://api.github.com/repos/PrismJS/prism/git/trees/gh-pages?recursive=1';
-var treePromise = new Promise(function(resolve) {
+var treePromise = new Promise(resolve => {
 	$u.xhr({
 		url: treeURL,
-		callback: function(xhr) {
+		callback: xhr => {
 			if (xhr.status < 400) {
 				resolve(JSON.parse(xhr.responseText).tree);
 			}
@@ -40,9 +40,7 @@ var treePromise = new Promise(function(resolve) {
 	});
 });
 
-function whatever(args) {
-    return args;
-}
+let whatever = args => args;
 whatever('yeet');
 });
 ```
