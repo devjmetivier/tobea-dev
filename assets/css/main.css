@@ -39,5 +39,5 @@ a, a:hover {
 }
 
 code, kbd, pre, samp {
-  font-family: "Dank Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: "Dank Mono", "Fira Code", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
