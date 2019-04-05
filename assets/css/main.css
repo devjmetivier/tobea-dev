@@ -33,6 +33,11 @@ h5 a, h5 a:hover,
 h6 a, h6 a:hover {
   text-decoration: none;
 }
+
 a, a:hover {
   color: var(--carmine);
+}
+
+code, kbd, pre, samp {
+  font-family: "Dank Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
