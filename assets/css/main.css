@@ -1,10 +1,38 @@
 :root {
   --blue: #067df7;
-  --red: #FF6B64;
-  --yellow: #FFC23C;
-  --green: #36CD4E;
+  --red: #ff6b64;
+  --yellow: #ffc23c;
+  --green: #36cd4e;
+
+  --porcelain: #f2f3f4;
+  --sienna: #d09056;
+  --gray: #90969a;
+  --carmine: #b6433b;
+  --brightGray: #333a43;
+  --text: #1e2125;
 }
 
+body, body.light {
+  --text: #1e2125;
+}
+
+body.dark {
+  --text: #fff;
+}
+
+body {
+  color: var(--text);
+}
+
+
+h1 a, h1 a:hover,
+h2 a, h2 a:hover,
+h3 a, h3 a:hover,
+h4 a, h4 a:hover,
+h5 a, h5 a:hover,
+h6 a, h6 a:hover {
+  text-decoration: none;
+}
 a, a:hover {
-  color: var(--blue);
+  color: var(--carmine);
 }

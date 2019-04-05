@@ -14,7 +14,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  background: ${props => props.theme.light.bg};
+  background: ${props => props.theme.colors.brightGray};
+  min-height: 100vh;
 `;
 
 const Float = styled.div`
@@ -22,7 +23,7 @@ const Float = styled.div`
   padding: 20px 30px;
   position: relative;
   border-radius: 10px;
-  background: ${props => props.theme.light.float};
+  background: ${props => props.theme.colors.porcelain};
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `;
 
@@ -45,9 +46,9 @@ const Layout = ({ children, customSEO, location }) => {
       <Wrapper>
         {!customSEO && <SEO buildTime={buildTime} />}
         <Float>
-          <Link to='/'>
-            <Circle />
-          </Link>
+          {/* <Link to='/'> */}
+          {/*  <Circle /> */}
+          {/* </Link> */}
           <Header>
             {location.pathname === `/` ? (
               <h1>
@@ -63,14 +64,24 @@ const Layout = ({ children, customSEO, location }) => {
           <Footer>
             <div>
               Licensed under{' '}
-              <a href='https://creativecommons.org/licenses/by-sa/4.0/'>
+              <a
+                href='https://creativecommons.org/licenses/by-sa/4.0/'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
                 Creative Commons
               </a>{' '}
               &mdash;{' '}
               {socials.map((social, i) => (
                 <Fragment>
-                  {i === 0 ? '' : ' &middot; '}
-                  <a href={social.link}>{social.name}</a>
+                  {i === 0 ? '' : ` ${String.fromCharCode(183)} `}
+                  <a
+                    href={social.link}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    {social.name}
+                  </a>
                 </Fragment>
               ))}
             </div>
