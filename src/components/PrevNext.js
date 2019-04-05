@@ -6,6 +6,7 @@ import { Link } from 'gatsby';
 const Wrapper = styled.div`
   display: flex;
   flex-flow: row nowrap;
+  margin-bottom: 0.5rem;
 `;
 
 const Spacer = styled.div`
