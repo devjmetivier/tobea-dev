@@ -30,7 +30,6 @@ const Category = ({
         <Content>
           <SectionTitle>Category &ndash; {category}</SectionTitle>
           {subline} (See <Link to='/categories'>all categories</Link>)
-          <p>{JSON.stringify(location)}</p>
           {edges.map(post => (
             <Article
               title={post.node.frontmatter.title}
