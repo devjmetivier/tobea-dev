@@ -6,6 +6,8 @@ import theme from './config/theme';
 
 export const wrapRootElement = wrap;
 
+// TODO: Make PR to plugin author, and/or consider publishing own plugin
+// https://github.com/barrymcgee/gatsby-plugin-scroll-indicator
 const defaultOptions = {
   applyToPrefix: ['post'],
   color: theme.colors.carmine,
