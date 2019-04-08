@@ -11,7 +11,7 @@ import config from '../../config';
 const Content = styled.div``;
 
 const Category = ({
-  pageContext: { category },
+  pageContext: { category, emoji },
   data: { allMdx },
   location,
 }) => {
@@ -20,6 +20,9 @@ const Category = ({
     totalCount === 1 ? `` : `s`
   } tagged with "${category}"`;
 
+  const re = /categories/;
+  const isCategoryPage = re.test(location.pathname);
+
   return (
     <Layout location={location}>
       <Wrapper>
@@ -27,6 +30,7 @@ const Category = ({
         <Content>
           <SectionTitle>Category &ndash; {category}</SectionTitle>
           {subline} (See <Link to='/categories'>all categories</Link>)
+          <p>{JSON.stringify(location)}</p>
           {edges.map(post => (
             <Article
               title={post.node.frontmatter.title}
@@ -36,6 +40,8 @@ const Category = ({
               slug={post.node.fields.slug}
               categories={post.node.frontmatter.categories}
               key={post.node.fields.slug}
+              isCategoryPage={isCategoryPage}
+              emoji={emoji}
             />
           ))}
         </Content>

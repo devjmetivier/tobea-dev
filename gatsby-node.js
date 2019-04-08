@@ -28,7 +28,7 @@ exports.onCreateNode = ({ node, actions }) => {
     ) {
       slug = `/${_.kebabCase(node.frontmatter.title)}`;
     }
-    createNodeField({ node, name: 'slug', value: slug });
+    createNodeField({ node, name: 'slug', value: `/post${slug}` });
   }
 };
 
@@ -88,12 +88,13 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const categories = Array.from(categorySet);
 
-  categories.forEach(category => {
+  categories.forEach((category, i) => {
     createPage({
       path: `/categories/${_.kebabCase(category)}`,
       component: categoryTemplate,
       context: {
         category,
+        emoji: emojis[i],
       },
     });
   });

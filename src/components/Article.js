@@ -22,18 +22,24 @@ const Article = ({
   timeToRead,
   categories,
   emoji,
+  isCategoryPage,
 }) => {
   return (
     <Post>
       <Title>
         <Link to={slug}>{title}</Link>
       </Title>
-      {date} &mdash; {emoji.repeat(timeToRead)} &mdash;{' '}
+      {date} &mdash; {emoji ? emoji.repeat(timeToRead) : `${timeToRead} min`}{' '}
       {categories.map((cat, i) => (
         <React.Fragment key={cat}>
-          <Tag style={{ marginLeft: i === 0 ? '0' : '4px' }}>
-            <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
-          </Tag>
+          {!isCategoryPage && (
+            <>
+              {i === 0 && `${String.fromCharCode(8212)} `}
+              <Tag style={{ marginLeft: i === 0 ? '0' : '4px' }}>
+                <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
+              </Tag>
+            </>
+          )}
         </React.Fragment>
       ))}
       <Excerpt>{excerpt}</Excerpt>
@@ -50,4 +56,5 @@ Article.propTypes = {
   slug: PropTypes.string.isRequired,
   timeToRead: PropTypes.number.isRequired,
   categories: PropTypes.array.isRequired,
+  isCategoryPage: PropTypes.bool.isRequired,
 };
