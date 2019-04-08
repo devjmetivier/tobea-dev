@@ -20,7 +20,7 @@ const Category = ({
     totalCount === 1 ? `` : `s`
   } tagged with "${category}"`;
 
-  const re = /categories/;
+  const re = /^\/(categories)\//gm;
   const isCategoryPage = re.test(location.pathname);
 
   return (
