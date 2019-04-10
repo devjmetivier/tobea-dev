@@ -10,6 +10,10 @@ export const wrapRootElement = wrap;
 const defaultOptions = {
   matchStartOfPath: ['post'],
   // need to make this feature work
+  /* NOTES:
+   * Need to make sure that query oarams and fragments
+   * don't get in the way of matches at end of path
+   * */
   // matchEndOfPath: ['remark'],
   height: 3,
   prependToBody: false,
