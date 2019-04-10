@@ -84,5 +84,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-plugin-page-progress',
+      options: {
+        matchStartOfPath: ['post'],
+        prepend: true,
+        color: '#B6433B',
+      },
+    },
   ],
 };
