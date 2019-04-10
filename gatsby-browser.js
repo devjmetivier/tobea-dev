@@ -8,7 +8,9 @@ export const wrapRootElement = wrap;
 
 // TODO: extract code below and adapt to new gatsby plugin (gatsby-plugin-page-progress)
 const defaultOptions = {
-  prefixMatch: ['post'],
+  matchStartOfPath: ['post'],
+  // need to make this feature work
+  // matchEndOfPath: ['remark'],
   height: 3,
   prependToBody: false,
   color: theme.colors.carmine,
@@ -21,26 +23,7 @@ export const onRouteUpdate = (
   // merge default options with user defined options in `gatsby-config.js`
   const options = { ...defaultOptions, ...pluginOptions };
 
-  // TODO: use conditional to check if there are any options to match - if not, run on every page
-  if (!options.prefixMatch || options.prefixMatch === []) {
-    console.log('empty');
-  }
-
-  // grab array of prefixes to apply progress to and make a new string for the RegExp
-  const prefixesToMatch = options.prefixMatch.reduce(
-    (accumulator, currentValue, i) =>
-      i === 0 ? currentValue : `${accumulator}|${currentValue}`
-  );
-
-  // should match to something like: (post|category|blog|etc)
-  const re = RegExp(`^/(${prefixesToMatch})`, `gm`);
-  const matches = re.test(pathname);
-
-  // check to see if the scroll indicator already exists - if it does, remove it
-  const indicatorCheck = document.getElementById('gatsby-plugin-page-progress');
-  if (indicatorCheck) indicatorCheck.remove();
-
-  if (matches) {
+  function pageProgress() {
     // create progress indicator container and append/prepend to document body
     const node = document.createElement(`div`);
     node.id = `gatsby-plugin-page-progress`;
@@ -96,5 +79,34 @@ export const onRouteUpdate = (
         scrolling = true;
       }
     });
+  }
+
+  if (
+    !options.matchStartOfPath ||
+    options.matchStartOfPath.length === 0 ||
+    // TODO: need to add support for matches for end of path
+    !options.matchEndOfPath ||
+    options.matchEndOfPath.length === 0
+  ) {
+    pageProgress();
+  } else {
+    // grab array of prefixes to apply progress to and make a new string for the RegExp
+    const prefixesToMatch = options.matchStartOfPath.reduce(
+      (accumulator, currentValue, i) =>
+        i === 0 ? currentValue : `${accumulator}|${currentValue}`
+    );
+
+    // should match to something like: (post|category|blog|etc)
+    const re = RegExp(`^/(${prefixesToMatch})`, `gm`);
+    const matches = re.test(pathname);
+
+    // check to see if the scroll indicator already exists - if it does, remove it
+    const indicatorCheck = document.getElementById(
+      'gatsby-plugin-page-progress'
+    );
+    if (indicatorCheck) indicatorCheck.remove();
+    if (matches) {
+      pageProgress();
+    }
   }
 };
