@@ -87,10 +87,11 @@ export const onRouteUpdate = (
 
   if (
     !options.matchStartOfPath ||
-    options.matchStartOfPath.length === 0 ||
+    options.matchStartOfPath.length === 0
     // TODO: need to add support for matches for end of path
-    !options.matchEndOfPath ||
-    options.matchEndOfPath.length === 0
+    // ||
+    // !options.matchEndOfPath ||
+    // options.matchEndOfPath.length === 0
   ) {
     pageProgress();
   } else {
