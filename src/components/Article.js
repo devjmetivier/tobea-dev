@@ -5,6 +5,7 @@ import { Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 
 import Tag from './Tag';
+import Layout from './Layout';
 
 const Post = styled.article``;
 
@@ -57,4 +58,8 @@ Article.propTypes = {
   timeToRead: PropTypes.number.isRequired,
   categories: PropTypes.array.isRequired,
   isCategoryPage: PropTypes.bool.isRequired,
+};
+
+Article.defaultProps = {
+  isCategoryPage: false,
 };

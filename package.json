@@ -8,7 +8,8 @@
     "url": "https://github.com/dmetivier/tobea-dev/issues"
   },
   "dependencies": {
-    "@mdx-js/mdx": "^0.20.3",
+    "@mdx-js/mdx": "^1.0.4",
+    "@mdx-js/react": "^1.0.2",
     "@mdx-js/tag": "^0.20.3",
     "babel-plugin-styled-components": "^1.10.0",
     "date-fns": "^1.30.1",

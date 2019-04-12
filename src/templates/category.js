@@ -22,6 +22,7 @@ const Category = ({
 
   const re = /^\/(categories)\//gm;
   const isCategoryPage = re.test(location.pathname);
+  console.log(isCategoryPage);
 
   return (
     <Layout location={location}>

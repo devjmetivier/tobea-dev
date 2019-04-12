@@ -73,7 +73,7 @@ const Layout = ({ children, customSEO, location }) => {
               </a>{' '}
               &mdash;{' '}
               {socials.map((social, i) => (
-                <Fragment>
+                <Fragment key={i}>
                   {i === 0 ? '' : ` ${String.fromCharCode(183)} `}
                   <a
                     href={social.link}
