@@ -1,15 +1,20 @@
 import React from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/vsDark';
+import theme from 'prism-react-renderer/themes/vsDarkPlus';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 
 const Code = ({ codeString, language, ...props }) => {
   if (props[`react-live`]) {
     return (
-      <LiveProvider code={codeString} noInline>
-        <LiveEditor />
+      <LiveProvider
+        code={codeString}
+        theme={theme}
+        language={language}
+        noInline
+      >
+        <LiveEditor className='live-editor' />
         <LiveError />
-        <LivePreview />
+        <LivePreview className='live-preview' />
       </LiveProvider>
     );
   }

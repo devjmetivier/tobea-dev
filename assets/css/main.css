@@ -41,3 +41,33 @@ a, a:hover {
 code, kbd, pre, samp {
   font-family: "Dank Mono", "Fira Code", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
+.live-editor {
+  margin-bottom: 1rem;
+  background-color: #1e1e1e;
+  border-radius: 5px;
+  caret-color: white;
+}
+
+.live-editor:before {
+  content: 'LIVE';
+  padding: 4px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-weight: bold;
+  font-family: inherit;
+  line-height: 1;
+  letter-spacing: 1px;
+  border-bottom-left-radius: 4px;
+  background: var(--red);
+  color: white;
+}
+
+.live-editor > * {
+  font-family: "Dank Mono", "Fira Code", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+}
+
+.live-preview {
+  margin-bottom: 1rem;
+}
