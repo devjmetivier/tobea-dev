@@ -76,3 +76,9 @@ pre[class*="language-"] {
   hyphens: none;
 }
 ```
+
+```md
+****
+++++
+====
+```
