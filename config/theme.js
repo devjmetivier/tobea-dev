@@ -12,14 +12,8 @@ const colors = {
   carmine: '#B6433B',
   brightGray: '#333A43',
   text: '#1e2125',
-  // accents
-};
-
-const uiColors = {
-  primary: '#90969a', // Oslo Gray
-  info: '#333a43', // Bright Gray
+  // info
   success: '#60a866', // Aqua Forest
-  warning: '#de972e', // Golden Grass
   danger: '#f44336', // Pomegranate
 };
 
@@ -38,7 +32,6 @@ const theme = {
   light,
   dark,
   colors,
-  uiColors,
   width: `900px`,
   maxWidth: `100%`,
   baseFontSize: `10px`,

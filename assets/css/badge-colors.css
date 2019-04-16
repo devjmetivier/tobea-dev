@@ -1,0 +1,57 @@
+:root {
+  /* languages */
+  --html: #ef6026;
+  --css: #25a1e1;
+  --js: #f7df1e;
+  --md: white;
+
+  /* libraries/frameworks */
+  --react: #61dafb;
+}
+
+.copy-code {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  height: 0;
+}
+
+.copy-code button {
+  margin: 0 2rem 0 0;
+  padding: 0.25rem 0.5rem;
+  position: relative;
+  height: 1.5rem;
+  font-weight: bold;
+  /*letter-spacing: 1px;*/
+  line-height: 1;
+  text-transform: uppercase;
+  border: none;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  color: #1e1e1e;
+  z-index: 2;
+}
+
+.copy-code .copied {
+  background: var(--success);
+}
+
+.copy-code .error {
+  background: var(--danger);
+}
+
+.copy-code .html {
+  background: var(--html);
+}
+
+.copy-code .css {
+  background: var(--css);
+}
+
+.copy-code .js {
+  background: var(--js);
+}
+
+.copy-code .ms {
+  background: var(--md);
+}

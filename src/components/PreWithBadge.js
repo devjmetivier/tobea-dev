@@ -1,32 +1,46 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useRef, useState } from 'react';
 
-const Pre = styled.pre`
-  position: relative;
-  &:before {
-    content: '${props => props.badge}';
-    position: absolute;
-    top: 0;
-    right: 2rem;
-    text-transform: uppercase;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-  }
-`;
+// TODO: Make badge more fancy and with copy icon
 
 const PreWithBadge = ({ className, children, style }) => {
-  console.group();
-  console.log(className);
-  console.log(children);
-  console.log(style);
-  console.groupEnd();
   const reg = /language-(.+)/im;
-  const [orig, badge] = className.match(reg);
+  const [origin, badge] = className.match(reg);
+
+  const content = useRef(null);
+  const [copied, updateCopied] = useState(false);
+  const [badgeMessage, updateBadgeMessage] = useState(badge);
+
+  const copyMessage = m => {
+    updateCopied(prev => !prev);
+    updateBadgeMessage(m);
+    setTimeout(() => {
+      updateCopied(prev => !prev);
+      updateBadgeMessage(badge);
+    }, 2000);
+  };
+
+  const copyPreContent = () => {
+    const block = content.current.innerText;
+    navigator.clipboard
+      .writeText(block)
+      .then(() => copyMessage('Copied'), () => copyMessage('Error'));
+  };
 
   return (
-    <Pre className={className} style={style} badge={badge}>
-      {children}
-    </Pre>
+    <>
+      <div className={`copy-code ${origin}`}>
+        <button
+          className={badgeMessage.toLowerCase()}
+          type='button'
+          onClick={copyPreContent}
+        >
+          {badgeMessage}
+        </button>
+      </div>
+      <pre ref={content} className={className} style={style}>
+        {children}
+      </pre>
+    </>
   );
 };
 

@@ -20,7 +20,7 @@ const Button = styled.div`
     flex-flow: column nowrap;
     align-items: center;
     border-radius: 3px;
-    background: ${props => props.theme.uiColors.info};
+    background: ${props => props.theme.colors.brightGray};
     color: ${props => props.theme.colors.white};
     &:hover {
       text-decoration: none;

@@ -10,6 +10,9 @@
   --carmine: #b6433b;
   --brightGray: #333a43;
   --text: #1e2125;
+
+  --success: #60a866;
+  --danger: #f44336;
 }
 
 body, body.light {
@@ -46,23 +49,7 @@ code, kbd, pre, samp {
   margin-bottom: 1rem;
   background-color: #1e1e1e;
   border-radius: 5px;
-  caret-color: white;
-}
-
-.live-editor:before {
-  content: 'LIVE';
-  padding: 0.25rem 0.5rem;
-  position: absolute;
-  top: 0;
-  right: 2rem;
-  font-weight: bold;
-  font-family: inherit;
-  line-height: 1;
-  letter-spacing: 1px;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  background: var(--red);
-  color: white;
+  caret-color: #d4d4d4;
 }
 
 .live-editor > * {
