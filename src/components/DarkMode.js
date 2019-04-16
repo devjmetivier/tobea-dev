@@ -12,12 +12,12 @@ const DarkModeStyled = styled.div`
 const DarkMode = () => {
   const darkMode = useDarkMode(false);
 
+  // TODO: change icons to images or font awesome icons
   return (
     <DarkModeStyled darkMode={darkMode.value}>
       <Toggle
         className='dark-toggle'
         defaultChecked={darkMode.value}
-        // TODO: change icons to images or font awesome icons
         icons={{
           checked: '☾',
           unchecked: '☀',
