@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
+import DarkMode from './DarkMode';
 
 import { socials } from '../../config';
 import SEO from './SEO';
@@ -24,18 +25,8 @@ const Float = styled.div`
   position: relative;
   border-radius: 10px;
   background: ${props => props.theme.colors.porcelain};
+  //overflow: hidden;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-`;
-
-const Circle = styled.div`
-  position: absolute;
-  top: -25px;
-  left: calc(50% - 25px);
-  width: 50px;
-  height: 50px;
-  border: 7px solid ${props => props.theme.light.accent};
-  border-radius: 50px;
-  background: transparent;
 `;
 
 const Layout = ({ children, customSEO, location }) => {
@@ -46,9 +37,7 @@ const Layout = ({ children, customSEO, location }) => {
       <Wrapper>
         {!customSEO && <SEO buildTime={buildTime} />}
         <Float>
-          {/* <Link to='/'> */}
-          {/*  <Circle /> */}
-          {/* </Link> */}
+          <DarkMode />
           <Header>
             {location.pathname === `/` ? (
               <h1>
