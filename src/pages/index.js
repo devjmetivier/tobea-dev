@@ -4,9 +4,7 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { emojis } from '../../config/emojis';
-import { Layout, Article, Wrapper, Button, SectionTitle } from '../components';
-
-const Hero = styled.div``;
+import { Layout, Article, Wrapper, Bio, SectionTitle } from '../components';
 
 const Content = styled.div``;
 
@@ -18,10 +16,7 @@ const IndexPage = ({
 }) => (
   <Layout location={location}>
     <Wrapper>
-      <Hero>
-        <h1>Hey!</h1>
-        <p>I&apos;m Devin.</p>
-      </Hero>
+      <Bio />
       <Content>
         <SectionTitle>Latest Posts</SectionTitle>
         {postEdges.map((post, i) => {
