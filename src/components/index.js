@@ -1,5 +1,4 @@
 import Article from './Article';
-import Button from './Button';
 import Bio from './Bio';
 import Header from './Header';
 import Footer from './Footer';
@@ -12,7 +11,6 @@ import Wrapper from './Wrapper';
 
 export {
   Article,
-  Button,
   Bio,
   Header,
   Footer,
