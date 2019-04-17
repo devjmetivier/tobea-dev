@@ -7,14 +7,11 @@ const PreWithBadge = ({ className, children, style }) => {
   const [origin, badge] = className.match(reg);
 
   const content = useRef(null);
-  const [copied, updateCopied] = useState(false);
   const [badgeMessage, updateBadgeMessage] = useState(badge);
 
   const copyMessage = m => {
-    updateCopied(prev => !prev);
     updateBadgeMessage(m);
     setTimeout(() => {
-      updateCopied(prev => !prev);
       updateBadgeMessage(badge);
     }, 2000);
   };
