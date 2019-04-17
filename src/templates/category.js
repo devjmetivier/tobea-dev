@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { Layout, Wrapper, Article, SectionTitle } from '../components';
+import { Layout, Article, SectionTitle } from '../components';
 
 import config from '../../config';
 
@@ -26,7 +26,7 @@ const Category = ({
 
   return (
     <Layout location={location}>
-      <Wrapper>
+      <main>
         <Helmet title={`Category: ${category} | ${config.siteTitle}`} />
         <Content>
           <SectionTitle>Category &ndash; {category}</SectionTitle>
@@ -45,7 +45,7 @@ const Category = ({
             />
           ))}
         </Content>
-      </Wrapper>
+      </main>
     </Layout>
   );
 };

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import kebabCase from 'lodash/kebabCase';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 
-import { Layout, Wrapper, Tag, SEO, PrevNext } from '../components';
+import { Layout, Tag, SEO, PrevNext, Bio } from '../components';
 
 const Title = styled.h1`
   text-align: center;
@@ -58,7 +58,7 @@ const Post = ({
   return (
     <Layout customSEO location={location}>
       <SEO postPath={slug} postNode={postNode} article />
-      <Wrapper>
+      <main>
         <Title>{post.title}</Title>
 
         <PostInfo>
@@ -80,7 +80,9 @@ const Post = ({
         </PostContent>
 
         <PrevNext prev={prev} next={next} />
-      </Wrapper>
+
+        <Bio />
+      </main>
     </Layout>
   );
 };

@@ -67,6 +67,12 @@ code, kbd, pre, samp {
   transition: color .25s ease;
 }
 
+.prism-code {
+  padding: 0.75rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  font-size: 16px;
+}
 
 .live-editor {
   margin-bottom: 1rem;

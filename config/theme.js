@@ -32,7 +32,7 @@ const theme = {
   light,
   dark,
   colors,
-  width: `900px`,
+  width: `760px`,
   maxWidth: `100%`,
   baseFontSize: `10px`,
 };

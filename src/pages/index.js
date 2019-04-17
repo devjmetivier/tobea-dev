@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { emojis } from '../../config/emojis';
-import { Layout, Article, Wrapper, Bio, SectionTitle } from '../components';
+import { Layout, Article, Bio, SectionTitle } from '../components';
 
 const Content = styled.div``;
 
@@ -15,7 +15,7 @@ const IndexPage = ({
   location,
 }) => (
   <Layout location={location}>
-    <Wrapper>
+    <main>
       <Bio />
       <Content>
         <SectionTitle>Latest Posts</SectionTitle>
@@ -37,7 +37,7 @@ const IndexPage = ({
           );
         })}
       </Content>
-    </Wrapper>
+    </main>
   </Layout>
 );
 

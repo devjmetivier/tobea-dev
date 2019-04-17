@@ -5,7 +5,7 @@ import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 import kebabCase from 'lodash/kebabCase';
 
-import { Layout, Wrapper, Header, SectionTitle } from '../components';
+import { Layout, Header, SectionTitle } from '../components';
 import config from '../../config';
 
 const Content = styled.div``;
@@ -19,7 +19,7 @@ const Category = ({
   location,
 }) => (
   <Layout location={location}>
-    <Wrapper>
+    <main>
       <Helmet title={`Categories | ${config.siteTitle}`} />
       <Content>
         <SectionTitle>Categories</SectionTitle>
@@ -32,7 +32,7 @@ const Category = ({
           </Title>
         ))}
       </Content>
-    </Wrapper>
+    </main>
   </Layout>
 );
 

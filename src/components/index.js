@@ -7,7 +7,6 @@ import PrevNext from './PrevNext';
 import SectionTitle from './SectionTitle';
 import SEO from './SEO';
 import Tag from './Tag';
-import Wrapper from './Wrapper';
 
 export {
   Article,
@@ -19,5 +18,4 @@ export {
   SectionTitle,
   SEO,
   Tag,
-  Wrapper,
 };
