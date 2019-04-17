@@ -74,6 +74,10 @@ code, kbd, pre, samp {
   font-size: 16px;
 }
 
+span.token.keyword {
+  font-style: italic;
+}
+
 .live-editor {
   margin-bottom: 1rem;
   background-color: #1e1e1e;
