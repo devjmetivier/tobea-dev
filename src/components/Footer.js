@@ -13,8 +13,16 @@ import useBuildTime from '../hooks/useBuildTime';
 const FooterStyles = styled.footer`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: ${props => props.theme.width};
   max-width: ${props => props.theme.maxWidth};
+
+  .badges {
+    font-size: 1.5rem;
+    a {
+      color: ${props => props.theme.colors.text};
+    }
+  }
 `;
 
 const Footer = () => {
@@ -22,7 +30,7 @@ const Footer = () => {
 
   return (
     <FooterStyles>
-      <div>
+      <div className='badges'>
         <a
           href='https://creativecommons.org/licenses/by-sa/4.0/'
           target='_blank'
@@ -30,7 +38,7 @@ const Footer = () => {
         >
           <FontAwesomeIcon icon={faCreativeCommons} />
         </a>{' '}
-        &mdash;{' '}
+        {` ${String.fromCharCode(183)} `}
         <a
           href={socials.twitter.link}
           target='_blank'
