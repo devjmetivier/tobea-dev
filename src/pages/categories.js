@@ -5,7 +5,7 @@ import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 import kebabCase from 'lodash/kebabCase';
 
-import { Layout, Header, SectionTitle } from '../components';
+import { Layout, Header, SectionTitle, Bio } from '../components';
 import config from '../../config';
 
 const Content = styled.div``;
@@ -32,6 +32,8 @@ const Category = ({
           </Title>
         ))}
       </Content>
+
+      <Bio />
     </main>
   </Layout>
 );

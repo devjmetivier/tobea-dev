@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { Layout, Article, SectionTitle } from '../components';
+import { Layout, Article, SectionTitle, Bio } from '../components';
 
 import config from '../../config';
 
@@ -45,6 +45,8 @@ const Category = ({
             />
           ))}
         </Content>
+
+        <Bio />
       </main>
     </Layout>
   );
