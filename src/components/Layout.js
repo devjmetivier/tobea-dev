@@ -24,8 +24,6 @@ const Float = styled.div`
   padding: 20px 30px;
   position: relative;
   border-radius: 10px;
-  background: ${props => props.theme.colors.porcelain};
-  //overflow: hidden;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `;
 
@@ -36,7 +34,7 @@ const Layout = ({ children, customSEO, location }) => {
     <ThemeProvider theme={theme}>
       <Wrapper>
         {!customSEO && <SEO buildTime={buildTime} />}
-        <Float>
+        <Float className='layout-float'>
           <DarkMode />
           <Header>
             {location.pathname === `/` ? (

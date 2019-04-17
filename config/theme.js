@@ -11,7 +11,7 @@ const colors = {
   gray: '#90969A',
   carmine: '#B6433B',
   brightGray: '#333A43',
-  text: '#1e2125',
+  dark: '#1e2125',
   // info
   success: '#60a866', // Aqua Forest
   danger: '#f44336', // Pomegranate

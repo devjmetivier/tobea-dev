@@ -9,22 +9,34 @@
   --gray: #90969a;
   --carmine: #b6433b;
   --brightGray: #333a43;
-  --text: #1e2125;
+  --dark: #1e2125;
 
   --success: #60a866;
   --danger: #f44336;
+
+  --float: white;
+  --toggle: var(--dark);
+  --badges: var(--dark);
+  --text: var(--dark);
 }
 
-body, body.light {
-  --text: #1e2125;
+body, body.light-mode {
+  --float: white;
+  --toggle: var(--dark);
+  --badges: var(--dark);
+  --text: var(--dark);
 }
 
-body.dark {
+body.dark-mode {
+  --float: var(--dark);
+  --toggle: var(--brightGray);
+  --badges: var(--gray);
   --text: #fff;
 }
 
 body {
   color: var(--text);
+  transition: color .25s ease;
 }
 
 
@@ -44,6 +56,17 @@ a, a:hover {
 code, kbd, pre, samp {
   font-family: "Dank Mono", "Fira Code", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
+.layout-float {
+  background: var(--float);
+  transition: background .25s ease;
+}
+
+.badges a {
+  color: var(--badges);
+  transition: color .25s ease;
+}
+
 
 .live-editor {
   margin-bottom: 1rem;

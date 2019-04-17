@@ -19,9 +19,6 @@ const FooterStyles = styled.footer`
 
   .badges {
     font-size: 1.5rem;
-    a {
-      color: ${props => props.theme.colors.text};
-    }
   }
 `;
 
