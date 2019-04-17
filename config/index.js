@@ -20,9 +20,12 @@ module.exports = {
   // See: https://developers.google.com/web/fundamentals/web-app-manifest/
   themeColor: `#3498DB`,
   backgroundColor: `#2b2e3c`,
-  socials: [
-    { name: 'Twitter', link: 'https://twitter.com/devjmetivier' },
-    { name: 'Github', link: 'https://github.com/dmetivier' },
-    { name: 'Repo', link: 'https://github.com/dmetivier/tobea-dev' },
-  ],
+  socials: {
+    twitter: { name: 'Twitter', link: 'https://twitter.com/devjmetivier' },
+    github: { name: 'Github', link: 'https://github.com/dmetivier' },
+    repo: {
+      name: 'Repo',
+      link: 'https://github.com/dmetivier/tobea-dev/issues',
+    },
+  },
 };

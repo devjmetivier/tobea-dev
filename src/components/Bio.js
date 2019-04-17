@@ -30,8 +30,12 @@ const Bio = () => (
     <Img src={avatar} alt='Devin Metivier' />
     <div>
       <p>
-        Personal Blog by{' '}
-        <a href={socials[0].link} rel='noopener noreferrer' target='_blank'>
+        Personal blog by{' '}
+        <a
+          href={socials.twitter.link}
+          rel='noopener noreferrer'
+          target='_blank'
+        >
           Devin Metivier
         </a>
       </p>

@@ -50,34 +50,7 @@ const Layout = ({ children, customSEO, location }) => {
             )}
           </Header>
           {children}
-          <Footer>
-            <div>
-              Licensed under{' '}
-              <a
-                href='https://creativecommons.org/licenses/by-sa/4.0/'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                Creative Commons
-              </a>{' '}
-              &mdash;{' '}
-              {socials.map((social, i) => (
-                <Fragment key={i}>
-                  {i === 0 ? '' : ` ${String.fromCharCode(183)} `}
-                  <a
-                    href={social.link}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    {social.name}
-                  </a>
-                </Fragment>
-              ))}
-            </div>
-            <div>
-              <span>Last build: {buildTime}</span>
-            </div>
-          </Footer>
+          <Footer />
         </Float>
       </Wrapper>
     </ThemeProvider>
