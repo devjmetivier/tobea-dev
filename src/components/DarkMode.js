@@ -2,6 +2,8 @@ import React from 'react';
 import useDarkMode from 'use-dark-mode';
 import styled from 'styled-components';
 import Toggle from 'react-toggle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 const DarkModeStyled = styled.div`
   position: absolute;
@@ -12,15 +14,14 @@ const DarkModeStyled = styled.div`
 const DarkMode = () => {
   const darkMode = useDarkMode(false);
 
-  // TODO: change icons to images or font awesome icons
   return (
     <DarkModeStyled darkMode={darkMode.value}>
       <Toggle
         className='dark-toggle'
         defaultChecked={darkMode.value}
         icons={{
-          checked: '☾',
-          unchecked: '☀',
+          checked: <FontAwesomeIcon icon={faMoon} />,
+          unchecked: <FontAwesomeIcon icon={faSun} />,
         }}
         onChange={darkMode.toggle}
       />

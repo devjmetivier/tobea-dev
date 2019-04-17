@@ -15,7 +15,7 @@
   -ms-user-select: none;
   user-select: none;
 
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -46,6 +46,20 @@
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   transition: all 0.2s ease;
+}
+
+.react-toggle-track > div {
+  width: 16px;
+  height: 16px;
+  color: white;
+}
+
+.react-toggle-track > div:first-child {
+  left: 5px;
+}
+
+.react-toggle-track > div:last-child {
+  right: 5px;
 }
 
 .react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
@@ -112,7 +126,7 @@
   height: 22px;
   border: 1px solid #222;
   border-radius: 50%;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
