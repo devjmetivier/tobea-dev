@@ -11,7 +11,7 @@ const DarkModeStyled = styled.div`
   right: 30px;
 `;
 
-const DarkMode = () => {
+const DarkModeToggle = () => {
   const darkMode = useDarkMode(false);
 
   return (
@@ -35,4 +35,4 @@ const DarkMode = () => {
   );
 };
 
-export default DarkMode;
+export default DarkModeToggle;

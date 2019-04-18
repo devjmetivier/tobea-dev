@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
-import DarkMode from './DarkMode';
+import DarkModeToggle from './DarkModeToggle';
 
 import { socials } from '../../config';
 import SEO from './SEO';
@@ -10,6 +10,7 @@ import Header from './Header';
 import Footer from './Footer';
 import theme from '../../config/theme';
 import useBuildTime from '../hooks/useBuildTime';
+import useDarkMode from "use-dark-mode";
 
 const Wrapper = styled.div`
   display: flex;
@@ -31,13 +32,15 @@ const Float = styled.div`
 
 const Layout = ({ children, customSEO, location }) => {
   const buildTime = useBuildTime();
+  // TODO: Extract styles from main.css and use hook to switch between themes.
+  const darkMode = useDarkMode(false);
 
   return (
     <ThemeProvider theme={theme}>
       <Wrapper>
         {!customSEO && <SEO buildTime={buildTime} />}
         <Float className='layout-float'>
-          <DarkMode />
+          <DarkModeToggle />
           <Header>
             {location.pathname === `/` ? (
               <h1>

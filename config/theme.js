@@ -28,6 +28,12 @@ const dark = {
   accent: colors.white,
 };
 
+const sizes = {
+  desktop: 992,
+  tablet: 768,
+  phone: 576,
+};
+
 const theme = {
   light,
   dark,
@@ -35,6 +41,7 @@ const theme = {
   width: `760px`,
   maxWidth: `100%`,
   baseFontSize: `10px`,
+  sizes,
 };
 
 export default theme;
