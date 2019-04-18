@@ -1,17 +1,47 @@
-const path = require(`path`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
+const _ = require('lodash');
+const { emojis } = require('./config/emojis');
 
-exports.createPages = ({ graphql, actions }) => {
+// graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
+const wrapper = promise =>
+  promise.then(result => {
+    if (result.errors) {
+      throw result.errors;
+    }
+    return result;
+  });
+
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions;
+
+  let slug;
+
+  if (node.internal.type === 'Mdx') {
+    if (
+      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')
+    ) {
+      slug = `/${_.kebabCase(node.frontmatter.slug)}`;
+    }
+    if (
+      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
+    ) {
+      slug = `/${_.kebabCase(node.frontmatter.title)}`;
+    }
+    createNodeField({ node, name: 'slug', value: `/post${slug}` });
+  }
+};
+
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`);
-  return graphql(
-    `
+  const postTemplate = require.resolve('./src/templates/post.js');
+  const categoryTemplate = require.resolve('./src/templates/category.js');
+
+  const result = await wrapper(
+    graphql(`
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
+        allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
           edges {
             node {
               fields {
@@ -19,49 +49,53 @@ exports.createPages = ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                categories
               }
             }
           }
         }
       }
-    `
-  ).then(result => {
-    if (result.errors) {
-      throw result.errors;
-    }
+    `)
+  );
 
-    // Create blog posts pages.
-    const posts = result.data.allMarkdownRemark.edges;
+  const posts = result.data.allMdx.edges;
 
-    posts.forEach((post, index) => {
-      const previous =
-        index === posts.length - 1 ? null : posts[index + 1].node;
-      const next = index === 0 ? null : posts[index - 1].node;
+  posts.forEach((edge, i) => {
+    const next = i === 0 ? null : posts[i - 1].node;
+    const prev = i === posts.length - 1 ? null : posts[i + 1].node;
 
-      createPage({
-        path: post.node.fields.slug,
-        component: blogPost,
-        context: {
-          slug: post.node.fields.slug,
-          previous,
-          next,
-        },
-      });
+    createPage({
+      path: edge.node.fields.slug,
+      component: postTemplate,
+      context: {
+        slug: edge.node.fields.slug,
+        prev,
+        next,
+        emoji: emojis[i],
+      },
     });
-
-    return null;
   });
-};
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
+  const categorySet = new Set();
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode });
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
+  _.each(posts, edge => {
+    if (_.get(edge, 'node.frontmatter.categories')) {
+      edge.node.frontmatter.categories.forEach(cat => {
+        categorySet.add(cat);
+      });
+    }
+  });
+
+  const categories = Array.from(categorySet);
+
+  categories.forEach((category, i) => {
+    createPage({
+      path: `/categories/${_.kebabCase(category)}`,
+      component: categoryTemplate,
+      context: {
+        category,
+        emoji: emojis[i],
+      },
     });
-  }
+  });
 };
