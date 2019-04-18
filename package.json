@@ -71,7 +71,9 @@
     "url": "https://github.com/dmetivier/tobea-dev"
   },
   "devDependencies": {
+    "@babel/plugin-transform-named-capturing-groups-regex": "^7.4.2",
     "babel-eslint": "^9.0.0",
+    "babel-preset-gatsby": "^0.1.11",
     "eslint": "^5.14.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-devjmetivier": "0.0.8",

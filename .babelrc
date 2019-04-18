@@ -1,0 +1,18 @@
+{
+  "plugins": [
+    "@babel/plugin-transform-named-capturing-groups-regex"
+  ],
+  "presets": [
+    [
+      "babel-preset-gatsby",
+      {
+        "targets": {
+          "browsers": [
+            ">0.25%",
+            "not dead"
+          ]
+        }
+      }
+    ]
+  ]
+}
