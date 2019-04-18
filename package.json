@@ -8,6 +8,7 @@
     "url": "https://github.com/dmetivier/tobea-dev/issues"
   },
   "dependencies": {
+    "@babel/plugin-transform-named-capturing-groups-regex": "^7.4.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-brands-svg-icons": "^5.8.1",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
@@ -16,6 +17,7 @@
     "@mdx-js/react": "^1.0.2",
     "@mdx-js/tag": "^0.20.3",
     "babel-plugin-styled-components": "^1.10.0",
+    "babel-preset-gatsby": "^0.1.11",
     "date-fns": "^1.30.1",
     "gatsby": "^2.3.23",
     "gatsby-mdx": "^0.6.2",
@@ -71,9 +73,7 @@
     "url": "https://github.com/dmetivier/tobea-dev"
   },
   "devDependencies": {
-    "@babel/plugin-transform-named-capturing-groups-regex": "^7.4.2",
     "babel-eslint": "^9.0.0",
-    "babel-preset-gatsby": "^0.1.11",
     "eslint": "^5.14.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-devjmetivier": "0.0.8",
