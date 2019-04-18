@@ -17,21 +17,35 @@ const colors = {
   danger: '#f44336', // Pomegranate
 };
 
-const light = {
-  bg: colors.white,
-  float: colors.white,
-  accent: colors.black,
-};
-
-const dark = {
-  bg: colors.black,
-  accent: colors.white,
-};
-
 const sizes = {
   desktop: 992,
   tablet: 768,
   phone: 576,
+  maxContent: `760px`,
+};
+
+const light = {
+  wrap: colors.brightGray,
+  bg: colors.white,
+  toggle: colors.dark,
+  badges: colors.dark,
+  text: colors.dark,
+  accent: colors.carmine,
+  palette: colors,
+  width: sizes.maxContent,
+  maxWidth: `100%`,
+};
+
+const dark = {
+  wrap: colors.brightGray,
+  bg: colors.dark,
+  toggle: colors.brightGray,
+  badges: colors.gray,
+  text: colors.white,
+  accent: colors.carmine,
+  palette: colors,
+  width: sizes.maxContent,
+  maxWidth: `100%`,
 };
 
 const theme = {

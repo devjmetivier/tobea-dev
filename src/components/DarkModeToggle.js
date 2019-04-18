@@ -9,6 +9,15 @@ const DarkModeStyled = styled.div`
   position: absolute;
   top: 22px;
   right: 30px;
+
+  .react-toggle {
+    .react-toggle-track {
+      background: ${props => props.theme.toggle};
+    }
+    &:hover .react-toggle-track {
+      background: ${props => props.theme.toggle};
+    }
+  }
 `;
 
 const DarkModeToggle = () => {

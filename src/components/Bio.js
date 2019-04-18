@@ -22,7 +22,7 @@ const Img = styled.img`
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: 2px solid ${props => props.theme.colors.carmine};
+  border: 2px solid ${props => props.theme.accent};
 `;
 
 const Bio = () => (

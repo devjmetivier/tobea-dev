@@ -5,12 +5,12 @@ const Tag = styled.small`
     padding: 2px 4px;
     text-decoration: none;
     border-radius: 2px;
-    background: ${props => props.theme.colors.brightGray};
+    background: ${props => props.theme.wrap};
     box-shadow: inset 0 -1px 0 rgba(27, 31, 35, 0.12);
-    color: ${props => props.theme.colors.white};
+    color: ${props => props.theme.palette.white};
     &:hover {
       text-decoration: none;
-      color: ${props => props.theme.colors.white};
+      color: ${props => props.theme.palette.white};
     }
   }
 `;

@@ -16,9 +16,14 @@ const FooterStyles = styled.footer`
   align-items: center;
   width: ${props => props.theme.width};
   max-width: ${props => props.theme.maxWidth};
+`;
 
-  .badges {
-    font-size: 1.5rem;
+const Badges = styled.div`
+  font-size: 1.5rem;
+
+  a {
+    color: ${props => props.theme.badges};
+    transition: color 0.25s ease;
   }
 `;
 
@@ -27,7 +32,7 @@ const Footer = () => {
 
   return (
     <FooterStyles>
-      <div className='badges'>
+      <Badges>
         <a
           href='https://creativecommons.org/licenses/by-sa/4.0/'
           target='_blank'
@@ -51,7 +56,7 @@ const Footer = () => {
         <a href={socials.repo.link} target='_blank' rel='noopener noreferrer'>
           <FontAwesomeIcon icon={faBug} />
         </a>
-      </div>
+      </Badges>
 
       <div>
         <span>Last build: {buildTime}</span>
