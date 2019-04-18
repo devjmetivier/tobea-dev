@@ -1,106 +1,96 @@
-const path = require('path');
+const config = require(`./config`);
+
+const pathPrefix = config.pathPrefix === `/` ? `` : config.pathPrefix;
 
 module.exports = {
+  pathPrefix: config.pathPrefix,
   siteMetadata: {
-    title: `To Be A Dev`,
-    author: `Devin Metivier`,
-    description: `Personal Blog by Devin Metivier.`,
-    siteUrl: `https://tobea.dev`,
-    social: {
-      twitter: `@devjmetivier`,
-    },
+    siteUrl: config.siteUrl + pathPrefix,
   },
-  pathPrefix: `/`,
   plugins: [
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
     {
-      resolve: 'gatsby-mdx',
+      resolve: `gatsby-plugin-sharp`,
       options: {
-        defaultLayouts: { default: path.resolve('./src/components/Layout.js') },
+        stripMetadata: true,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/pages`,
-        name: `pages`,
+        name: `post`,
+        path: `${__dirname}/blog`,
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        plugins: [
+        name: `images`,
+        path: `${__dirname}/assets/images`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: config.googleAnalyticsID,
+      },
+    },
+    {
+      resolve: `gatsby-mdx`,
+      options: {
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [
           {
-            // TODO: Make this better - browser future-proofing is poor
-            resolve: 'gatsby-remark-code-buttons',
+            resolve: `gatsby-remark-external-links`,
             options: {
-              // Optional button container class name.
-              className: `clip-copy-container`,
-              // Optional button class name.
-              buttonClassName: `clip-copy-button`,
-              // Optional icon class name.
-              iconClassName: `clip-copy-icon`,
-              // Optional `svg` icon. Place any svg markup in here.
-              // icon: `customIcon`,
-              // Optional button text.
-              // text: `Copy To Clipboard`,
-              // Optional tooltip text.
-              // tooltip: `customTooltip`,
+              target: `_blank`,
+              rel: `nofollow noopener noreferrer`,
             },
           },
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 900,
+              quality: 90,
+              withWebp: true,
+              linkImagesToOriginal: false,
             },
           },
+          // TODO: Replace with "mdx-component-autolink-headers"
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: `gatsby-remark-autolink-headers`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-          `gatsby-remark-autolink-headers`,
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
-          {
-            resolve: `gatsby-remark-external-links`,
-            options: {
-              target: `_blank`,
+              maintainCase: false,
             },
           },
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-70693457-4`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-styled-components`,
-      options: {
-        displayName: false,
-      },
-    },
-    `gatsby-plugin-feed`,
+    `gatsby-plugin-catch-links`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-lodash`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `To Be A Dev`,
-        short_name: `2BA-dev`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/assets/images/gatsby-icon.png`,
+        name: config.siteTitleAlt,
+        short_name: config.siteTitleManifest,
+        description: config.siteDescription,
+        start_url: config.pathPrefix,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
+        display: `standalone`,
+        icon: config.favicon,
       },
     },
     `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
-    'gatsby-plugin-dark-mode',
+    'gatsby-plugin-use-dark-mode',
+    {
+      resolve: 'gatsby-plugin-page-progress',
+      options: {
+        matchStartOfPath: ['post'],
+        color: '#B6433B',
+      },
+    },
   ],
 };

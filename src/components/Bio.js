@@ -1,35 +1,47 @@
 import React from 'react';
 import styled from 'styled-components';
-// TODO: Get higher resolution profile picture
-import profilePic from '../assets/images/profile-pic.jpg';
+import avatar from '../../assets/images/avatar.jpg';
+import { socials } from '../../config';
 
-export default function Bio() {
-  return (
-    <BioStyles>
-      <img src={profilePic} alt='Devin Metivier' />
-      <p>
-        Personal blog by{` `}
-        <a href='https://mobile.twitter.com/devjmetivier'>Devin Metivier</a>.
-        <br />
-        ∠( ᐛ 」∠)＿
-      </p>
-    </BioStyles>
-  );
-}
-
-const BioStyles = styled.div`
+const BioStyled = styled.div`
   display: flex;
-  justify-content: flex-start;
+  flex-flow: row nowrap;
   align-items: center;
+  margin: 1rem 0;
 
-  img {
-    margin-right: 1rem;
-    width: 5.5rem;
-    height: 5.5rem;
-    border-radius: 50%;
+  & > div {
+    margin-left: 1rem;
   }
 
   p {
     margin: 0;
   }
 `;
+
+const Img = styled.img`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid ${props => props.theme.accent};
+`;
+
+const Bio = () => (
+  <BioStyled>
+    <Img src={avatar} alt='Devin Metivier' />
+    <div>
+      <p>
+        Personal blog by{' '}
+        <a
+          href={socials.twitter.link}
+          rel='noopener noreferrer'
+          target='_blank'
+        >
+          Devin Metivier
+        </a>
+      </p>
+      <p>I like to share what I learn 😘</p>
+    </div>
+  </BioStyled>
+);
+
+export default Bio;

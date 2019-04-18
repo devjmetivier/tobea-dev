@@ -1,5 +1,8 @@
-// bootstrap reboot: https://github.com/twbs/bootstrap/blob/v4-dev/dist/css/bootstrap-reboot.min.css
-require(`./src/assets/css/reboot.min.css`);
-require(`./src/assets/css/main.css`);
+import { wrapRootElement as wrap } from './wrap-root-element';
 
-require(`prismjs/themes/prism-tomorrow.css`);
+import './assets/css/reboot.min.css';
+import './assets/css/main.css';
+import './assets/css/react-toggle.css';
+import './assets/css/code-block-badge-colors.css';
+
+export const wrapRootElement = wrap;

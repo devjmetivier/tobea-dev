@@ -1,98 +1,76 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
-import { ThemeToggler } from 'gatsby-plugin-dark-mode';
+import styled, { ThemeProvider } from 'styled-components';
+import useDarkMode from 'use-dark-mode';
+import DarkModeToggle from './DarkModeToggle';
 
-const footLinks = [
-  `https://mobile.twitter.com/devjmetivier,Twitter`,
-  `https://github.com/dmetivier,Github`,
-  `https://github.com/dmetivier/tobea-dev,Source`,
-];
+import { socials } from '../../config';
+import SEO from './SEO';
+import Header from './Header';
+import Footer from './Footer';
+import theme from '../../config/theme';
+import useBuildTime from '../hooks/useBuildTime';
 
-export default function Layout(props) {
-  const { location, title, children } = props;
-  const rootPath = `${__PATH_PREFIX__}/`;
-  let header;
+const Wrapper = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  background: ${props => props.theme.wrap};
+  min-height: 100vh;
+`;
 
-  if (location.pathname === rootPath) {
-    header = (
-      <h1>
-        <Link to='/'>{title}</Link>
-      </h1>
-    );
-  } else {
-    header = (
-      <h3>
-        <Link to='/'>{title}</Link>
-      </h3>
-    );
-  }
+const Float = styled.div`
+  margin: 8% 0;
+  padding: 20px 30px;
+  position: relative;
+  width: ${props => props.theme.width};
+  max-width: ${props => props.theme.maxWidth};
+  border-radius: 10px;
+  background: ${props => props.theme.bg};
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transition: background 0.25s ease;
+`;
+
+const Layout = ({ children, customSEO, location }) => {
+  const buildTime = useBuildTime();
+  // TODO: Extract styles from main.css and use hook to switch between themes.
+  const darkMode = useDarkMode(false);
+  const currentTheme = darkMode.value ? theme.dark : theme.light;
+
   return (
-    <Container>
-      <Header>
-        {header}
-        <ThemeToggler>
-          {({ theme, toggleTheme }) => (
-            <label htmlFor='mode'>
-              <input
-                type='checkbox'
-                id='mode'
-                onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')}
-                checked={theme === 'dark'}
-              />
-            </label>
-          )}
-        </ThemeToggler>
-      </Header>
-      <main>{children}</main>
-      <Footer>
-        <div>
-          <a
-            rel='license'
-            href='http://creativecommons.org/licenses/by-sa/4.0/'
-          >
-            <img
-              alt='Creative Commons License'
-              style={{ borderWidth: 0 }}
-              src='https://i.creativecommons.org/l/by-sa/4.0/80x15.png'
-            />
-          </a>{' '}
-          Built with <a href='https://www.gatsbyjs.org'>Gatsby</a>
-        </div>
-        <div>
-          {footLinks.map(link => {
-            const arr = link.split(`,`);
-            return <a href={arr[0]}>{arr[1]}</a>;
-          })}
-        </div>
-      </Footer>
-    </Container>
+    <ThemeProvider theme={currentTheme}>
+      {/* <ThemeProvider theme={darkMode.value ? theme.dark : theme.light}> */}
+      <Wrapper>
+        {!customSEO && <SEO buildTime={buildTime} />}
+        <Float className='layout-float'>
+          <DarkModeToggle />
+          <Header>
+            {location.pathname === `/` ? (
+              <h1>
+                <Link to='/'>To Be A Dev</Link>
+              </h1>
+            ) : (
+              <h3>
+                <Link to='/'>To Be A Dev</Link>
+              </h3>
+            )}
+          </Header>
+          {children}
+          <Footer />
+        </Float>
+      </Wrapper>
+    </ThemeProvider>
   );
-}
+};
 
-const Container = styled.div`
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  max-width: 70rem;
-`;
+export default Layout;
 
-const Header = styled.header`
-  display: flex;
-  justify-content: space-between;
+Layout.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
+  customSEO: PropTypes.bool,
+};
 
-  label {
-    margin-top: 1.5rem;
-  }
-`;
-
-const Footer = styled.footer`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5rem;
-
-  div:last-of-type {
-    a {
-      margin-left: 10px;
-    }
-  }
-`;
+Layout.defaultProps = {
+  customSEO: false,
+};
