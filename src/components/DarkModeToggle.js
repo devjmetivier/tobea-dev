@@ -34,12 +34,6 @@ const DarkModeToggle = () => {
         }}
         onChange={darkMode.toggle}
       />
-      {/* <button type='button' onClick={darkMode.disable}> */}
-      {/*  ☀ */}
-      {/* </button> */}
-      {/* <button type='button' onClick={darkMode.enable}> */}
-      {/*  ☾ */}
-      {/* </button> */}
     </DarkModeStyled>
   );
 };
