@@ -1,11 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
 import DarkModeToggle from './DarkModeToggle';
 
-import { socials } from '../../config';
 import SEO from './SEO';
 import Header from './Header';
 import Footer from './Footer';

@@ -5,7 +5,6 @@ import { Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 
 import Tag from './Tag';
-import Layout from './Layout';
 
 const Post = styled.article``;
 
