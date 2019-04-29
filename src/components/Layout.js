@@ -26,14 +26,12 @@ const Float = styled.div`
   width: ${props => props.theme.width};
   max-width: ${props => props.theme.maxWidth};
   border-radius: 10px;
-  background: ${props => props.theme.bg};
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   transition: background 0.25s ease;
 `;
 
 const Layout = ({ children, customSEO, location }) => {
   const buildTime = useBuildTime();
-  // TODO: Extract styles from main.css and use hook to switch between themes.
   const darkMode = useDarkMode(false);
   const currentTheme = darkMode.value ? theme.dark : theme.light;
 

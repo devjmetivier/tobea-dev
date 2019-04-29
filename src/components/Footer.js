@@ -20,11 +20,6 @@ const FooterStyles = styled.footer`
 
 const Badges = styled.div`
   font-size: 1.5rem;
-
-  a {
-    color: ${props => props.theme.badges};
-    transition: color 0.25s ease;
-  }
 `;
 
 const Footer = () => {
@@ -32,7 +27,7 @@ const Footer = () => {
 
   return (
     <FooterStyles>
-      <Badges>
+      <Badges className='badges'>
         <a
           href='https://creativecommons.org/licenses/by-sa/4.0/'
           target='_blank'

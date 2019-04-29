@@ -68,7 +68,7 @@ const Post = ({
         <PostTags>
           {post.categories.map((cat, i) => (
             <Fragment key={cat}>
-              <Tag style={{ marginLeft: i === 0 ? '0' : '4px' }}>
+              <Tag index={i}>
                 <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
               </Tag>
             </Fragment>

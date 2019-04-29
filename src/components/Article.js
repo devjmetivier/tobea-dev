@@ -35,7 +35,7 @@ const Article = ({
           {!isCategoryPage && (
             <>
               {i === 0 && `${String.fromCharCode(8212)} `}
-              <Tag style={{ marginLeft: i === 0 ? '0' : '4px' }}>
+              <Tag index={i} >
                 <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
               </Tag>
             </>

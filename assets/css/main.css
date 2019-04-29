@@ -1,4 +1,6 @@
 :root {
+  --white: white;
+
   --porcelain: #f2f3f4;
   --sienna: #d09056;
   --gray: #90969a;
@@ -9,22 +11,17 @@
   --success: #60a866;
   --danger: #f44336;
 
+  --wrap: var(--brightGray);
+  --bg: var(--white);
+  --toggle: var(--dark);
+  --badges: var(--dark);
   --text: var(--dark);
-}
-
-body, body.light-mode {
-  --text: var(--dark);
-}
-
-body.dark-mode {
-  --text: #fff;
+  --accent: var(--carmine);
 }
 
 body {
-  color: var(--text);
   transition: color .25s ease;
 }
-
 
 h1 a, h1 a:hover,
 h2 a, h2 a:hover,
@@ -84,4 +81,43 @@ span.token.keyword {
 
 .live-preview {
   margin-bottom: 1rem;
+}
+
+.badges a {
+  transition: color 0.25s ease;
+}
+
+/* Light/Dark Mode Styles */
+.dark-mode {
+  --wrap: var(--brightGray);
+  --bg: var(--dark);
+  --toggle: var(--brightGray);
+  --badges: var(--gray);
+  --text: var(--white);
+  --accent: var(--carmine);
+}
+
+body {
+  color: var(--text);
+}
+
+.layout-float {
+  background: var(--bg);
+}
+
+.avatar-img {
+  border: 2px solid var(--accent);
+}
+
+.react-toggle .react-toggle-track,
+.react-toggle:hover .react-toggle-track {
+  background: var(--toggle) !important;
+}
+
+.badges a {
+  color: var(--badges);
+}
+
+.tag > a {
+  background: var(--wrap);
 }
