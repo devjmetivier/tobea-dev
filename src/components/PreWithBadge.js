@@ -1,18 +1,16 @@
 import React, { useRef, useState } from 'react';
 
-// TODO: Make badge more fancy and with copy icon
-
 const PreWithBadge = ({ className, children, style }) => {
   const reg = /language-(.+)/im;
   const [origin, badge] = className.match(reg);
 
   const content = useRef(null);
-  const [badgeMessage, updateBadgeMessage] = useState(badge);
+  const [badgeMessage, setBadgeMessage] = useState(badge);
 
   const copyMessage = m => {
-    updateBadgeMessage(m);
+    setBadgeMessage(m);
     setTimeout(() => {
-      updateBadgeMessage(badge);
+      setBadgeMessage(badge);
     }, 2000);
   };
 
