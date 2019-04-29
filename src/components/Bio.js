@@ -38,7 +38,7 @@ const Bio = () => (
           Devin Metivier
         </a>
       </p>
-      <p>I like to share what I learn 😘</p>
+      <p>I like to share what I learn</p>
     </div>
   </BioStyled>
 );
