@@ -17,9 +17,9 @@ const PreWithBadge = ({ className, children, style }) => {
   };
 
   const copyPreContent = () => {
-    const block = content.current.innerText;
+    const { innerText } = content.current;
     navigator.clipboard
-      .writeText(block)
+      .writeText(innerText)
       .then(() => copyMessage('Copied'), () => copyMessage('Error'));
   };
 
