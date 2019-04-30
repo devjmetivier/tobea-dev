@@ -6,7 +6,7 @@ export default function useBuildTime() {
     query {
       site {
         #        buildTime
-        buildTime
+        buildTime(formatString: "MM/DD/YYYY")
       }
     }
   `);
