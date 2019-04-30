@@ -83,9 +83,9 @@ I've learned a fair bit about Gatsby over the last couple months. There's a real
 I've had pretty few challenges with Gatsby, especially in the v2 release. Dipping your toes into the [API](https://www.gatsbyjs.org/docs/api-reference/) isn't as scary as you might think. I'm of the opinion that they make it very intuitive and they document it **very well**.
 
 ### MDX 😍/🤬
-What a roller coaster. I have to preface that at the time of developing this blog - in the beginning I was on the v0 release, and upgraded to v1 shortly before I launched my blog. I really, really liked the idea of this and had all sorts of cool ideas for things that I would be able to demo in code blocks directly on my blog page. The concept was great, and the power potential was limitless. It fell pretty flat to start.
+What a roller coaster. I have to preface that at the time of developing this blog - in the beginning I was on the `v0` release, and upgraded to `v1` shortly before I launched my blog. I really, really liked the idea of this and had all sorts of cool ideas for things that I would be able to demo in code blocks directly on my blog page. The concept was great, and the power potential was limitless. It fell pretty flat to start.
 
-I had all sorts of issues for even the simple things working with Gatsby. Image routing was wildly inconsistent. Syntax highlighting with Prism was a pain... in... the... 🤬🤬🤬. It was my first introduction to the fact that v0 libraries are no guarantee. BUT... that all kinda went away.
+I had all sorts of issues for even the simple things working with Gatsby. Image routing was wildly inconsistent. Syntax highlighting with Prism was a pain... in... the... 🤬🤬🤬. It was my first introduction to the fact that `v0` libraries are no guarantee. BUT... that all kinda went away.
 
 As soon as all my adjacent packages were updated to support v1 upon it's release (which took maybe 3 days?), pretty much all of my problems went away 🚀 I'm by no means a MDX power user (yet), but now the experience is a very modest thumbs up 👍 I can even do cool stuff like inline editors:
 
@@ -100,6 +100,37 @@ const Button = () => {
 render(Button);
 ```
 
-import Bio from '../../src/components/Bio';
+I can also just import components directly into my markdown files (I can use either `.md` or `.mdx` files):
 
-<Bio />
+import BigHello from './src/components/BigHello';
+
+<BigHello />
+
+JS:
+
+```js
+import React from 'react';
+import styled from 'styled-components';
+
+const H1 = styled.h1`
+  font-size: 100px;
+  line-height: 1;
+`;
+
+export default function BigHello() {
+  return <H1>Hello!</H1>;
+}
+```
+
+And I import it directly in markdown:
+
+```md
+import BigHello from './src/components/BigHello';
+
+<BigHello />
+```
+
+### React Hooks
+Hooks are a new syntax for React. I've had my own challenges using them, but for the most part it's been pretty pleasant. I've made it a rule of thumb to not use class-based components in my blog's code. So far so good 👍 I haven't felt the pressure to use class-based components or switch to it because I didn't understand how to do something in hooks. Custom hooks are really nice too.
+
+### Theming
