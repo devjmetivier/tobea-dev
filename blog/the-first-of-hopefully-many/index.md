@@ -134,3 +134,8 @@ import BigHello from './src/components/BigHello';
 Hooks are a new syntax for React. I've had my own challenges using them, but for the most part it's been pretty pleasant. I've made it a rule of thumb to not use class-based components in my blog's code. So far so good 👍 I haven't felt the pressure to use class-based components or switch to it because I didn't understand how to do something in hooks. Custom hooks are really nice too.
 
 ### Theming
+I originally tried to isolate everything to [styled-components](https://www.styled-components.com), but really only found that, after adding a `dark mode` feature to the blog, it wasn't the best approach. Users can now set a system preference to have a light or dark theme. If you're like me, you have it set to be `dark` by default. I wasn't aware that the plugin that I'm using checks to see what preference of the user is and it took me forever to figure out why I was loading some light mode styles when dark mode was turned on. I've since extracted most of the theming elements that have to do with changing colors depending on light/dark mode.
+
+styled-components has a really great system for theming applications. I have my blog tied to a few dimensions in a configuration file. Anytime I need a change, I change it in one place and it works like magic 🧝‍♂️ I'm not completely happy with the way my blog looks as of writing this first post, but I hope to hire a designer in the future to work out something that's unique to my likeness and fits the mood I want to set for my content. If you're interested - [@me](https://www.styled-components.com) 😁
+
+### Hosting
