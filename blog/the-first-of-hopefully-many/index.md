@@ -130,6 +130,8 @@ import BigHello from './src/components/BigHello';
 <BigHello />
 ```
 
+One gripe I really have with MDX right now is that there's not any syntax highlighting support at all for the editor I use. I do recognize, though, that that's a shortcoming of WebStorm and not MDX's fault. Pretty sure VS Code has syntax support for it already through third party plugins.
+
 ### React Hooks
 Hooks are a new syntax for React. I've had my own challenges using them, but for the most part it's been pretty pleasant. I've made it a rule of thumb to not use class-based components in my blog's code. So far so good 👍 I haven't felt the pressure to use class-based components or switch to it because I didn't understand how to do something in hooks. Custom hooks are really nice too.
 
