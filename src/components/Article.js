@@ -5,6 +5,7 @@ import { Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 
 import Tag from './Tag';
+import useDateFormat from '../hooks/useDateFormat';
 
 const Post = styled.article``;
 
@@ -29,13 +30,14 @@ const Article = ({
       <Title>
         <Link to={slug}>{title}</Link>
       </Title>
-      {date} &mdash; {emoji ? emoji.repeat(timeToRead) : `${timeToRead} min`}{' '}
+      {useDateFormat(date)} &mdash;{' '}
+      {emoji ? emoji.repeat(timeToRead) : `${timeToRead} min`}{' '}
       {categories.map((cat, i) => (
         <React.Fragment key={cat}>
           {!isCategoryPage && (
             <>
               {i === 0 && `${String.fromCharCode(8212)} `}
-              <Tag index={i} >
+              <Tag index={i}>
                 <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
               </Tag>
             </>

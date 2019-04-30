@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import { distanceInWordsToNow } from 'date-fns';
 
-const useBuildTime = () => {
+export default function useBuildTime() {
   const time = useStaticQuery(graphql`
     query {
       site {
@@ -13,6 +13,4 @@ const useBuildTime = () => {
 
   return distanceInWordsToNow(time.site.buildTime);
   // return time.site.buildTime;
-};
-
-export default useBuildTime;
+}

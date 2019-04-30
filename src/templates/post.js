@@ -6,6 +6,7 @@ import kebabCase from 'lodash/kebabCase';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 
 import { Layout, Tag, SEO, PrevNext, Bio } from '../components';
+import useDateFormat from '../hooks/useDateFormat';
 
 const Title = styled.h1`
   text-align: center;
@@ -62,7 +63,7 @@ const Post = ({
         <Title>{post.title}</Title>
 
         <PostInfo>
-          {post.date} &mdash; {emoji.repeat(postNode.timeToRead)}
+          {useDateFormat(post.date)} &mdash; {emoji.repeat(postNode.timeToRead)}
         </PostInfo>
 
         <PostTags>
@@ -117,7 +118,7 @@ export const postQuery = graphql`
       excerpt
       frontmatter {
         title
-        date(formatString: "MM/DD/YYYY")
+        date
         categories
       }
       timeToRead

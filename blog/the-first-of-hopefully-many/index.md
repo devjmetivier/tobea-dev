@@ -1,6 +1,6 @@
 ---
 title: "The First of (Hopefully) Many"
-date: "TBD"
+date: "2019-04-30"
 categories:
 - Gatsby
 - MDX
@@ -56,11 +56,11 @@ Longer read:
 Let's start with the everything it took to get this up and running. Starting from the top and onward:
 
 * [Domain](#domain)
-* Gatsby
-* MDX
-* React Hooks
-* Theming
-* Hosting (Zeit 😘)
+* [Gatsby](#gatsby)
+* [MDX](#mdx)
+* [React Hooks](#react-hooks)
+* [Theming](#theming)
+* [Hosting (Zeit 😘)](#hosting)
 
 ### Domain
 I grabbed a couple domains during the whole [Google .dev domain hustle](https://domains.google/tld/dev). One that I'm going to hold onto for a bit and the other you're seeing in use now - [tobea.dev](https://www.tobea.dev). There's some really good ones that **weren't** taken that I don't intend to pay for, but thought were awesome domains (at the time):
@@ -87,28 +87,19 @@ What a roller coaster. I have to preface that at the time of developing this blo
 
 I had all sorts of issues for even the simple things working with Gatsby. Image routing was wildly inconsistent. Syntax highlighting with Prism was a pain... in... the... 🤬🤬🤬. It was my first introduction to the fact that v0 libraries are no guarantee. BUT... that all kinda went away.
 
-As soon as all my adjacent packages were updated to support v1 upon it's release (which took maybe 3 days?), pretty much all of my problems went away 🚀 I'm by no means a MDX power user (yet), but now the experience is a very modest thumbs up 👍 I can do cool stuff:
-
-import React, { useState } from 'react';
+As soon as all my adjacent packages were updated to support v1 upon it's release (which took maybe 3 days?), pretty much all of my problems went away 🚀 I'm by no means a MDX power user (yet), but now the experience is a very modest thumbs up 👍 I can even do cool stuff like inline editors:
 
 ```js react-live
-const onClick = () => {
-  const [num, setNum] = useState(0);
-};
-render(<button onClick={() => setNum(prev => prev + 1)}>Click! {num}</button>);
+const Button = () => {
+  const [num, setNum] = React.useState(0);
+  
+  return (<button onClick={() => setNum(prev => prev + 1)}>🥳 {num}</button>)
+}
+
+// I need to call a render method for react-live
+render(Button);
 ```
 
-And under the hood, what I actually write in my .md file is really simple:
+import Bio from '../../src/components/Bio';
 
-```md
-import React, { useState } from 'react';
-
-```js react-live
-const onClick = () => {
-  const [num, setNum] = useState(0);
-};
-render(<button onClick={() => setNum(prev => prev + 1)}>Click! {num}</button>);
-```
-```
-
-¯\_(ツ)_/¯
+<Bio />
