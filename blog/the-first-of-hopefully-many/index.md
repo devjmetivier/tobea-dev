@@ -141,3 +141,20 @@ I originally tried to isolate everything to [styled-components](https://www.styl
 styled-components has a really great system for theming applications. I have my blog tied to a few dimensions in a configuration file. Anytime I need a change, I change it in one place and it works like magic 🧝‍♂️ I'm not completely happy with the way my blog looks as of writing this first post, but I hope to hire a designer in the future to work out something that's unique to my likeness and fits the mood I want to set for my content. If you're interested - [@me](https://www.styled-components.com) 😁
 
 ### Hosting
+I've been messing around with Zeit's [Now](https://zeit.co/now) deployment platform for about a year and a half. I didn't think it was all that powerful in the beginning but I really like that they allowed you the option to deploy from so many avenues. Now with the Github integration that makes my life a lot easier. Especially when it comes to working on my blog. I gotta say that I love what they do.
+
+There's a lot of great things about Zeit. Everything from their deployment platform, their CDN, their domain management, integrations, and down to their pricing and design is just great. They're incredibly competitive too. They even take care of Lambda scaling for you so that you never pay more than you have to for your lambda functions. They do everything within their power to make it as stupid cheap as it can possibly be. They're very ethically sound when it comes to operations even being a relatively young company. Then they just pass the savings on to their customers. I don't need to tell you that that's extremely attractive for both small business and enterprise development teams to hop on board with them.
+
+If I had to pick one favorite thing about Zeit's Now platform, I'd have to pick their thinking about deployment. Specifically if you have the Github integration, you have the ability to treat every commit as a deployment instance. Anytime I push code to Github, in any branch, Now takes that latest commit and builds everything attached to it. Every. Single. Time. At no cost 🎉 It's incredible. You can even alias your deployments to whatever names you like `example.now.sh` and show it off if need be.
+
+> Hold on a second. Doesn't that mean that if you have a domain attached to a project that every time you deploy everyone can see the changes you just made?
+
+No.
+
+Now has the concept of `aliasing` all of your deploys. They handle a lot of it for you for any wild commit that you make to your project, sure. But by default you can alias your domain once, and that deployment instance will always be aliased to that domain for as long as you keep the alias to that deploy.
+
+> Ok that sounds good, but the aliasing of the domain once you want to push new code live must be a pain in the butt **AND** take a long time...
+
+It's one command, and it's near instant 🎉 Everything is so fast it's akin to flipping a light switch to take your code live. It's... Awesome...
+
+I will be using this service for near everything I do if I have the choice.
