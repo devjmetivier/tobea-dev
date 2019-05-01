@@ -56,7 +56,3 @@ Article.propTypes = {
   categories: PropTypes.array.isRequired,
   isCategoryPage: PropTypes.bool.isRequired,
 };
-
-Article.defaultProps = {
-  isCategoryPage: false,
-};
