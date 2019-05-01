@@ -15,34 +15,40 @@ const Footer = () => {
 
   return (
     <FooterStyles>
-      <div className='badges'>
-        <a
-          href='https://creativecommons.org/licenses/by-sa/4.0/'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <FontAwesomeIcon icon={faCreativeCommons} />
-        </a>{' '}
-        {` ${String.fromCharCode(183)} `}
-        <a
-          href={socials.twitter.link}
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <FontAwesomeIcon icon={faTwitter} />
-        </a>
-        {` ${String.fromCharCode(183)} `}
-        <a href={socials.github.link} target='_blank' rel='noopener noreferrer'>
-          <FontAwesomeIcon icon={faGithub} />
-        </a>
-        {` ${String.fromCharCode(183)} `}
-        <a href={socials.repo.link} target='_blank' rel='noopener noreferrer'>
-          <FontAwesomeIcon icon={faBug} />
-        </a>
-      </div>
-
       <div>
-        <span>Last build: {buildTime}</span>
+        <div className='badges'>
+          <a
+            href='https://creativecommons.org/licenses/by-sa/4.0/'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FontAwesomeIcon icon={faCreativeCommons} />
+          </a>{' '}
+          {` ${String.fromCharCode(183)} `}
+          <a
+            href={socials.twitter.link}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FontAwesomeIcon icon={faTwitter} />
+          </a>
+          {` ${String.fromCharCode(183)} `}
+          <a
+            href={socials.github.link}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FontAwesomeIcon icon={faGithub} />
+          </a>
+          {` ${String.fromCharCode(183)} `}
+          <a href={socials.repo.link} target='_blank' rel='noopener noreferrer'>
+            <FontAwesomeIcon icon={faBug} />
+          </a>
+        </div>
+
+        <div>
+          <span>Last build: {buildTime}</span>
+        </div>
       </div>
     </FooterStyles>
   );

@@ -2,10 +2,15 @@ import styled from 'styled-components';
 
 const FooterStyles = styled.footer`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: ${props => props.theme.width};
-  max-width: ${props => props.theme.maxWidth};
+  align-items: flex-end;
+  flex-grow: 1;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
 `;
 
 export default FooterStyles;
