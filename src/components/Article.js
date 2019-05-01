@@ -7,10 +7,6 @@ import kebabCase from 'lodash/kebabCase';
 import Tag from './Tag';
 import useDateFormat from '../hooks/useDateFormat';
 
-const Post = styled.article``;
-
-const Title = styled.h2``;
-
 const Excerpt = styled.p`
   margin-top: 0.5rem;
 `;
@@ -26,10 +22,10 @@ const Article = ({
   isCategoryPage,
 }) => {
   return (
-    <Post>
-      <Title>
+    <article>
+      <h2>
         <Link to={slug}>{title}</Link>
-      </Title>
+      </h2>
       {useDateFormat(date)} &mdash;{' '}
       {emoji ? emoji.repeat(timeToRead) : `${timeToRead} min`}{' '}
       {categories.map((cat, i) => (
@@ -45,7 +41,7 @@ const Article = ({
         </React.Fragment>
       ))}
       <Excerpt>{excerpt}</Excerpt>
-    </Post>
+    </article>
   );
 };
 

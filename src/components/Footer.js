@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCreativeCommons,
@@ -8,26 +7,15 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { faBug } from '@fortawesome/free-solid-svg-icons';
 import { socials } from '../../config';
+import { FooterStyles } from './ui';
 import useBuildTime from '../hooks/useBuildTime';
-
-const FooterStyles = styled.footer`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: ${props => props.theme.width};
-  max-width: ${props => props.theme.maxWidth};
-`;
-
-const Badges = styled.div`
-  font-size: 1.5rem;
-`;
 
 const Footer = () => {
   const buildTime = useBuildTime();
 
   return (
     <FooterStyles>
-      <Badges className='badges'>
+      <div className='badges'>
         <a
           href='https://creativecommons.org/licenses/by-sa/4.0/'
           target='_blank'
@@ -51,7 +39,7 @@ const Footer = () => {
         <a href={socials.repo.link} target='_blank' rel='noopener noreferrer'>
           <FontAwesomeIcon icon={faBug} />
         </a>
-      </Badges>
+      </div>
 
       <div>
         <span>Last build: {buildTime}</span>

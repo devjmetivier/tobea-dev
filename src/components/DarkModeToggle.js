@@ -5,7 +5,7 @@ import Toggle from 'react-toggle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
-const DarkModeStyled = styled.div`
+const DarkModeStyles = styled.div`
   position: absolute;
   top: 22px;
   right: 30px;
@@ -15,7 +15,7 @@ const DarkModeToggle = () => {
   const darkMode = useDarkMode(false);
 
   return (
-    <DarkModeStyled darkMode={darkMode.value}>
+    <DarkModeStyles darkMode={darkMode.value}>
       <Toggle
         className='dark-toggle'
         defaultChecked={darkMode.value}
@@ -25,7 +25,7 @@ const DarkModeToggle = () => {
         }}
         onChange={darkMode.toggle}
       />
-    </DarkModeStyled>
+    </DarkModeStyles>
   );
 };
 

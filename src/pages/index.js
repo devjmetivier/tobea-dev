@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
 
 import { emojis } from '../../config/emojis';
-import { Layout, Article, Bio, SectionTitle } from '../components';
-
-const Content = styled.div``;
+import { Layout, Article, Bio } from '../components';
 
 const IndexPage = ({
   data: {
@@ -17,8 +14,8 @@ const IndexPage = ({
   <Layout location={location}>
     <main>
       <Bio />
-      <Content>
-        <SectionTitle>Latest Posts</SectionTitle>
+      <div>
+        <h2 style={{ textAlign: 'center' }}>Latest Posts</h2>
         {postEdges.map((post, i) => {
           const { frontmatter, excerpt, timeToRead, fields } = post.node;
           const { title, date, categories } = frontmatter;
@@ -36,7 +33,7 @@ const IndexPage = ({
             />
           );
         })}
-      </Content>
+      </div>
     </main>
   </Layout>
 );

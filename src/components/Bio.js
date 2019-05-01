@@ -2,21 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import avatar from '../../assets/images/avatar.jpg';
 import { socials } from '../../config';
-
-const BioStyled = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  margin: 1rem 0;
-
-  & > div {
-    margin-left: 1rem;
-  }
-
-  p {
-    margin: 0;
-  }
-`;
+import { BioStyles } from './ui';
 
 const Img = styled.img`
   width: 60px;
@@ -25,7 +11,7 @@ const Img = styled.img`
 `;
 
 const Bio = () => (
-  <BioStyled>
+  <BioStyles>
     <Img className='avatar-img' src={avatar} alt='Devin Metivier' />
     <div>
       <p>
@@ -40,7 +26,7 @@ const Bio = () => (
       </p>
       <p>I like to share what I learn</p>
     </div>
-  </BioStyled>
+  </BioStyles>
 );
 
 export default Bio;

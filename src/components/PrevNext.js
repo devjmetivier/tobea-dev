@@ -1,42 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  margin-bottom: 0.5rem;
-`;
-
-const Spacer = styled.div`
-  flex-grow: 1;
-`;
-
-const Button = styled.div`
-  & > a {
-    padding: 5px 12px;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    border-radius: 3px;
-    background: ${props => props.theme.palette.brightGray};
-    color: ${props => props.theme.palette.white};
-    &:hover {
-      text-decoration: none;
-      color: ${props => props.theme.palette.white};
-    }
-  }
-`;
-
-const Prev = styled(Button)``;
-
-const Next = styled(Button)`
-  text-align: right;
-`;
+import { PrevNextWrapper, Spacer, Next, Prev } from './ui';
 
 const PrevNext = ({ next, prev }) => (
-  <Wrapper>
+  <PrevNextWrapper>
     {prev && (
       <Prev>
         <Link to={prev.fields.slug}>
@@ -56,7 +25,7 @@ const PrevNext = ({ next, prev }) => (
         </Link>
       </Next>
     )}
-  </Wrapper>
+  </PrevNextWrapper>
 );
 
 export default PrevNext;

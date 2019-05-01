@@ -55,14 +55,14 @@ Longer read:
 
 Let's start with the everything it took to get this up and running. Starting from the top and onward:
 
-* [Domain](#domain)
+* [Domains](#domains)
 * [Gatsby](#gatsby)
 * [MDX](#mdx)
 * [React Hooks](#react-hooks)
 * [Theming](#theming)
 * [Hosting (Zeit 😘)](#hosting)
 
-### Domain
+### Domains
 I grabbed a couple domains during the whole [Google .dev domain hustle](https://domains.google/tld/dev). One that I'm going to hold onto for a bit and the other you're seeing in use now - [tobea.dev](https://www.tobea.dev). There's some really good ones that **weren't** taken that I don't intend to pay for, but thought were awesome domains (at the time):
 
 * [likeaboss.dev](https://domains.google.com/m/registrar/search?hl=en&_ga=2.5335091.1807434317.1556564198-183035411.1556564198&_gac=1.48353042.1556564198.EAIaIQobChMIwbm-v_314QIVB7XACh3uZQxdEAAYASAAEgJ4r_D_BwE&searchTerm=likeaboss.dev)
@@ -151,10 +151,13 @@ If I had to pick one favorite thing about Zeit's Now platform, I'd have to pick 
 
 No.
 
-Now has the concept of `aliasing` all of your deploys. They handle a lot of it for you for any wild commit that you make to your project, sure. But by default you can alias your domain once, and that deployment instance will always be aliased to that domain for as long as you keep the alias to that deploy.
+Now has the concept of `aliasing` all of your deploys. They handle a lot of it for you for any wild commit that you make to your project, sure. But by default you can alias your domain once, and that deployment instance will always be aliased to that domain for as long as you have the alias assigned to that deploy.
 
 > Ok that sounds good, but the aliasing of the domain once you want to push new code live must be a pain in the butt **AND** take a long time...
 
 It's one command, and it's near instant 🎉 Everything is so fast it's akin to flipping a light switch to take your code live. It's... Awesome...
 
 I will be using this service for near everything I do if I have the choice.
+
+## Conclusions
+
