@@ -46,6 +46,9 @@ IndexPage.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export const IndexQuery = graphql`

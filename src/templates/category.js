@@ -63,6 +63,9 @@ Category.propTypes = {
       totalCount: PropTypes.number.isRequired,
     }),
   }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export const postQuery = graphql`

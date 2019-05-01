@@ -41,7 +41,9 @@ Category.propTypes = {
       group: PropTypes.array.isRequired,
     }),
   }).isRequired,
-  location: PropTypes.object.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export const postQuery = graphql`
