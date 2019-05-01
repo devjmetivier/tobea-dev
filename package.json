@@ -56,7 +56,7 @@
 	"scripts": {
 		"build": "gatsby build",
 		"now-build": "gatsby build",
-		"now-dev": "gatsby develop",
+		"now-dev": "gatsby develop -p $PORT",
 		"dev": "gatsby develop",
 		"start": "npm run develop",
 		"serve": "gatsby serve",
