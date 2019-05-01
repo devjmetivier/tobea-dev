@@ -82,7 +82,7 @@ I've learned a fair bit about Gatsby over the last couple months. There's a real
 
 I've had pretty few challenges with Gatsby, especially in the v2 release. Dipping your toes into the [API](https://www.gatsbyjs.org/docs/api-reference/) isn't as scary as you might think. I'm of the opinion that they make it very intuitive and they document it **very well**.
 
-### MDX 😍/🤬
+### MDX...😅
 What a roller coaster. I have to preface that at the time of developing this blog - in the beginning I was on the `v0` release, and upgraded to `v1` shortly before I launched my blog. I really, really liked the idea of this and had all sorts of cool ideas for things that I would be able to demo in code blocks directly on my blog page. The concept was great, and the power potential was limitless. It fell pretty flat to start.
 
 I had all sorts of issues for even the simple things working with Gatsby. Image routing was wildly inconsistent. Syntax highlighting with Prism was a pain... in... the... 🤬🤬🤬. It was my first introduction to the fact that `v0` libraries are no guarantee. BUT... that all kinda went away.
