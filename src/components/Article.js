@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 
 import Tag from './Tag';
 import useDateFormat from '../hooks/useDateFormat';
-
-const Excerpt = styled.p`
-  margin-top: 0.5rem;
-`;
 
 const Article = ({
   title,
@@ -40,7 +35,7 @@ const Article = ({
           )}
         </React.Fragment>
       ))}
-      <Excerpt>{excerpt}</Excerpt>
+      <p style={{ marginTop: '.5rem' }}>{excerpt}</p>
     </article>
   );
 };
