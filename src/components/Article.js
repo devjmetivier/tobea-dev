@@ -55,4 +55,5 @@ Article.propTypes = {
   timeToRead: PropTypes.number.isRequired,
   categories: PropTypes.array.isRequired,
   isCategoryPage: PropTypes.bool.isRequired,
+  emoji: PropTypes.string.isRequired,
 };
