@@ -21,8 +21,8 @@ const sizes = {
   desktop: 992,
   tablet: 768,
   phone: 576,
-  maxContent: `760px`,
-  breakToFullScreen: `790px`,
+  maxContent: `770px`,
+  breakToFullScreen: `800px`,
 };
 
 const light = {
