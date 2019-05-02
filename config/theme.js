@@ -22,6 +22,7 @@ const sizes = {
   tablet: 768,
   phone: 576,
   maxContent: `760px`,
+  breakToFullScreen: `790px`,
 };
 
 const light = {
@@ -33,6 +34,7 @@ const light = {
   accent: colors.carmine,
   palette: colors,
   width: sizes.maxContent,
+  breakToFullScreen: sizes.breakToFullScreen,
   maxWidth: `100%`,
 };
 
@@ -45,6 +47,7 @@ const dark = {
   accent: colors.carmine,
   palette: colors,
   width: sizes.maxContent,
+  breakToFullScreen: sizes.breakToFullScreen,
   maxWidth: `100%`,
 };
 
@@ -52,7 +55,7 @@ const theme = {
   light,
   dark,
   colors,
-  width: `760px`,
+  width: `768px`,
   maxWidth: `100%`,
   baseFontSize: `10px`,
   sizes,

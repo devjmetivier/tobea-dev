@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const SectionTitle = styled.h2`
+const PostTitle = styled.h1`
   text-align: center;
 `;
 
-export default SectionTitle;
+export default PostTitle;

@@ -2,15 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
-import styled from 'styled-components';
 import kebabCase from 'lodash/kebabCase';
 
-import { Layout, SectionTitle, Bio } from '../components';
+import { Layout, Bio } from '../components';
 import config from '../../config';
-
-const Content = styled.div``;
-
-const Title = styled.h3``;
 
 const Category = ({
   data: {
@@ -21,17 +16,17 @@ const Category = ({
   <Layout location={location}>
     <main>
       <Helmet title={`Categories | ${config.siteTitle}`} />
-      <Content>
-        <SectionTitle>Categories</SectionTitle>
+      <div>
+        <h2 style={{ textAlign: 'center' }}>Categories</h2>
         {group.map(category => (
-          <Title key={category.fieldValue}>
+          <h3 key={category.fieldValue}>
             <Link to={`/categories/${kebabCase(category.fieldValue)}`}>
               {category.fieldValue}
             </Link>
             {` `}({category.totalCount})
-          </Title>
+          </h3>
         ))}
-      </Content>
+      </div>
 
       <Bio />
     </main>
@@ -46,7 +41,9 @@ Category.propTypes = {
       group: PropTypes.array.isRequired,
     }),
   }).isRequired,
-  location: PropTypes.object.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export const postQuery = graphql`

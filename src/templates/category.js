@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { Layout, Article, SectionTitle, Bio } from '../components';
+import { Layout, Article, Bio } from '../components';
 
 import config from '../../config';
 
@@ -28,7 +28,7 @@ const Category = ({
       <main>
         <Helmet title={`Category: ${category} | ${config.siteTitle}`} />
         <Content>
-          <SectionTitle>Category &ndash; {category}</SectionTitle>
+          <h2 style={{ textAlign: 'center' }}>Category &ndash; {category}</h2>
           {subline} (See <Link to='/categories'>all categories</Link>)
           {edges.map(post => (
             <Article
@@ -62,6 +62,9 @@ Category.propTypes = {
       edges: PropTypes.array.isRequired,
       totalCount: PropTypes.number.isRequired,
     }),
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
   }).isRequired,
 };
 

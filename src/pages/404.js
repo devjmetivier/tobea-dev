@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Layout, Bio } from '../components';
 
@@ -28,3 +29,9 @@ const NotFound = ({ location }) => {
 };
 
 export default NotFound;
+
+NotFound.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+};

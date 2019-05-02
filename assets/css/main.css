@@ -114,6 +114,10 @@ body {
   background: var(--toggle) !important;
 }
 
+.badges {
+  font-size: 1.5em;
+}
+
 .badges a {
   color: var(--badges);
 }
