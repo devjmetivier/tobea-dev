@@ -32,6 +32,10 @@ h6 a, h6 a:hover {
   text-decoration: none;
 }
 
+.dark-mode [aria-label*='permalink'] svg {
+  fill: white;
+}
+
 a, a:hover {
   color: var(--carmine);
 }
@@ -151,7 +155,7 @@ p code {
   padding: .2em .4em;
   font-size: .85rem;
   border-radius: 3px;
-  background-color: rgba(27,31,35,.05);
+  background-color: rgba(27, 31, 35, .05);
 }
 
 .dark-mode p code {
