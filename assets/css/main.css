@@ -96,6 +96,10 @@ span.token.keyword {
     pointer-events: inherit !important;
     z-index: 2;
   }
+
+  .prism-code {
+    padding: 1.5rem .75rem;
+  }
 }
 
 .live-preview {
