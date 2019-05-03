@@ -24,7 +24,7 @@ const Article = ({
         <Link to={slug}>{title}</Link>
       </h2>
       {useDateFormat(date)} &mdash;{' '}
-      {emoji ? emoji.repeat(timeToRead) : `${timeToRead} min`}{' '}
+      {emoji && timeToRead < 9 ? emoji.repeat(timeToRead) : `${timeToRead} min`}{' '}
       <p style={{ margin: '.5rem 0 0 0' }}>{excerpt}</p>
       <div style={{ margin: '.25rem 0 1rem 0' }}>
         {categories.map((cat, i) => (
