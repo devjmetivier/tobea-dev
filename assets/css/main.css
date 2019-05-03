@@ -145,3 +145,16 @@ body {
 .tag > a {
   background: var(--wrap);
 }
+
+p code {
+  margin: 0;
+  padding: .2em .4em;
+  font-size: .85rem;
+  border-radius: 3px;
+  background-color: rgba(27,31,35,.05);
+}
+
+.dark-mode p code {
+  border: 1px solid rgba(255, 255, 255, .1) !important;
+  background: #222 !important;
+}
