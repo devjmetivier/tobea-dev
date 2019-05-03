@@ -6,8 +6,6 @@ import kebabCase from 'lodash/kebabCase';
 import Tag from './Tag';
 import useDateFormat from '../hooks/useDateFormat';
 
-// TODO: get rid of mid-dashes on smaller devices
-
 const Article = ({
   title,
   date,
