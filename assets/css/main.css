@@ -110,10 +110,6 @@ span.token.keyword {
   transition: color 0.25s ease;
 }
 
-/* TODO: make height of page progress taller on mobile for visibility */
-.gatsby-plugin-page-progress {
-}
-
 /* Light/Dark Mode Styles */
 .dark-mode {
   --wrap: var(--brightGray);
