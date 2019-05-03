@@ -110,6 +110,12 @@ span.token.keyword {
   transition: color 0.25s ease;
 }
 
+.output-container {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 2px solid var(--dark);
+}
+
 /* Light/Dark Mode Styles */
 .dark-mode {
   --wrap: var(--brightGray);

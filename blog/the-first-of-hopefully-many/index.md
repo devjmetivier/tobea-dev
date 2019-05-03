@@ -1,6 +1,6 @@
 ---
 title: "The First of (Hopefully) Many"
-date: "2019-05-03"
+date: "2019-05-02"
 categories:
 - Gatsby
 - MDX
