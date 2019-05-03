@@ -98,6 +98,7 @@ span.token.keyword {
 }
 
 body {
+  background: var(--bg);
   color: var(--text);
 }
 
