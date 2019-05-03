@@ -22,7 +22,10 @@ const Post = ({
         <PostTitle>{post.title}</PostTitle>
 
         <PostInfo>
-          {useDateFormat(post.date)} &mdash; {emoji.repeat(postNode.timeToRead)}
+          {useDateFormat(post.date)} &mdash;{' '}
+          {postNode.timeToRead < 9
+            ? emoji.repeat(postNode.timeToRead)
+            : `${postNode.timeToRead}min`}
         </PostInfo>
 
         <PostTags>
