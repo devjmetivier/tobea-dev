@@ -79,6 +79,21 @@ span.token.keyword {
   font-family: "Dank Mono", "Fira Code", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
 }
 
+.live-editor > pre {
+  white-space: inherit !important;
+}
+
+@media screen and (max-width: 800px) {
+  .live-editor > textarea {
+    z-index: 1;
+  }
+
+  .live-editor > pre {
+    pointer-events: inherit !important;
+    z-index: 2;
+  }
+}
+
 .live-preview {
   margin-bottom: 1rem;
 }
@@ -88,7 +103,8 @@ span.token.keyword {
 }
 
 /* TODO: make height of page progress taller on mobile for visibility */
-.gatsby-plugin-page-progress {}
+.gatsby-plugin-page-progress {
+}
 
 /* Light/Dark Mode Styles */
 .dark-mode {
