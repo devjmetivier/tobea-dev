@@ -25,19 +25,20 @@ const Article = ({
       </h2>
       {useDateFormat(date)} &mdash;{' '}
       {emoji ? emoji.repeat(timeToRead) : `${timeToRead} min`}{' '}
-      {categories.map((cat, i) => (
-        <React.Fragment key={cat}>
-          {!isCategoryPage && (
-            <>
-              {i === 0 && `${String.fromCharCode(8212)} `}
-              <Tag index={i}>
-                <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
-              </Tag>
-            </>
-          )}
-        </React.Fragment>
-      ))}
-      <p style={{ marginTop: '.5rem' }}>{excerpt}</p>
+      <p style={{ margin: '.5rem 0 0 0' }}>{excerpt}</p>
+      <div style={{ margin: '.25rem 0 1rem 0' }}>
+        {categories.map((cat, i) => (
+          <React.Fragment key={cat}>
+            {!isCategoryPage && (
+              <>
+                <Tag index={i}>
+                  <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
+                </Tag>
+              </>
+            )}
+          </React.Fragment>
+        ))}
+      </div>
     </article>
   );
 };

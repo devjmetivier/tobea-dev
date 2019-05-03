@@ -19,7 +19,7 @@ const colors = {
 
 const sizes = {
   desktop: 992,
-  tablet: 768,
+  tablet: 800,
   phone: 576,
   maxContent: `770px`,
   breakToFullScreen: `800px`,
