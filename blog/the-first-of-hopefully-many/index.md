@@ -155,9 +155,12 @@ Now has the concept of `aliasing` all of your deploys. They handle a lot of it f
 
 > Ok that sounds good, but the aliasing of the domain once you want to push new code live must be a pain in the butt **AND** take a long time...
 
-It's one command, and it's near instant 🎉 Everything is so fast it's akin to flipping a light switch to take your code live. It's... Awesome...
+It's one command, and it's near instant 🎉 Everything is so fast it's akin to flipping a light switch to take your code live. It's... Awesome... And what I'm saying doesn't scratch the surface.
 
 I will be using this service for near everything I do if I have the choice.
 
 ## Conclusions
 
+Building this blog in particular wasn't easy. I have many nice things that I would want as a visitor. There are lessons to be learned with everything you build. I plan on leveraging some of the things that I learned building this into more content for the blog.
+
+If you wanna come along for the ride, follow me on [Twitter](https://twitter.com/devjmetivier) and give me a shout if you like my work. Until then... See ya in the next post ✌🏻.
