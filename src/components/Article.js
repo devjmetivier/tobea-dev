@@ -49,7 +49,11 @@ Article.propTypes = {
   excerpt: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   timeToRead: PropTypes.number.isRequired,
-  categories: PropTypes.array.isRequired,
-  isCategoryPage: PropTypes.bool.isRequired,
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isCategoryPage: PropTypes.bool,
   emoji: PropTypes.string.isRequired,
+};
+
+Article.defaultProps = {
+  isCategoryPage: false,
 };

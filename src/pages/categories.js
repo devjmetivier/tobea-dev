@@ -38,7 +38,7 @@ export default Category;
 Category.propTypes = {
   data: PropTypes.shape({
     allMdx: PropTypes.shape({
-      group: PropTypes.array.isRequired,
+      group: PropTypes.arrayOf(PropTypes.string).isRequired,
     }),
   }).isRequired,
   location: PropTypes.shape({
