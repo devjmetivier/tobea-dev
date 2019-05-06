@@ -21,8 +21,8 @@ const IndexPage = ({
           const { title, date, categories } = frontmatter;
           const { slug } = fields;
 
-          function reverseEmojiOrder(i) {
-            return postEdges.length - 1 - i;
+          function reverseEmojiOrder(edgeIndex) {
+            return postEdges.length - 1 - edgeIndex;
           }
 
           return (
