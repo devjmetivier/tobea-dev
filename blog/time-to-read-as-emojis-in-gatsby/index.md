@@ -58,7 +58,7 @@ Above I'm just grabbing all of my posts by order of date in descending order. I 
 
 My query returns an array of `edges` which consist of all the data needed to create my articles. I can extract those edges and loop over them to create individual pages. Let's also import our emojis from `emoji.js`:
 
-```js
+```js {2,8-19}
 // we have to use require() in gatsby-node.js
 const { emojis } = require('./config/emojis');
 //...
@@ -83,7 +83,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 Here's where it get's tricky. Because we're ordering the articles in descending order, we have to reverse the order at which we're referencing our array. If we don't do this, each new article (the first in the list) would always inherit the first emoji in our emojis array. This looks bad because we want the older articles to retain their emojis as more are added to the article directory. So let's reverse the order we're passing emoji info to the page using computer science magic 🧝🏻‍♀️
 
-```js
+```js {6-8}
 exports.createPages = async ({ graphql, actions }) => {
   //...
   
