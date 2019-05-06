@@ -18,10 +18,8 @@ const Code = ({ codeString, language, ...props }) => {
         <LiveEditor
           className='live-editor'
           disabled={
-            typeof window !== 'undefined'
-              ? window.matchMedia(`(max-width: ${theme.sizes.tablet}px)`)
-                  .matches
-              : false
+            typeof window !== 'undefined' &&
+            window.matchMedia(`(max-width: ${theme.sizes.tablet}px)`).matches
           }
         />
         <LiveError />
