@@ -15,7 +15,7 @@ module.exports = {
   userTwitter: `@devjmetivier`, // Twitter Username - Optional
   ogSiteName: `tobeadev`, // Facebook Site Name - Optional
   ogLanguage: `en_US`, // Facebook Language
-  // googleAnalyticsID: 'UA-47519312-6',
+  googleAnalyticsID: 'UA-70693457-4',
   // Manifest and Progress color
   // See: https://developers.google.com/web/fundamentals/web-app-manifest/
   themeColor: `#B6433B`,
