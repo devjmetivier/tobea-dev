@@ -20,6 +20,11 @@ const IndexPage = ({
           const { frontmatter, excerpt, timeToRead, fields } = post.node;
           const { title, date, categories } = frontmatter;
           const { slug } = fields;
+
+          function reverseEmojiOrder(i) {
+            return postEdges.length - 1 - i;
+          }
+
           return (
             <Article
               key={slug}
@@ -27,7 +32,7 @@ const IndexPage = ({
               date={date}
               excerpt={excerpt}
               timeToRead={timeToRead}
-              emoji={emojis[i]}
+              emoji={emojis[reverseEmojiOrder(i)]}
               categories={categories}
               slug={slug}
             />

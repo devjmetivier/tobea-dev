@@ -60,6 +60,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const posts = result.data.allMdx.edges;
 
+  function reverseEmojiOrder(i) {
+    return posts.length - 1 - i;
+  }
+
   posts.forEach((edge, i) => {
     const next = i === 0 ? null : posts[i - 1].node;
     const prev = i === posts.length - 1 ? null : posts[i + 1].node;
@@ -71,7 +75,7 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: edge.node.fields.slug,
         prev,
         next,
-        emoji: emojis[i],
+        emoji: emojis[reverseEmojiOrder(i)],
       },
     });
   });
