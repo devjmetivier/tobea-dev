@@ -81,7 +81,7 @@ exports.createPages = async ({ graphql, actions }) => {
 }
 ```
 
-Here's where it get's tricky. Because we're ordering the articles in descending order, we have to reverse the order at which we're referencing our array. If we don't do this, each new article (the first in the list) would always inherit the first emoji in our emojis array. This looks bad because we want the older articles to retain their emojis as more are added to the article directory. So let's reverse the order we're passing emoji info to the page using computer science magic 🧝🏻‍♀️
+Here's where it get's tricky. Because we're ordering the articles in descending order, we have to reverse the order at which we're referencing our array. If we don't do this, each new article (the first in the list) would always inherit the first emoji in our emojis array. This looks bad because we want the older articles to retain their emojis as more are added to the article directory. So let's reverse the order in which we're passing emoji info to the page using computer science magic 🧝🏻‍♀️
 
 ```js {6-8}
 exports.createPages = async ({ graphql, actions }) => {
@@ -97,7 +97,7 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       //...
       context: {
-        //...,
+        //...
         emoji: emojis[reverseEmojiOrder(index)],
       },
     });
@@ -105,3 +105,10 @@ exports.createPages = async ({ graphql, actions }) => {
 }
 ```
 
+**Breakdown:**
+* Pass in the index of the current item in your loop
+* Grab the length of the array you're looping over
+* Subtract `1` from the length because arrays start from indices of `0`
+* Subtract the current index you passed in
+
+This ensures that you're working backwards from any starting index of emojis you have in your array

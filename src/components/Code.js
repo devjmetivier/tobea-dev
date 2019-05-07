@@ -6,12 +6,13 @@ import theme from '../../config/theme';
 
 import PreWithBadge from './PreWithBadge';
 
-const RE = /{([\d,-]+)}/;
+const regexHighlightRange = /{([\d,-]+)}/;
 
 const calculateLinesToHighlight = meta => {
-  if (!RE.test(meta)) return () => false;
+  if (!regexHighlightRange.test(meta)) return () => false;
 
-  const lineNumbers = RE.exec(meta)[1]
+  const lineNumbers = regexHighlightRange
+    .exec(meta)[1]
     .split(',')
     .map(v => v.split('-').map(ve => parseInt(ve, 10)));
 
