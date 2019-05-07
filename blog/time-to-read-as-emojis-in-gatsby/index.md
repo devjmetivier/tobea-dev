@@ -56,6 +56,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
 Above I'm just grabbing all of my posts by order of date in descending order. I want to list my articles in order from most recent to oldest. It makes sense to do this during the build so that when I loop over the array of articles in my article directory I don't have to sort them.
 
+## Loop Over Your Pages And Inject The Emoji As Props
+
 My query returns an array of `edges` which consist of all the data needed to create my articles. I can extract those edges and loop over them to create individual pages. Let's also import our emojis from `emoji.js`:
 
 ```js {2,8-19}
@@ -111,4 +113,32 @@ exports.createPages = async ({ graphql, actions }) => {
 * Subtract `1` from the length because arrays start from indices of `0`
 * Subtract the current index you passed in
 
-This ensures that you're working backwards from any starting index of emojis you have in your array
+This ensures that you're working backwards from any starting index of emojis you have in your array. And that's about it! Your emoji prop is passed to your page template, and you can use it however you like.
+
+## Use Similar Techniques On Your Homepage 
+In order for your emojis to be the same from index to post, you must implement the same technique when looping over a list of articles. In my `index.js` page, I have a similar query:
+
+```js
+export const IndexQuery = graphql`
+  query IndexQuery {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            date
+            categories
+          }
+          excerpt(pruneLength: 200)
+          timeToRead
+        }
+      }
+    }
+  }
+`;
+```
+
+Again, I'm sorting all of my articles by date in descending order. When I loop over my list of articles, I pass an emoji from my emojis array in reverse order.
