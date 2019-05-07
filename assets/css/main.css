@@ -51,6 +51,30 @@ code, kbd, pre, samp {
   font-size: 16px;
 }
 
+.highlight-line {
+  /* set background of highlight */
+  --bg: rgba(255, 255, 255, .075);
+  position: relative;
+  background: var(--bg);
+}
+
+.highlight-line:before, .highlight-line:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 12px;
+  height: 100%;
+  background: var(--bg);
+}
+
+.highlight-line:before {
+  right: 100%;
+}
+
+.highlight-line:after {
+  left: 100%;
+}
+
 span.token.keyword {
   font-style: italic;
 }
