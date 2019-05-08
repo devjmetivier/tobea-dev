@@ -8,7 +8,7 @@ const PrevNext = ({ next, prev }) => (
   <PrevNextWrapper>
     {prev && (
       <Prev>
-        <Link to={prev.fields.slug}>
+        <Link to={prev.fields.slug} title={prev.frontmatter.title}>
           <span>&lArr; Previous</span>
           {prev.frontmatter.title}
         </Link>
@@ -19,7 +19,7 @@ const PrevNext = ({ next, prev }) => (
 
     {next && (
       <Next>
-        <Link to={next.fields.slug}>
+        <Link to={next.fields.slug} title={next.frontmatter.title}>
           <span>Next &rArr;</span>
           {next.frontmatter.title}
         </Link>
