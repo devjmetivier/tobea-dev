@@ -31,8 +31,16 @@ const PrevNext = ({ next, prev }) => (
 export default PrevNext;
 
 PrevNext.propTypes = {
-  next: PropTypes.object,
-  prev: PropTypes.object,
+  next: PropTypes.shape({
+    frontmatter: PropTypes.shape({ title: PropTypes.string.isRequired })
+      .isRequired,
+    fields: PropTypes.shape({ slug: PropTypes.string.isRequired }),
+  }),
+  prev: PropTypes.shape({
+    frontmatter: PropTypes.shape({ title: PropTypes.string.isRequired })
+      .isRequired,
+    fields: PropTypes.shape({ slug: PropTypes.string.isRequired }),
+  }),
 };
 
 PrevNext.defaultProps = {
