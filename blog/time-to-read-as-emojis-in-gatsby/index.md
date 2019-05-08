@@ -139,4 +139,19 @@ export const IndexQuery = graphql`
 `;
 ```
 
-Again, I'm sorting all of my articles by date in descending order. When I loop over my list of articles, I pass an emoji from my emojis array in reverse order.
+Again, I'm sorting all of my articles by date in descending order. When I loop over my list of articles, I pass an emoji from my emojis array in reverse order using the same function I did previously.
+
+```js {4,9}
+{postEdges.map((post, i) => {
+  //...
+
+  const reverseEmojiOrder = index => postgEdges.length - 1 - index;
+
+  return (
+    <Article
+      //...
+      emoji={emojis[reverseEmojiOrder(i)]}
+    />
+  );
+})}
+```
