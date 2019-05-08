@@ -180,7 +180,7 @@ body {
   background: var(--wrap);
 }
 
-p code {
+code {
   margin: 0;
   padding: .2em .4em;
   font-size: .85rem;

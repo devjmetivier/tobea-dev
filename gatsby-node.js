@@ -60,7 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const posts = result.data.allMdx.edges;
 
-  const reverseEmojiOrder = i => posts.length - 1 - i;
+  const reverseEmojiOrder = index => posts.length - 1 - index;
 
   posts.forEach((edge, i) => {
     const next = i === 0 ? null : posts[i - 1].node;

@@ -85,15 +85,13 @@ exports.createPages = async ({ graphql, actions }) => {
 
 Here's where it get's tricky. Because we're ordering the articles in descending order, we have to reverse the order at which we're referencing our array. If we don't do this, each new article (the first in the list) would always inherit the first emoji in our emojis array. This looks bad because we want the older articles to retain their emojis as more are added to the article directory. So let's reverse the order in which we're passing emoji info to the page using computer science magic 🧝🏻‍♀️
 
-```js {6-8}
+```js {6}
 exports.createPages = async ({ graphql, actions }) => {
   //...
   
   const posts = result.data.allMdx.edges;
   
-  function reverseEmojiOrder(i) {
-    return posts.length - 1 - i;
-  }
+  const reverseEmojiOrder = index => posts.length - 1 - index;
   
   posts.forEach((edge, index) => {
     createPage({
@@ -108,7 +106,7 @@ exports.createPages = async ({ graphql, actions }) => {
 ```
 
 **Breakdown:**
-* Pass in the index of the current item in your loop
+* Pass in the index of the current item in your loop to the `reverseEmojiOrder()` function
 * Grab the length of the array you're looping over
 * Subtract `1` from the length because arrays start from indices of `0`
 * Subtract the current index you passed in
