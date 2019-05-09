@@ -45,7 +45,11 @@ const Button = styled.div`
   }
 `;
 
-const Prev = styled(Button)``;
+const Prev = styled(Button)`
+  @media (max-width: ${props => props.theme.breakToFullScreen}) {
+    margin-bottom: 15px;
+  }
+`;
 
 const Next = styled(Button)``;
 
