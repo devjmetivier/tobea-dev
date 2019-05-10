@@ -4,7 +4,6 @@ date: "2019-05-03"
 categories:
 - JavaScript
 - React
-- Snippets
 ---
 
 I love dumb small, dumb components that do `one` thing and do it very well.
