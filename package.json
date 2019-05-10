@@ -26,7 +26,7 @@
 		"gatsby-plugin-lodash": "^3.0.5",
 		"gatsby-plugin-manifest": "^2.0.29",
 		"gatsby-plugin-offline": "^2.0.25",
-		"gatsby-plugin-page-progress": "^0.0.9",
+		"gatsby-plugin-page-progress": "^0.0.10",
 		"gatsby-plugin-react-helmet": "^3.0.12",
 		"gatsby-plugin-sharp": "^2.0.34",
 		"gatsby-plugin-sitemap": "^2.0.12",
@@ -75,10 +75,10 @@
 		"url": "https://github.com/dmetivier/tobea-dev"
 	},
 	"devDependencies": {
-		"babel-eslint": "^9.0.0",
+		"babel-eslint": "^10.0.1",
 		"eslint": "^5.14.1",
 		"eslint-config-airbnb": "^17.1.0",
-		"eslint-config-devjmetivier": "0.0.8",
+		"eslint-config-devjmetivier": "0.0.10",
 		"eslint-config-prettier": "^4.1.0",
 		"eslint-plugin-html": "^5.0.3",
 		"eslint-plugin-import": "^2.16.0",
