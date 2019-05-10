@@ -4,7 +4,6 @@ date: "2019-05-10"
 categories:
 - JavaScript
 - Proxy
-- Lambda
 ---
 
 In this article I'll be showing you how you can make a proxy that serves Github in dark mode. We'll be creating a serverless function that serves as the proxy and deploying to [Now](https://zeit.co/now). We'll use Now's configuration file to route all traffic through a single endpoint: `index.js`. 
