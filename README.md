@@ -1,2 +1,1 @@
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/dmetivier/tobea-dev.svg)](https://greenkeeper.io/)
+# To Be A Dev - [tobea.dev](https://tobea.dev)
