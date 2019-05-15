@@ -109,6 +109,29 @@ Just add a link tag with the relative path to the asset 🥳 Because we're servi
 
 ![dark mode github](./src/images/dark-mode.gif)
 
+## Limitations
+This is a very rudimentary version of a proxy. It doesn't provide anymore than a good way to apply a theme to a site and make sure some link traffic still gets routed through the proxy. In fact, it actually strips away a lot of things from Github. For instance, you can't log in, so you can't do any actions tied to an account. This is because we're not sending any information along to authenticate ourselves. In the future, I may try to figure out a way to make that happen.
+
+In the meantime, we CAN add some caching to make performance a little bit better when navigating:
+
+```js {4}
+const fetch = require('node-fetch');
+
+module.exports = async (req, res) => {
+  res.setHeader('Cache-Control', 's-maxage=3, stale-while-revalidate');
+  const html = (await (await fetch(`https://github.com${req.url}`)).text())
+    .replace(/(href=.)https?:\/\/github.com/g, `$1//${req.headers.host}`)
+    .replace(
+      '</head>',
+      '<link media="all" href="/dark.css" rel="stylesheet" /></head>'
+    );
+  
+  res.end(html);
+};
+```
+
+The rest, for now, is up to you. Happy coding! 💙
+
 ## Something You Should Know
 A proxy can be a bit of a double edged sword when it comes to privacy and security. Organizations have and to this day use proxys to monitor employee activity amongst other things. Because a proxy's main feature is processing the traffic that passes through it, it can do a lot of things with that data. You should take care with the actions you take when using a proxy.
 
