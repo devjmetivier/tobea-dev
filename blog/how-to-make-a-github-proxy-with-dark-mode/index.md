@@ -87,7 +87,27 @@ Great! If we take a look at each new page that we're fetching, we should see tha
 
 ![developer console](./src/images/console.png)
 
+Onto the last issue of adding the dark mode styles to the site. You might think that it makes sense to just take the contents of the file, and put it in a style tag somewhere in the html that we're grabbing on each fetch. While that is an option, we can make that a little cleaner:
 
+```js {7-10}
+const fetch = require('node-fetch');
+
+module.exports = async (req, res) => {
+  res.setHeader('Cache-Control', 's-maxage=3, stale-while-revalidate');
+  const html = (await (await fetch(`https://github.com${req.url}`)).text())
+    .replace(/(href=.)https?:\/\/github.com/g, `$1//${req.headers.host}`)
+    .replace(
+      '</head>',
+      '<link media="all" href="/dark.css" rel="stylesheet" /></head>'
+    );
+  
+  res.end(html);
+};
+```
+
+Just add a link tag with the relative path to the asset 🥳 Because we're serving the content from our function, we can also pass along files that exist from the same source - i.e. our `dark.css`. After we publish all of those changes, we can now freely browse Github in dark mode through our proxy 🎉
+
+![dark mode github](./src/images/dark-mode.gif)
 
 ## Something You Should Know
 A proxy can be a bit of a double edged sword when it comes to privacy and security. Organizations have and to this day use proxys to monitor employee activity amongst other things. Because a proxy's main feature is processing the traffic that passes through it, it can do a lot of things with that data. You should take care with the actions you take when using a proxy.

@@ -57,6 +57,7 @@ module.exports = {
               linkImagesToOriginal: false,
             },
           },
+          'gatsby-remark-copy-linked-files',
           // TODO: Replace with "mdx-component-autolink-headers"
           {
             resolve: `gatsby-remark-autolink-headers`,
@@ -85,6 +86,7 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     'gatsby-plugin-use-dark-mode',
+    'gatsby-remark-video',
     {
       resolve: 'gatsby-plugin-page-progress',
       options: {
