@@ -64,12 +64,32 @@ Once we deploy we should be able to navigate Github through our proxy:
 ![Github Proxy](./src/images/light.png)
 
 From this point, we're presented with two issues:
-1. We're not applying the dark mode styling
-2. Any link that points to `https://github.com/...` will throw us to Github instead of continue through the proxy
+1. Any link that points to `https://github.com/...` will throw us to Github instead of continue through the proxy
+2. We're not applying the dark mode styling
+
+We're already converting our HTML tp text, so let's replace any `github.com` links with our host URL:
+
+```js {6}
+const fetch = require('node-fetch');
+
+module.exports = async (req, res) => {
+  res.setHeader('Cache-Control', 's-maxage=3, stale-while-revalidate');
+  const html = (await (await fetch(`https://github.com${req.url}`)).text())
+    .replace(/(href=.)https?:\/\/github.com/g, `$1//${req.headers.host}`);
+    
+  res.end(html);
+};
+```
+
+> If you're having trouble understanding the '$1' in the second argument of `.replace()`, have a look at the documentation on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#Description) 😀
+
+Great! If we take a look at each new page that we're fetching, we should see that some links are being changed to provide the host url:
+
+![developer console](./src/images/console.png)
 
 
 
 ## Something You Should Know
 A proxy can be a bit of a double edged sword when it comes to privacy and security. Organizations have and to this day use proxys to monitor employee activity amongst other things. Because a proxy's main feature is processing the traffic that passes through it, it can do a lot of things with that data. You should take care with the actions you take when using a proxy.
 
-What I'm _specifically_ doing here is doing checks and routing traffic through a single endpoint that transforms the `<head>` and some links to achieve proper routing and the dark theme for Github. I could write something that modifies inputs on the login page to do whatever I want. I'm not doing that, and my deployment is [public](https://zeit.co/devjmetivier/github-dark-proxy/n9ryltgq4) so that can be confirmed. The lesson is that if you're not absolutely sure what a third party proxy is doing, you shouldn't be doing any actions that could harm you.
+What I'm _specifically_ doing here is doing checks and routing traffic through a single endpoint that transforms the `<head>` and some links to achieve proper routing and the dark theme for Github. I could write something that modifies inputs on the login page to do whatever I want. I'm not doing that, and my deployment is [public](https://zeit.co/devjmetivier/github-dark-proxy/n9ryltgq4) so that can be confirmed. The lesson is that if you're not absolutely sure what a third party proxy is doing, you shouldn't be doing any actions that could cause self-harm.
