@@ -44,6 +44,18 @@ code, kbd, pre, samp {
   font-family: "Dank Mono", "Fira Code", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+blockquote {
+  padding: 0 16px;
+  font-style: italic;
+  border-left: 4px solid var(--gray);
+  color: var(--gray);
+}
+
+blockquote code,
+blockquote .normal {
+  font-style: normal;
+}
+
 .prism-code {
   padding: 0.75rem;
   border-radius: 5px;

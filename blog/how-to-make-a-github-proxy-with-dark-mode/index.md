@@ -81,7 +81,7 @@ module.exports = async (req, res) => {
 };
 ```
 
-> If you're having trouble understanding the '$1' in the second argument of `.replace()`, have a look at the documentation on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#Description) 😀
+> If you're having trouble understanding the '$1' in the second argument of `.replace()`, have a look at the documentation on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#Description) <span class="normal">😀</span>
 
 Great! If we take a look at each new page that we're fetching, we should see that some links are being changed to provide the host url:
 
