@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "alias": ["tobea.dev"],
   "builds": [
     {
       "src": "package.json",
