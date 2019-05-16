@@ -3,7 +3,6 @@ title: "Time To Read as Emojis in Gatsby"
 date: "2019-05-08"
 categories:
 - Gatsby
-- JavaScript
 ---
 
 This one is a short but fun one. In this article I'm going to show you how I represent TTR (Time To Read) in emojis on my personal blog. This article is going to be going off the assumption that you're using [Gatsby](https://www.gatsbyjs.org) for your static site generator. Passing `unique` emojis to be used in each page requires the passing of data at the build level when using Gatsby. We also need to make those emojis consistent between the article directory and the article itself:
