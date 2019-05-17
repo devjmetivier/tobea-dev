@@ -37,7 +37,7 @@
 		"gatsby-remark-external-links": "0.0.4",
 		"gatsby-remark-images": "^3.0.10",
 		"gatsby-remark-video": "^1.2.1",
-		"gatsby-source-filesystem": "^2.0.29",
+		"gatsby-source-filesystem": "^2.0.36",
 		"i": "^0.3.6",
 		"lodash": "^4.17.11",
 		"mdx-utils": "^0.1.1",
