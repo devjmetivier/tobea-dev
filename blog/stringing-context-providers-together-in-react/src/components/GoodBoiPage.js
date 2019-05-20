@@ -1,14 +1,3 @@
----
-title: "Stringing Context Providers Together In React"
-date: "2019-05-20"
-categories:
-- React
-- Context
----
-
-State management in React can be an incredible beast of a task. With the introduction of the [Context API](https://reactjs.org/docs/context.html), React has come up with a great alternative to [Redux](https://redux.js.org). However, there's been some discussion that the API for context isn't quite as pretty as Redux (even though under the hood, Redux is using Context). Creating multiple context providers for different data points in your application using Context can look a little something like this:
-
-```js
 import React, { createContext, useState, useContext } from 'react';
 
 const PatsContext = createContext();
@@ -52,17 +41,3 @@ function GoodBoiPage() {
 }
 
 export default GoodBoiPage;
-
-```
-
-import GoodBoiPage from './src/components/GoodBoiPage';
-
-<div style="border: 2px solid black; padding: 8px; margin-bottom: 15px;">
-  <GoodBoiPage />
-</div>
-
-Good bois love a good pat...
-
-![good boi](https://media.giphy.com/media/8P4SDAYxUNuk3HqIHb/giphy.gif)
-
-
