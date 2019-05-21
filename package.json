@@ -31,7 +31,7 @@
 		"gatsby-plugin-sharp": "^2.0.37",
 		"gatsby-plugin-sitemap": "^2.0.12",
 		"gatsby-plugin-styled-components": "^3.0.7",
-		"gatsby-plugin-use-dark-mode": "^1.1.0",
+		"gatsby-plugin-use-dark-mode": "^1.1.1",
 		"gatsby-remark-autolink-headers": "^2.0.16",
 		"gatsby-remark-copy-linked-files": "^2.0.12",
 		"gatsby-remark-external-links": "0.0.4",
