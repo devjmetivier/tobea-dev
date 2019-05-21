@@ -35,7 +35,7 @@
 		"gatsby-remark-autolink-headers": "^2.0.16",
 		"gatsby-remark-copy-linked-files": "^2.0.12",
 		"gatsby-remark-external-links": "0.0.4",
-		"gatsby-remark-images": "^3.0.10",
+		"gatsby-remark-images": "^3.0.11",
 		"gatsby-remark-video": "^1.2.1",
 		"gatsby-source-filesystem": "^2.0.36",
 		"i": "^0.3.6",
