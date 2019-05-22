@@ -48,7 +48,7 @@
 		"react": "^16.8.5",
 		"react-dom": "^16.8.5",
 		"react-helmet": "^5.2.1",
-		"react-live": "^2.1.1",
+		"react-live": "^2.1.2",
 		"react-toggle": "^4.0.2",
 		"styled-components": "^4.2.0",
 		"typeface-bitter": "^0.0.71",
