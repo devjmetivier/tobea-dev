@@ -1,4 +1,10 @@
-import React, { createContext, useState, useContext, useMemo } from 'react';
+import React, {
+  createContext,
+  useState,
+  useContext,
+  useMemo,
+  cloneElement,
+} from 'react';
 
 const PatsContext = createContext();
 
@@ -15,19 +21,44 @@ function usePats() {
   return { pats, givePats };
 }
 
-const CountContext = createContext();
+const RetrieveContext = createContext();
 
-function CountProvider(props) {
-  const [count, setCount] = useState(0);
-  const value = useMemo(() => [count, setCount], [count]);
-  return <CountContext.Provider value={value} {...props} />;
+function RetrieveProvider(props) {
+  const [times, getBall] = useState(0);
+  const value = useMemo(() => [times, getBall], [times]);
+  return <RetrieveContext.Provider value={value} {...props} />;
 }
 
 function useCount() {
-  const context = useContext(CountContext);
+  const context = useContext(RetrieveContext);
   if (!context) throw new Error(`useCount must be used with a CountProvider`);
-  const [count, setCount] = context;
-  return { count, setCount };
+  const [times, getBall] = context;
+  return { times, getBall };
+}
+
+// import providers
+// import { PatsProvider } from '../contexts/GoodBoiContext';
+// import { CountProvider } from '../contexts/CountContext';
+
+function ProviderComposer({ contexts, children }) {
+  return contexts.reduceRight(
+    (kids, parent) =>
+      cloneElement(parent, {
+        children: kids,
+      }),
+    children
+  );
+}
+
+function ContextProvider({ children }) {
+  return (
+    <ProviderComposer
+      // add providers to array of contexts
+      contexts={[<PatsProvider />, <RetrieveProvider />]}
+    >
+      {children}
+    </ProviderComposer>
+  );
 }
 
 function GoodBoi() {
@@ -46,30 +77,28 @@ function PatsDisplay() {
 }
 
 function Count() {
-  const { setCount } = useCount();
+  const { getBall } = useCount();
 
   return (
-    <button type='button' onClick={() => setCount(prevPats => prevPats + 1)}>
-      +1
+    <button type='button' onClick={() => getBall(prevBalls => prevBalls + 1)}>
+      Go get it!
     </button>
   );
 }
 
 function CountDisplay() {
-  const { count } = useCount();
-  return <div>Count: {count}</div>;
+  const { times } = useCount();
+  return <div>The good boi has retrieved the ball {times} times.</div>;
 }
 
 function GoodBoiPage() {
   return (
-    <PatsProvider>
-      <CountProvider>
-        <PatsDisplay />
-        <GoodBoi />
-        <CountDisplay />
-        <Count />
-      </CountProvider>
-    </PatsProvider>
+    <ContextProvider>
+      <PatsDisplay />
+      <GoodBoi />
+      <CountDisplay />
+      <Count />
+    </ContextProvider>
   );
 }
 

@@ -184,5 +184,28 @@ export default function ContextProvider({ children }) {
     </ProviderComposer>
   );
 }
-
 ```
+
+And in our `App.js`, we'll just import the single ContextProvider and wrap our application:
+
+```js {3-5, 9, 14}
+// src/App.js
+import React from 'react';
+import ContextProvider from './components/ProviderComposer';
+import { PatsDisplay, GoodBoi } from './components/GoodBoi';
+import { CountDisplay, Count } from './components/Count';
+
+function App() {
+  return (
+    <ContextProvider>
+      <PatsDisplay />
+      <GoodBoi />
+      <CountDisplay />
+      <Count />
+    </ContextProvider>
+  );
+}
+
+export default App;
+```
+
