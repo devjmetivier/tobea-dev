@@ -1,21 +1,16 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useMemo } from 'react';
 
 const PatsContext = createContext();
 
-function usePats() {
-  const context = useContext(PatsContext);
-  if (!context) throw new Error('usePats must be used within a PatsProvider');
-  return context;
-}
-
 function PatsProvider(props) {
   const [pats, givePats] = useState(0);
-  const value = React.useMemo(() => [pats, givePats], [pats]);
+  const value = useMemo(() => [pats, givePats], [pats]);
   return <PatsContext.Provider value={value} {...props} />;
 }
 
 function GoodBoi() {
-  const [, givePats] = usePats();
+  const [, givePats] = useContext(PatsContext);
+
   return (
     <button type='button' onClick={() => givePats(prevPats => prevPats + 1)}>
       Good Boi!
@@ -24,19 +19,16 @@ function GoodBoi() {
 }
 
 function PatsDisplay() {
-  const [pats] = usePats();
+  const [pats] = useContext(PatsContext);
   return <div>The good boi has received {pats} pats.</div>;
 }
 
 function GoodBoiPage() {
   return (
-    // shorthand for <React.Fragment>
-    <>
-      <PatsProvider>
-        <PatsDisplay />
-        <GoodBoi />
-      </PatsProvider>
-    </>
+    <PatsProvider>
+      <PatsDisplay />
+      <GoodBoi />
+    </PatsProvider>
   );
 }
 
