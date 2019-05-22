@@ -8,7 +8,7 @@
 		"url": "https://github.com/dmetivier/tobea-dev/issues"
 	},
 	"dependencies": {
-		"@babel/plugin-transform-named-capturing-groups-regex": "^7.4.4",
+		"@babel/plugin-transform-named-capturing-groups-regex": "^7.4.5",
 		"@fortawesome/fontawesome-svg-core": "^1.2.18",
 		"@fortawesome/free-brands-svg-icons": "^5.8.1",
 		"@fortawesome/free-solid-svg-icons": "^5.8.2",
