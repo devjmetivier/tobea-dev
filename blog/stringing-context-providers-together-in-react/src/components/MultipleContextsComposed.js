@@ -42,7 +42,7 @@ function useRetrieve() {
 // import { CountProvider } from '../contexts/CountContext';
 
 function ProviderComposer({ contexts, children }) {
-  return contexts.reduceRight(
+  return contexts.reduce(
     (kids, parent) =>
       cloneElement(parent, {
         children: kids,
