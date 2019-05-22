@@ -209,3 +209,10 @@ function App() {
 export default App;
 ```
 
+import MultipleContextsComposed from './src/components/MultipleContextsComposed';
+
+<div style="border: 2px solid black; padding: 8px; margin-bottom: 15px; backgorund: white;">
+  <MultipleContextsComposed />
+</div>
+
+🤯 That works pretty darn good!
