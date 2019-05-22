@@ -55,6 +55,50 @@ import GoodBoiExample from './src/components/GoodBoiExample';
   <GoodBoiExample />
 </div>
 
-Good bois love a good pat...
+Good bois love a good pat 😀
 
 ![good boi](https://media.giphy.com/media/8P4SDAYxUNuk3HqIHb/giphy.gif)
+
+That looks pretty good 👍🏻 But hooks can be used a little better than that. Take the `GoodBoi` component:
+
+```js {2}
+function GoodBoi() {
+  const [, givePats] = useContext(PatsContext);
+
+  return (
+    <button type='button' onClick={() => givePats(prevPats => prevPats + 1)}>
+      Good Boi!
+    </button>
+  );
+}
+```
+
+Using Array Destructuring we can extract the `givePats()` state updater method from `PatsContext`, but it's not the prettiest way to do that. We only need the `givePats()` method from context, so we have to put a comma in front of it to get ONLY the method that we need for that component from context. I'm not a particular fan of that. We'll delve into why this isn't ideal later, but for now let's extract our context and compose a hook that uses `PatsContext` and all its methods:
+
+```js {2-7, 10, 20}
+// src/App.js
+function usePats() {
+  const context = useContext(PatsContext);
+  if (!context) throw new Error(`usePats must be used with a PatsProvider`);
+  const [pats, givePats] = context;
+  return { pats, givePats };
+}
+
+function GoodBoi() {
+  const { givePats } = usePats();
+
+  return (
+    <button type='button' onClick={() => givePats(prevPats => prevPats + 1)}>
+      Good Boi!
+    </button>
+  );
+}
+
+function PatsDisplay() {
+  const { pats } = usePats();
+  return <div>The good boi has received {pats} pats.</div>;
+}
+```
+
+In the above code we're making a basic hook that uses `PatsContext`. It then destructures the context and returns an object with `pats` and the `givePats()` method. The benefit here is that destructuring looks a lot cleaner in our components, and there's better intellisense support in editors when using Object Destructuring. Gotta love autocomplete code 💚
+
