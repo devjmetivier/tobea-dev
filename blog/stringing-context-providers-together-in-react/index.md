@@ -37,7 +37,7 @@ function PatsDisplay() {
   return <div>The good boi has received {pats} pats.</div>;
 }
 
-function GoodBoiPage() {
+function GoodBoiExample() {
   return (
     <PatsProvider>
       <PatsDisplay />
@@ -46,13 +46,13 @@ function GoodBoiPage() {
   );
 }
 
-export default GoodBoiPage;
+export default GoodBoiExample;
 ```
 
-import GoodBoiPage from './src/components/GoodBoiPage';
+import GoodBoiExample from './src/components/GoodBoiExample';
 
 <div style="border: 2px solid black; padding: 8px; margin-bottom: 15px;">
-  <GoodBoiPage />
+  <GoodBoiExample />
 </div>
 
 Good bois love a good pat...

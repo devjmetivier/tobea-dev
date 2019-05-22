@@ -23,7 +23,7 @@ function PatsDisplay() {
   return <div>The good boi has received {pats} pats.</div>;
 }
 
-function GoodBoiPage() {
+function GoodBoiExample() {
   return (
     <PatsProvider>
       <PatsDisplay />
@@ -32,4 +32,4 @@ function GoodBoiPage() {
   );
 }
 
-export default GoodBoiPage;
+export default GoodBoiExample;
