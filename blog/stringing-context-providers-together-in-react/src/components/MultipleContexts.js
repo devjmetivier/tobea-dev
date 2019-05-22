@@ -29,9 +29,10 @@ function RetrieveProvider(props) {
   return <RetrieveContext.Provider value={value} {...props} />;
 }
 
-function useCount() {
+function useRetrieve() {
   const context = useContext(RetrieveContext);
-  if (!context) throw new Error(`useCount must be used with a CountProvider`);
+  if (!context)
+    throw new Error(`useRetrieve must be used with a CountProvider`);
   const [times, getBall] = context;
   return { times, getBall };
 }
@@ -77,7 +78,7 @@ function PatsDisplay() {
 }
 
 function Count() {
-  const { getBall } = useCount();
+  const { getBall } = useRetrieve();
 
   return (
     <button type='button' onClick={() => getBall(prevBalls => prevBalls + 1)}>
@@ -87,7 +88,7 @@ function Count() {
 }
 
 function CountDisplay() {
-  const { times } = useCount();
+  const { times } = useRetrieve();
   return <div>The good boi has retrieved the ball {times} times.</div>;
 }
 
