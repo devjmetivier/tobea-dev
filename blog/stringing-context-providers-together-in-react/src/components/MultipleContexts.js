@@ -15,19 +15,20 @@ function usePats() {
   return { pats, givePats };
 }
 
-const CountContext = createContext();
+const RetrieveContext = createContext();
 
-function CountProvider(props) {
-  const [count, setCount] = useState(0);
-  const value = useMemo(() => [count, setCount], [count]);
-  return <CountContext.Provider value={value} {...props} />;
+function RetrieveProvider(props) {
+  const [times, getBall] = useState(0);
+  const value = useMemo(() => [times, getBall], [times]);
+  return <RetrieveContext.Provider value={value} {...props} />;
 }
 
-function useCount() {
-  const context = useContext(CountContext);
-  if (!context) throw new Error(`useCount must be used with a CountProvider`);
-  const [count, setCount] = context;
-  return { count, setCount };
+function useRetrieve() {
+  const context = useContext(RetrieveContext);
+  if (!context)
+    throw new Error(`useRetrieve must be used with a CountProvider`);
+  const [times, getBall] = context;
+  return { times, getBall };
 }
 
 function GoodBoi() {
@@ -45,30 +46,30 @@ function PatsDisplay() {
   return <div>The good boi has received {pats} pats.</div>;
 }
 
-function Count() {
-  const { setCount } = useCount();
+function RetrieveCount() {
+  const { getBall } = useRetrieve();
 
   return (
-    <button type='button' onClick={() => setCount(prevCount => prevCount + 1)}>
-      +1
+    <button type='button' onClick={() => getBall(prevBalls => prevBalls + 1)}>
+      Go get it!
     </button>
   );
 }
 
-function CountDisplay() {
-  const { count } = useCount();
-  return <div>Count: {count}</div>;
+function RetrieveDisplay() {
+  const { times } = useRetrieve();
+  return <div>The good boi has retrieved the ball {times} times.</div>;
 }
 
 function GoodBoiPage() {
   return (
     <PatsProvider>
-      <CountProvider>
+      <RetrieveProvider>
         <PatsDisplay />
         <GoodBoi />
-        <CountDisplay />
-        <Count />
-      </CountProvider>
+        <RetrieveDisplay />
+        <RetrieveCount />
+      </RetrieveProvider>
     </PatsProvider>
   );
 }

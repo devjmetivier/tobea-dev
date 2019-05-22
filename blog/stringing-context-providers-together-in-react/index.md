@@ -59,7 +59,7 @@ Good bois love a good pat 😀
 
 ![good boi](https://media.giphy.com/media/8P4SDAYxUNuk3HqIHb/giphy.gif)
 
-That looks pretty good 👍🏻 But hooks can be used a little better than that. Take the `GoodBoi` component:
+That looks pretty good 👍🏻 But hooks can be used a little better than that. Take the `GoodBoi` component for example:
 
 ```js {2}
 function GoodBoi() {
@@ -73,9 +73,9 @@ function GoodBoi() {
 }
 ```
 
-Using Array Destructuring we can extract the `givePats()` state updater method from `PatsContext`, but it's not the prettiest way to do that. We only need the `givePats()` method from context, so we have to put a comma in front of it to get ONLY the method that we need for that component from context. I'm not a particular fan of that. We'll delve into why this isn't ideal later, but for now let's extract our context and compose a hook that uses `PatsContext` and all its methods:
+Using Array Destructuring we can extract the `givePats()` state updater method from `PatsContext`, but it's not very elegant. We only need the `givePats()` method from context, so we have to put a comma in front of it to get ONLY the method that we need for that component from context. I'm not a particular fan of that. We'll delve into why this isn't ideal later, but for now let's extract our context and compose a hook that uses `PatsContext` and returns all its methods:
 
-```js {2-7, 10, 20}
+```js {2-7,10,20}
 // src/App.js
 function usePats() {
   const context = useContext(PatsContext);
@@ -102,23 +102,23 @@ function PatsDisplay() {
 
 In the above code we're making a basic hook that uses `PatsContext`. It then destructures the context and returns an object with `pats` and the `givePats()` method. The benefit here is that destructuring looks a lot cleaner in our components, and there's better intellisense support in editors when using Object Destructuring. Gotta love autocomplete code 💚
 
-Now... What happens when we use multiple contexts in our app? Let's assume that we're using something that uses the same structure as our `GoodBoi` example that counts up and we've already extracted previous functionality into it's own file `GoodBoi.js`. Ee'll call this one "Count":
+Now... What happens when we use multiple contexts in our app? Let's assume that we're using something that uses the same structure as our `GoodBoi` example that counts up and we've already extracted previous functionality into it's own file `GoodBoi.js`. We'll call this one "Retrieve":
 
 ```js
 // src/App.js
 import React from 'react';
 import { PatsProvider, PatsDisplay, GoodBoi } from './components/GoodBoi';
-import { CountProvider, CountDisplay, Count } from './components/Count';
+import { RetrieveProvider, RetrieveDisplay, RetrieveCount } from './components/Retrieve';
 
 function App() {
   return (
     <PatsProvider>
-      <CountProvider>
+      <RetrieveProvider>
         <PatsDisplay />
         <GoodBoi />
-        <CountDisplay />
-        <Count />
-      </CountProvider>
+        <RetrieveDisplay />
+        <RetrieveCount />
+      </RetrieveProvider>
     </PatsProvider>
   );
 }
@@ -134,9 +134,12 @@ import MultipleContexts from './src/components/MultipleContexts';
   <MultipleContexts />
 </div>
 
+![fetch!](https://media.giphy.com/media/klPeFHrWqzPDW/giphy.gif)
+
 But do you see how ugly it is that we have to nest our providers?
 
-```js {3-4, 9-10}
+```js {4-5,10-11}
+// src/App.js
 function App() {
   return (
     <PatsProvider>
@@ -151,10 +154,14 @@ function App() {
 }
 ```
 
-🤮 We can do better... Especially as the layers of complexity pile into our applications. "But Devin... That's just something that we have to deal with. Multiple contexts require that you just nest a bunch of providers". I beg to differ. Let's compose and string all of our context providers together into a single provider we can use as the global wrapper for our application:
+🤮 We can do better... Especially as the layers of complexity pile into our applications. 
+
+> "But Devin... That's just something that we have to deal with. Multiple contexts require that you just nest a bunch of providers..."
+
+I beg to differ. Let's compose and string all of our context providers together into a single provider we can use as the global wrapper for our application:
 
 ```js
-// src/components/ProviderComposer
+// src/components/ProviderComposer.js
 import React, { cloneElement } from 'react';
 
 // import providers
@@ -186,9 +193,9 @@ export default function ContextProvider({ children }) {
 }
 ```
 
-And in our `App.js`, we'll just import the single ContextProvider and wrap our application:
+And in our `App.js`, we'll just import the single `ContextProvider` and wrap our application:
 
-```js {3-5, 9, 14}
+```js {3-5,9,14}
 // src/App.js
 import React from 'react';
 import ContextProvider from './components/ProviderComposer';
@@ -215,4 +222,7 @@ import MultipleContextsComposed from './src/components/MultipleContextsComposed'
   <MultipleContextsComposed />
 </div>
 
+![cool dog](https://media.giphy.com/media/LqafmeaBVxCRG/giphy.gif)
+
 🤯 That works pretty darn good!
+

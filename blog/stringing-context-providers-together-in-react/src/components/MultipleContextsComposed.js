@@ -77,7 +77,7 @@ function PatsDisplay() {
   return <div>The good boi has received {pats} pats.</div>;
 }
 
-function Count() {
+function RetrieveCount() {
   const { getBall } = useRetrieve();
 
   return (
@@ -87,7 +87,7 @@ function Count() {
   );
 }
 
-function CountDisplay() {
+function RetrieveDisplay() {
   const { times } = useRetrieve();
   return <div>The good boi has retrieved the ball {times} times.</div>;
 }
@@ -97,8 +97,8 @@ function GoodBoiPage() {
     <ContextProvider>
       <PatsDisplay />
       <GoodBoi />
-      <CountDisplay />
-      <Count />
+      <RetrieveDisplay />
+      <RetrieveCount />
     </ContextProvider>
   );
 }
