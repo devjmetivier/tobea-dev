@@ -65,4 +65,59 @@ Good bois love a good pat...
 
 ![good boi](https://media.giphy.com/media/8P4SDAYxUNuk3HqIHb/giphy.gif)
 
+This works fine for the context of having one provider. If we have multiple contexts controlling different bits of state in our applications, it can start looking a little messy:
 
+```js
+//...
+function AppContainer() {
+  return (
+    <ContextProvider>
+      <AnotherContextProvider>
+        <YetAnotherContextProvider>
+          <PatsDisplay />
+          <GoodBoi />
+        </YetAnotherContextProvider>
+      </AnotherContextProvider>
+    </ContextProvider>
+  );
+}
+```
+
+You get the idea... But how can we mitigate this so it doesn't look like an enormous cluster🤬🤬🤬🤬 of Providers that we're unnecessarily deeply nesting? We can compose a Context Provider that combines all of the contexts into one top-level component! We'll use the `.reduceRight()` array method and `React.cloneElement()` to achieve this:
+
+```js
+import React, { cloneElement } from 'react';
+
+// import providers
+import { ExportedProvider } from './path/to/provider';
+
+function ProviderComposer({ contexts, children }) {
+  return contexts.reduceRight(
+    (kids, parent) =>
+      cloneElement(parent, {
+        children: kids,
+      }),
+    children
+  );
+}
+
+export function ContextProvider({ children }) {
+  return (
+    <ProviderComposer
+      // add providers to array of contexts
+      contexts={
+        [
+          <ExportedProvider/>,
+          <AnotherExportedProvider/>
+        ]
+      }
+    >
+      {children}
+    </ProviderComposer>
+  );
+}
+```
+
+import GoodBoiWithCount from './src/components/GoodBoiWithCount';
+
+<GoodBoiWithCount />
