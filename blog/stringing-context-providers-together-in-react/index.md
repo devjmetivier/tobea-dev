@@ -1,6 +1,6 @@
 ---
 title: "Global State Cleanliness With React Context"
-date: "2019-05-20"
+date: "2019-05-23"
 categories:
 - React
 - Context
