@@ -45,7 +45,7 @@ module.exports = async (req, res) => {
 Awesome! Now we can navigate Github through our proxy. I'm using [Now](https://zeit.co/now) to deploy this as a function. This requires some extra setup through the `now.json` configuration file to make sure all of the routes hit out `index.js`, and also that Now is building and serving our assets correctly:
 
 `now.json`
-```json {3-4, 7-8}
+```json {4-5,8-9}
 {
   "version": 2,
   "routes": [
