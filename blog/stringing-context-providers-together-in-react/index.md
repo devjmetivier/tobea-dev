@@ -268,7 +268,5 @@ But that's ugly 🤮 and we don't like that. So we use some clever tricks to red
 
 ## Attributions
 
-* [Kent C Dodds](https://kentcdodds.com/blog/how-to-use-react-context-effectively) for his awesome article teaching us how to use context more efficiently
-* [Scott Tolinski](https://www.youtube.com/watch?v=52W__dKdNnU) for his method that he found for stringing context providers together
-
-
+* [Kent C. Dodds](https://twitter.com/kentcdodds) for his [awesome article](https://kentcdodds.com/blog/how-to-use-react-context-effectively) teaching us how to use context more efficiently
+* [Scott Tolinski](https://twitter.com/stolinski) for his method that he found for [stringing context providers together](https://www.youtube.com/watch?v=52W__dKdNnU)
