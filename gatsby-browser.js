@@ -66,14 +66,8 @@ export const onRouteUpdate = ({ location }, pluginOptions = {}) => {
 
           indicator.setAttribute(
             `style`,
-            // styles
-            `width: ${indicatorWidth}%;
-             position: fixed;
-             height: ${options.height}px;
-             background-color: ${options.color};
-             top: 0; 
-             left: 0; 
-             transition: width 0.25s`
+            // eslint-disable-next-line
+            `width: ${indicatorWidth}%; position: fixed; height: ${options.height}px; background-color: ${options.color}; top: 0; left: 0; transition: width 0.25s;`
           );
 
           scrolling = false;
@@ -89,43 +83,44 @@ export const onRouteUpdate = ({ location }, pluginOptions = {}) => {
   ) {
     pageProgress();
   } else {
+    // set defaults
     let prefixesToMatch = '';
+    let suffixesToMatch = '';
+
+    // check if matchStartOfPath entries exist
     if (options.matchStartOfPath.length !== 0) {
-      // grab array of prefixes to apply progress to and make a new string for the RegExp
       prefixesToMatch = options.matchStartOfPath.reduce(
         (accumulator, currentValue, i) =>
           i === 0 ? currentValue : `${accumulator}|${currentValue}`
       );
     }
 
-    // should match to something like: (post|category|blog|etc)
+    // check if matchEndOfPath entries exist
+    if (options.matchEndOfPath.length !== 0) {
+      suffixesToMatch = options.matchEndOfPath.reduce(
+        (accumulator, currentValue, i) =>
+          i === 0 ? currentValue : `${accumulator}|${currentValue}`
+      );
+    }
+
+    // should match to something like: (/post|/category|/blog|/etc)
+    // denoted by the "/" at the beginning of the path
     const reStart = RegExp(`^/(${prefixesToMatch})`, `gm`);
     const matchesStart =
       prefixesToMatch !== '' ? reStart.test(location.pathname) : false;
 
-    // should match end of path
-    const checkEnd = endOfPaths => {
-      let matched = false;
-      endOfPaths.forEach(x => {
-        if (!matched) {
-          const reEnd = RegExp(`${x}$`, `gm`);
-          const matchesEnd = reEnd.test(location.pathname);
-          // matched = matchesEnd ? true : false; - same thing as below
-          matched = !!matchesEnd;
-        }
-      });
-      return matched;
-    };
-
-    let matchesEnd = false;
-    if (options.matchEndOfPath.length !== 0)
-      matchesEnd = checkEnd(options.matchEndOfPath);
+    // should match to something like: (post|category|blog|etc)
+    // denoted by the ending string of the path with no "/"
+    const reEnd = RegExp(`(${suffixesToMatch})$`, `gm`);
+    const matchesEnd =
+      suffixesToMatch !== '' ? reEnd.test(location.pathname) : false;
 
     // check to see if the scroll indicator already exists - if it does, remove it
     const indicatorCheck = document.getElementById(
       `gatsby-plugin-page-progress`
     );
     if (indicatorCheck) indicatorCheck.remove();
+
     if (matchesStart) {
       pageProgress();
     } else if (matchesEnd) {
