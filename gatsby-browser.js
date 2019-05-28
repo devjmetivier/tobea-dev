@@ -15,7 +15,10 @@ const defaultOptions = {
   color: `red`,
 };
 // browser API usage: https://www.gatsbyjs.org/docs/browser-apis/#onRouteUpdate
-export const onRouteUpdate = ({ location }, pluginOptions = {}) => {
+export const onRouteUpdate = (
+  { location: { pathname } },
+  pluginOptions = {}
+) => {
   // merge default options with user defined options in `gatsby-config.js`
   const options = { ...defaultOptions, ...pluginOptions };
 
@@ -107,13 +110,19 @@ export const onRouteUpdate = ({ location }, pluginOptions = {}) => {
     // denoted by the "/" at the beginning of the path
     const reStart = RegExp(`^/(${prefixesToMatch})`, `gm`);
     const matchesStart =
-      prefixesToMatch !== '' ? reStart.test(location.pathname) : false;
+      prefixesToMatch !== '' ? reStart.test(pathname) : false;
 
     // should match to something like: (post|category|blog|etc)
-    // denoted by the ending string of the path with no "/"
+    // denoted by the ending string of the path with no trailing "/"
+    // ex: location.pathname = 'path/to/post/this-is-my-post'
     const reEnd = RegExp(`(${suffixesToMatch})$`, `gm`);
-    const matchesEnd =
-      suffixesToMatch !== '' ? reEnd.test(location.pathname) : false;
+    const matchesEnd = suffixesToMatch !== '' ? reEnd.test(pathname) : false;
+
+    // this is the same as the check directly above, only accounting for a trailing slash
+    // ex: location.pathname = '/path/to/post/this-is-my-post/'
+    const reEndTrailingSlash = RegExp(`(${suffixesToMatch})\/$`, `gm`);
+    const matchesEndTrailingSlash =
+      suffixesToMatch !== '' ? reEndTrailingSlash.test(pathname) : false;
 
     // check to see if the scroll indicator already exists - if it does, remove it
     const indicatorCheck = document.getElementById(
@@ -121,10 +130,6 @@ export const onRouteUpdate = ({ location }, pluginOptions = {}) => {
     );
     if (indicatorCheck) indicatorCheck.remove();
 
-    if (matchesStart) {
-      pageProgress();
-    } else if (matchesEnd) {
-      pageProgress();
-    }
+    if (matchesStart || matchesEnd || matchesEndTrailingSlash) pageProgress();
   }
 };
