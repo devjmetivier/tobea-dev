@@ -8,8 +8,8 @@ import './assets/css/code-block-badge-colors.css';
 export const wrapRootElement = wrap;
 
 const defaultOptions = {
-  matchStartOfPath: ['post'],
-  matchEndOfPath: [],
+  matchStartOfPath: [],
+  matchEndOfPath: ['global-state-cleanliness-with-react-context'],
   height: 4,
   prependToBody: false,
   color: `red`,
