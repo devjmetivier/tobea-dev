@@ -8,7 +8,7 @@ import './assets/css/code-block-badge-colors.css';
 export const wrapRootElement = wrap;
 
 const defaultOptions = {
-  excludePaths: ['/', '^/post.+'],
+  excludePaths: ['/', '/^/post/.+react$'],
   matchStartOfPath: ['post'],
   matchEndOfPath: [],
   height: 4,
@@ -23,12 +23,21 @@ export const onRouteUpdate = (
   // merge default options with user defined options in `gatsby-config.js`
   const options = { ...defaultOptions, ...pluginOptions };
 
+  const {
+    matchStartOfPath,
+    matchEndOfPath,
+    excludePaths,
+    height,
+    prependToBody,
+    color,
+  } = options;
+
   function pageProgress() {
     // create progress indicator container and append/prepend to document body
     const node = document.createElement(`div`);
     node.id = `gatsby-plugin-page-progress`;
     // eslint-disable-next-line
-    options.prependToBody
+    prependToBody
       ? document.body.prepend(node)
       : document.body.append(node);
 
@@ -71,7 +80,7 @@ export const onRouteUpdate = (
           indicator.setAttribute(
             `style`,
             // eslint-disable-next-line
-            `width: ${indicatorWidth}%; position: fixed; height: ${options.height}px; background-color: ${options.color}; top: 0; left: 0; transition: width 0.25s;`
+            `width: ${indicatorWidth}%; position: fixed; height: ${height}px; background-color: ${color}; top: 0; left: 0; transition: width 0.25s;`
           );
 
           scrolling = false;
@@ -82,28 +91,31 @@ export const onRouteUpdate = (
   }
 
   if (
-    options.matchStartOfPath.length === 0 &&
-    options.matchEndOfPath.length === 0
+    matchStartOfPath.length === 0 &&
+    matchEndOfPath.length === 0 &&
+    excludePaths.length === 0
   ) {
     pageProgress();
   } else {
+    // first check if there are any exclusions
+    // if there are exclusions, and there's a match, simply return to skip adding progress indicator
+
     // set defaults
     let prefixesToMatch = ``;
     let suffixesToMatch = ``;
 
     // check if matchStartOfPath entries exist
-    if (options.matchStartOfPath.length !== 0) {
-      prefixesToMatch = options.matchStartOfPath.reduce(
+    if (matchStartOfPath.length !== 0) {
+      prefixesToMatch = matchStartOfPath.reduce(
         (accumulator, currentValue, i) =>
           i === 0 ? currentValue : `${accumulator}|${currentValue}`
       );
     }
 
     // check if matchEndOfPath entries exist
-    if (options.matchEndOfPath.length !== 0) {
-      suffixesToMatch = options.matchEndOfPath.reduce(
-        (accumulator, currentValue, i) =>
-          i === 0 ? currentValue : `${accumulator}|${currentValue}`
+    if (matchEndOfPath.length !== 0) {
+      suffixesToMatch = matchEndOfPath.reduce((accumulator, currentValue, i) =>
+        i === 0 ? currentValue : `${accumulator}|${currentValue}`
       );
     }
 
