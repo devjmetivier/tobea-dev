@@ -8,9 +8,8 @@ import './assets/css/code-block-badge-colors.css';
 export const wrapRootElement = wrap;
 
 const defaultOptions = {
-  excludePaths: ['/', '/^/post/.+react$'],
-  matchStartOfPath: ['post'],
-  matchEndOfPath: [],
+  includePaths: [],
+  excludePaths: [],
   height: 4,
   prependToBody: false,
   color: `#B6433B`,
@@ -23,14 +22,7 @@ export const onRouteUpdate = (
   // merge default options with user defined options in `gatsby-config.js`
   const options = { ...defaultOptions, ...pluginOptions };
 
-  const {
-    matchStartOfPath,
-    matchEndOfPath,
-    excludePaths,
-    height,
-    prependToBody,
-    color,
-  } = options;
+  const { includePaths, excludePaths, height, prependToBody, color } = options;
 
   function pageProgress() {
     // create progress indicator container and append/prepend to document body
@@ -90,59 +82,62 @@ export const onRouteUpdate = (
     });
   }
 
-  if (
-    matchStartOfPath.length === 0 &&
-    matchEndOfPath.length === 0 &&
-    excludePaths.length === 0
-  ) {
-    pageProgress();
-  } else {
-    // first check if there are any exclusions
-    // if there are exclusions, and there's a match, simply return to skip adding progress indicator
+  function checkExcludePaths() {
+    let continueAfterExclude = true;
 
-    // set defaults
-    let prefixesToMatch = ``;
-    let suffixesToMatch = ``;
+    excludePaths.forEach(x => {
+      if (continueAfterExclude === false) return;
+      const isRegex = typeof x === 'object';
 
-    // check if matchStartOfPath entries exist
-    if (matchStartOfPath.length !== 0) {
-      prefixesToMatch = matchStartOfPath.reduce(
-        (accumulator, currentValue, i) =>
-          i === 0 ? currentValue : `${accumulator}|${currentValue}`
-      );
-    }
+      if (isRegex && x.test(pathname)) {
+        continueAfterExclude = false;
+      } else if (x === pathname) {
+        continueAfterExclude = false;
+      }
+    });
 
-    // check if matchEndOfPath entries exist
-    if (matchEndOfPath.length !== 0) {
-      suffixesToMatch = matchEndOfPath.reduce((accumulator, currentValue, i) =>
-        i === 0 ? currentValue : `${accumulator}|${currentValue}`
-      );
-    }
+    return continueAfterExclude;
+  }
 
-    // should match to something like: (/post|/category|/blog|/etc)
-    // denoted by the "/" at the beginning of the path
-    const reStart = RegExp(`^/(${prefixesToMatch})`, `gm`);
-    const matchesStart =
-      prefixesToMatch !== `` ? reStart.test(pathname) : false;
+  function checkIncludePaths() {
+    let match = false;
 
-    // should match to something like: (post|category|blog|etc)
-    // denoted by the ending string of the path with no trailing "/"
-    // ex: location.pathname = 'path/to/post/this-is-my-post'
-    const reEnd = RegExp(`(${suffixesToMatch})$`, `gm`);
-    const matchesEnd = suffixesToMatch !== `` ? reEnd.test(pathname) : false;
+    includePaths.forEach(x => {
+      if (match) return;
+      const isRegex = typeof x === 'object';
 
-    // this is the same as the check directly above, only accounting for a trailing slash
-    // ex: location.pathname = '/path/to/post/this-is-my-post/'
-    const reEndTrailingSlash = RegExp(`(${suffixesToMatch})\/$`, `gm`);
-    const matchesEndTrailingSlash =
-      suffixesToMatch !== `` ? reEndTrailingSlash.test(pathname) : false;
+      if (isRegex && x.test(pathname)) match = true;
+      if (x === pathname) match = true;
+    });
 
+    return match;
+  }
+
+  function removeProgressIndicator() {
     // check to see if the scroll indicator already exists - if it does, remove it
     const indicatorCheck = document.getElementById(
       `gatsby-plugin-page-progress`
     );
     if (indicatorCheck) indicatorCheck.remove();
+  }
 
-    if (matchesStart || matchesEnd || matchesEndTrailingSlash) pageProgress();
+  if (!excludePaths.length && !includePaths.length) {
+    removeProgressIndicator();
+    pageProgress();
+  } else if (excludePaths.length && !includePaths.length) {
+    const continueAfterExclude = checkExcludePaths();
+
+    removeProgressIndicator();
+
+    if (continueAfterExclude) pageProgress();
+  } else {
+    const continueAfterExclude = checkExcludePaths();
+
+    removeProgressIndicator();
+
+    if (continueAfterExclude) {
+      const match = checkIncludePaths();
+      match && pageProgress();
+    }
   }
 };
