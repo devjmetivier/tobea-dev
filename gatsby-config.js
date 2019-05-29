@@ -87,13 +87,13 @@ module.exports = {
     `gatsby-plugin-offline`,
     'gatsby-plugin-use-dark-mode',
     'gatsby-remark-video',
-    // {
-    //   resolve: 'gatsby-plugin-page-progress',
-    //   options: {
-    //     matchStartOfPath: ['post'],
-    //     height: 4,
-    //     color: '#B6433B',
-    //   },
-    // },
+    {
+      resolve: 'gatsby-plugin-page-progress',
+      options: {
+        includePaths: [/^\/post/],
+        height: 4,
+        color: '#B6433B',
+      },
+    },
   ],
 };
