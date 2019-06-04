@@ -3,7 +3,7 @@ module.exports = {
   siteTitle: `To Be A Dev`, // Navigation and Site Title
   siteTitleAlt: `To Be A Dev - Development Blog`, // Alternative Site title for SEO
   siteTitleManifest: `ToBeADev`,
-  siteUrl: `https://www.tobea.dev`, // Domain of your site. No trailing slash!
+  siteUrl: `https://tobea.dev`, // Domain of your site. No trailing slash!
   siteLanguage: `en`, // Language Tag on <html> element
   siteHeadline: `Writing and publishing web development content`, // Headline for schema.org JSONLD
   siteBanner: '/social/d.jpg', // Your image for og:image tag. You can find it in the /static folder
