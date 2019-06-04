@@ -34,7 +34,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `social`,
-        path: `${__dirname}/assets/social`,
+        path: `${__dirname}/social`,
       },
     },
     {
