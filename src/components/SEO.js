@@ -4,8 +4,6 @@ import Helmet from 'react-helmet';
 
 import config from '../../config';
 
-// TODO: add og data for twitter
-
 const SEO = props => {
   const { postNode, postPath, article, buildTime } = props;
 
