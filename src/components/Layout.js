@@ -18,7 +18,6 @@ const Layout = ({ children, customSEO, location }) => {
 
   return (
     <ThemeProvider theme={currentTheme}>
-      {/* <ThemeProvider theme={darkMode.value ? theme.dark : theme.light}> */}
       <LayoutWrapper>
         {!customSEO && <SEO buildTime={buildTime} />}
         <FloatStyles className='layout-float'>
