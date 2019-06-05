@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "alias": ["tobea.dev"],
+  "alias": ["tobea.dev", "www.tobea.dev"],
   "builds": [
     {
       "src": "package.json",
