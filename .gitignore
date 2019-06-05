@@ -60,3 +60,4 @@ public/
 bundle-stats.json
 
 .idea
+.vscode

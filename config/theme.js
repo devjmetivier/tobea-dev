@@ -5,6 +5,7 @@ const colors = {
   green: '#36CD4E',
   white: `white`,
   black: `#222`,
+
   // palette
   porcelain: '#F2F3F4',
   sienna: '#D09056',
@@ -12,6 +13,7 @@ const colors = {
   carmine: '#B6433B',
   brightGray: '#333A43',
   dark: '#1e2125',
+
   // info
   success: '#60a866', // Aqua Forest
   danger: '#f44336', // Pomegranate
