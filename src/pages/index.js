@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import Helmet from 'react-helmet';
 
 import { emojis } from '../../config/emojis';
 import { Layout, Article, Bio } from '../components';
@@ -12,6 +13,10 @@ const IndexPage = ({
   location,
 }) => (
   <Layout location={location}>
+    <Helmet>
+      <meta name='msvalidate.01' content='E7365830AB078887835AC6CE8171F0BD' />
+    </Helmet>
+
     <main>
       <Bio />
       <div>
