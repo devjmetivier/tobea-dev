@@ -21,7 +21,7 @@ const NotFound = ({ location }) => {
       <SoiledIt>
         <h2>Page Doesn't Exist</h2>
         <span>😢</span>
-        <h2>Doin' A Sad...</h2>
+        <h2>Doin' A Sad... Done A Goof</h2>
       </SoiledIt>
       <Bio />
     </Layout>
