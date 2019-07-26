@@ -61,3 +61,5 @@ bundle-stats.json
 
 .idea
 .vscode
+package.lock.json
+yarn.lock
