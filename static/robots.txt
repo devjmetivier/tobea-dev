@@ -1,3 +1,0 @@
-User-agent: *
-
-sitemap: https://tobea.dev/sitemap.xml
